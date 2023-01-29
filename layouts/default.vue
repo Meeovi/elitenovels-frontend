@@ -19,34 +19,6 @@
         <v-col>
           <v-btn :prepend-icon="theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon'" @click="onClick"></v-btn>
         </v-col>
-      <!--  <v-col>
-          <v-menu :location="location" transition="slide-y-transition">
-            <template v-slot:activator="{ props }">
-              <v-btn variant="flat" v-bind="props">
-                <v-icon start icon="fas fa-bell"></v-icon>
-              </v-btn>
-            </template>
-            <v-list>
-              <v-list-item title="" value="" href="/"></v-list-item>
-              <v-divider></v-divider>
-              <v-list-item title="All Notifications" value="notifications" href="/admin/user/notifications">
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </v-col>
-        <v-col>
-          <v-menu :location="location" transition="slide-y-transition">
-            <template v-slot:activator="{ props }">
-              <v-btn variant="flat" v-bind="props">
-                <v-icon start icon="fas fa-user-circle"></v-icon>
-              </v-btn>
-            </template>
-            <v-list>
-              <v-list-item title="My Account" value="my account" href="/admin/user/"></v-list-item>
-              <v-list-item title="Logout" value="logout" href="/logout"></v-list-item>
-            </v-list>
-          </v-menu>
-        </v-col>-->
       </div>
     </v-app-bar>
 
@@ -60,16 +32,14 @@
               </template>
             </v-list-item>
 
-            <v-divider></v-divider>
-
             <v-list density="compact" nav>
               <v-list-item prepend-icon="fas fa-home" title="Home" value="home" href="/"></v-list-item>
-              <v-list-item title="Characters" value="Characters" href="/Admin/Characters/"></v-list-item>
-              <v-list-item title="Monsters" value="Monsters" href="/Admin/Monsters/"></v-list-item>
-              <v-list-item title="Mythology" value="Mythology" href="/Admin/Mythology/"></v-list-item>
-              <v-list-item title="Stories" value="Stories" href="/Admin/Stories/"></v-list-item>
-              <v-list-item title="Videos" value="Videos" href="/Admin/Videos/"></v-list-item>
-              <v-list-item title="Blog" value="Blog" href="/Admin/Blog/"></v-list-item>
+              <v-list-item title="Characters" value="Characters" href="/Characters/"></v-list-item>
+              <v-list-item title="Monsters" value="Monsters" href="/Monsters/"></v-list-item>
+              <v-list-item title="Mythology" value="Mythology" href="/Mythology/"></v-list-item>
+              <v-list-item title="Stories" value="Stories" href="/Stories/"></v-list-item>
+              <v-list-item title="Videos" value="Videos" href="/Videos/"></v-list-item>
+              <v-list-item title="Blog" value="Blog" href="/Blog/"></v-list-item>
             </v-list>
           </v-navigation-drawer>
           <v-main id="sidebarNav"></v-main>
