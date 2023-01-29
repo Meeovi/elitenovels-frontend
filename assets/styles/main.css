@@ -8,6 +8,7 @@ body {
 
 #topnav {
     width: 100% !important;
+    z-index: 99999 !important;
 }
 
 .logobrand {
@@ -28,10 +29,10 @@ body {
 
 #mainSection {
     top: 0px !important;
-    position: absolute !important;
-    left: 56px;
+    position: relative !important;
+    padding-bottom: 5px;
     width: 100% !important;
-    height: 100vh !important;
+    height: 100% !important;
 }
 
 .homeSection {
@@ -54,11 +55,6 @@ body {
     padding: 15px;
 }
 
-.emailTemplates {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
 .dialog-bottom-transition-enter-active,
 .dialog-bottom-transition-leave-active {
     transition: transform .2s ease-in-out;
@@ -77,9 +73,4 @@ body {
     position: relative;
     padding-left: 0px;
     padding-right: 0px;
-}
-
-.sidebarSection {
-    height: 100% !important;
-    overflow-y: scroll;
 }
