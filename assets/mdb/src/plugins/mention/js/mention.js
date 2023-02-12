@@ -653,7 +653,7 @@ class Mention {
             ${
               this._options.showImg && item.image
                 ? `<span class="${CLASS_MENTION_ITEM_IMAGE_CONTAINER}">
-                    <img class="${CLASS_MENTION_ITEM_IMAGE} ${CLASS_ROUNDED_CIRCLE}" src=${
+                    <v-img class="${CLASS_MENTION_ITEM_IMAGE} ${CLASS_ROUNDED_CIRCLE}" src=${
                     item.image
                   } alt=${item[this._options.queryBy]}>
                   </span>`

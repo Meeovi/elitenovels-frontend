@@ -253,7 +253,7 @@ class OrganizationChart {
       <div class="card">
         <div class="card-header text-white bg-primary">${headerText}</div>
         <div class="card-body">
-          <img src="${node.avatar}" alt="" >
+          <v-img src="${node.avatar}" alt="" >
           <p class="card-text">${bottomText}</p>
         </div>
       </div>

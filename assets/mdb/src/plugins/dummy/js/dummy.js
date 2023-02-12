@@ -458,7 +458,7 @@ class Dummy {
       a: () => `<a href="#" style="margin-bottom: 1rem"/>${this._generateDummyText()}</a>`,
       img: () => {
         this._options.dummyImg = '100%,700';
-        return `<img src=${this._generateQueryString()} style="max-width:100%; margin-bottom: 1rem"/>`;
+        return `<v-img src=${this._generateQueryString()} style="max-width:100%; margin-bottom: 1rem"/>`;
       },
       ul: () => `<ul>${this._generateMultipleTextTags('li', 5)}</ul>`,
       ol: () => `<ol>${this._generateMultipleTextTags('li', 5)}</ol>`,

@@ -520,7 +520,7 @@ class Wysiwyg {
         argument = `<a href="${urlInput.value}" target="_blank">${descriptionInput.value}</a>`;
         descriptionInput.value = '';
       } else {
-        argument = `<img src="${urlInput.value}" target="_blank" class="img-fluid" />`;
+        argument = `<v-img src="${urlInput.value}" target="_blank" class="img-fluid" />`;
       }
 
       command = 'insertHTML';
