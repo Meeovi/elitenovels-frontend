@@ -1,12 +1,12 @@
-import { NuxtModule } from '@nuxt/schema'
-declare module '@nuxt/schema' {
+import { NuxtModule } from 'nuxt/schema'
+declare module 'nuxt/schema' {
   interface NuxtConfig {
-    ["apollo"]?: typeof import("@nuxtjs/apollo").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     ["content"]?: typeof import("@nuxt/content").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    ["i18n"]?: typeof import("@nuxtjs/i18n").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    ["security"]?: typeof import("nuxt-security").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
-    ["googleSignIn"]?: typeof import("nuxt-vue3-google-signin").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    ["meilisearch"]?: typeof import("nuxt-meilisearch").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    ["directus"]?: typeof import("nuxt-directus").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    ["devtools"]?: typeof import("C:/Users/Basti/AppData/Roaming/npm/node_modules/@nuxt/devtools/module").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
     ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    modules?: (undefined | null | false | NuxtModule | string | [NuxtModule | string, Record<string, any>] | ["@nuxt/content", Exclude<NuxtConfig["content"], boolean>] | ["nuxt-meilisearch", Exclude<NuxtConfig["meilisearch"], boolean>] | ["nuxt-directus", Exclude<NuxtConfig["directus"], boolean>] | ["C:/Users/Basti/AppData/Roaming/npm/node_modules/@nuxt/devtools/module", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
   }
   interface RuntimeConfig {
    app: {
@@ -137,172 +137,30 @@ declare module '@nuxt/schema' {
       },
    },
 
-   security: {
-      headers: {
-         crossOriginResourcePolicy: {
-            value: string,
+   serverMeilisearchClient: {
+      hostUrl: string,
 
-            route: string,
-         },
+      searchApiKey: string,
 
-         crossOriginOpenerPolicy: {
-            value: string,
+      adminApiKey: string,
 
-            route: string,
-         },
+      serverSideUsage: boolean,
 
-         crossOriginEmbedderPolicy: {
-            value: string,
-
-            route: string,
-         },
-
-         contentSecurityPolicy: {
-            value: {
-               "base-uri": Array<string>,
-
-               "font-src": Array<string>,
-
-               "form-action": Array<string>,
-
-               "frame-ancestors": Array<string>,
-
-               "img-src": Array<string>,
-
-               "object-src": Array<string>,
-
-               "script-src-attr": Array<string>,
-
-               "style-src": Array<string>,
-
-               "upgrade-insecure-requests": boolean,
-            },
-
-            route: string,
-         },
-
-         originAgentCluster: {
-            value: string,
-
-            route: string,
-         },
-
-         referrerPolicy: {
-            value: string,
-
-            route: string,
-         },
-
-         strictTransportSecurity: {
-            value: {
-               maxAge: number,
-
-               includeSubdomains: boolean,
-            },
-
-            route: string,
-         },
-
-         xContentTypeOptions: {
-            value: string,
-
-            route: string,
-         },
-
-         xDNSPrefetchControl: {
-            value: string,
-
-            route: string,
-         },
-
-         xDownloadOptions: {
-            value: string,
-
-            route: string,
-         },
-
-         xFrameOptions: {
-            value: string,
-
-            route: string,
-         },
-
-         xPermittedCrossDomainPolicies: {
-            value: string,
-
-            route: string,
-         },
-
-         xXSSProtection: {
-            value: string,
-
-            route: string,
-         },
+      instantSearch: {
+         theme: string,
       },
 
-      requestSizeLimiter: {
-         value: {
-            maxRequestSizeInBytes: number,
+      clientOptions: {
+         placeholderSearch: boolean,
 
-            maxUploadFileRequestInBytes: number,
-         },
+         paginationTotalHits: number,
 
-         route: string,
+         finitePagination: boolean,
 
-         throwError: boolean,
+         primaryKey: any,
+
+         keepZeroFacets: boolean,
       },
-
-      rateLimiter: {
-         value: {
-            tokensPerInterval: number,
-
-            interval: string,
-
-            fireImmediately: boolean,
-         },
-
-         route: string,
-
-         throwError: boolean,
-      },
-
-      xssValidator: {
-         value: any,
-
-         route: string,
-
-         throwError: boolean,
-      },
-
-      corsHandler: {
-         value: {
-            origin: string,
-
-            methods: Array<string>,
-
-            preflight: {
-               statusCode: number,
-            },
-         },
-
-         route: string,
-
-         throwError: boolean,
-      },
-
-      allowedMethodsRestricter: {
-         value: string,
-
-         route: string,
-
-         throwError: boolean,
-      },
-
-      hidePoweredBy: boolean,
-
-      basicAuth: boolean,
-
-      enabled: boolean,
    },
   }
   interface PublicRuntimeConfig {
@@ -394,8 +252,38 @@ declare module '@nuxt/schema' {
       },
    },
 
-   googleSignIn: {
-      clientId: string,
+   meilisearchClient: {
+      hostUrl: string,
+
+      searchApiKey: string,
+
+      serverSideUsage: boolean,
+
+      instantSearch: {
+         theme: string,
+      },
+
+      clientOptions: {
+         placeholderSearch: boolean,
+
+         paginationTotalHits: number,
+
+         finitePagination: boolean,
+
+         primaryKey: any,
+
+         keepZeroFacets: boolean,
+      },
+   },
+
+   directus: {
+      url: string,
+
+      autoFetch: boolean,
+
+      fetchUserParams: any,
+
+      token: any,
    },
   }
 }

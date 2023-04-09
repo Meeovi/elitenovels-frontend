@@ -64,6 +64,37 @@ body {
     padding: 10px;
 }
 
+.homePage {
+    padding: 25px;
+}
+
+.lowerbar {
+    position: fixed;
+}
+
+.lowerbar h5 {
+    padding: 15px;
+}
+
+.lowerbar a {
+    color: white;
+}
+
+.categorySheet {
+    background-color: transparent !important;
+}
+
+.categoryPage {
+    padding-bottom: 20px !important;
+    position: relative;
+}
+
+.categoryPage h4 {
+    color: black;
+    padding-top: 30px;
+    padding-left: 5%;
+}
+
 /******************** Sidebar CSS *************/
 
 #sidebarNav {

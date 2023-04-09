@@ -1,65 +1,42 @@
 <template>
-    <div>
-        <!-- Container for demo purpose -->
-<div class="container my-5 p-5">
+  <div>
+    <v-col cols="12">
+      <v-toolbar title="READ STORIES FROM ACROSS THE ELITEVERSE" density="comfortable" color="transparent"></v-toolbar>
+      <v-sheet class="mx-auto">
+        <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
+          <v-slide-group-item v-for="n in 6" :key="n" v-slot="{ isSelected, toggle, selectedClass }">
+            <v-card color="white" :class="['ma-4', selectedClass]" height="350" width="250" @click="toggle">
+              <v-img class="align-end text-white" height="200" src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                cover></v-img>
 
-<!--Section: Design Block-->
-<section class="text-center">
+              <v-card-subtitle class="pt-4">
+                Published: 
+              </v-card-subtitle>
 
-  <h3 class="mb-5">Jump into a good story</h3>
+              <v-card-title>Top 10 Australian beaches</v-card-title>
 
-  <p class="mb-5 mx-auto w-responsive">
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum laborum animi doloremque
-    nam dicta veniam dolor ea nostrum excepturi laboriosam molestiae, expedita odit id! Sunt
-    quia cumque consequatur perferendis hic.
-  </p>
-
-  <div class="row">
-    <div class="col-md-6 col-lg-4 mb-4 mb-md-0 pb-2 order-md-2 order-lg-1">
-      <div class="card">
-        <div class="bg-image hover-zoom">
-          <img src="https://mdbootstrap.com/img/Others/food6.jpg" class="card-img-top" alt="Sample image" />
-        </div>
-        <div class="card-body">
-          <h5 class="card-title text-center my-3">Breakfast</h5>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-12 col-lg-4 mb-4 mb-lg-0 pb-2 order-md-1 order-lg-2">
-      <div class="card">
-        <div class="bg-image hover-zoom">
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg" class="card-img-top"
-            alt="Sample image" />
-        </div>
-        <div class="card-body">
-          <h5 class="card-title text-center my-3">Launches</h5>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-4 pb-2 order-md-3 order-lg-3">
-      <div class="card">
-        <div class="bg-image hover-zoom">
-          <img src="https://mdbootstrap.com/img/Others/food7.jpg" class="card-img-top" alt="Sample image" />
-        </div>
-        <div class="card-body">
-          <h5 class="card-title text-center my-3">Desserts</h5>
-        </div>
-      </div>
-    </div>
+              <v-card-actions>
+                <v-btn color="blue">
+                  Read
+                </v-btn>
+              </v-card-actions>
+              <div class="d-flex fill-height align-center justify-center">
+                <v-scale-transition>
+                  <v-icon v-if="isSelected" color="white" size="48" icon="mdi-close-circle-outline"></v-icon>
+                </v-scale-transition>
+              </div>
+            </v-card>
+          </v-slide-group-item>
+        </v-slide-group>
+      </v-sheet>
+    </v-col>
   </div>
-
-</section>
-<!--Section: Design Block-->
-
-</div>
-<!-- Container for demo purpose -->
-    </div>
 </template>
 
 <script>
-export default {
-    
-}
+  export default {
+
+  }
 </script>
 
 <style>

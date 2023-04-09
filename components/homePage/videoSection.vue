@@ -1,71 +1,36 @@
 <template>
-    <div>
-     <!-- Container for demo purpose -->
-<div class="container-fluid my-5">
+  <div>
+    <v-col cols="12">
+      <v-toolbar title="LATEST VIDEOS FROM ELITE NOVELS" density="comfortable" color="transparent"></v-toolbar>
+      <v-sheet class="mx-auto">
+        <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
+          <v-slide-group-item v-for="n in 6" :key="n" v-slot="{ isSelected, toggle, selectedClass }">
+            <v-card color="white" :class="['ma-4', selectedClass]" height="350" width="250" @click="toggle">
+              <video src="" controls height="250" width="250"></video>
+              <v-card-title>Video Name</v-card-title>
 
-<!--Section: Design Block-->
-<section>
-
-  <h3 class="text-center mb-5">Videos from Across the Eliteverse</h3>
-  <div class="lightbox">
-    <div class="row">
-      <div class="col-lg-3 mb-4">
-        <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(1).jpg"
-          data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(1).jpg" alt="Lightbox image 1"
-          class="w-100 shadow-1-strong rounded" />
-      </div>
-      <div class="col-lg-3 mb-4">
-        <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(136).jpg"
-          data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(136).jpg" alt="Lightbox image 2"
-          class="w-100 shadow-1-strong rounded" />
-      </div>
-      <div class="col-lg-3 mb-4">
-        <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(7).jpg"
-          data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(7).jpg" alt="Lightbox image 3"
-          class="w-100 shadow-1-strong rounded" />
-      </div>
-      <div class="col-lg-3 mb-4">
-        <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(137).jpg"
-          data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(137).jpg" alt="Lightbox image 3"
-          class="w-100 shadow-1-strong rounded" />
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-3 mb-4">
-        <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(132).jpg"
-          data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(132).jpg" alt="Lightbox image 3"
-          class="w-100 shadow-1-strong rounded" />
-      </div>
-      <div class="col-lg-3 mb-4">
-        <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(131).jpg"
-          data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(131).jpg" alt="Lightbox image 1"
-          class="w-100 shadow-1-strong rounded" />
-      </div>
-      <div class="col-lg-3 mb-4">
-        <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(3).jpg"
-          data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(3).jpg" alt="Lightbox image 2"
-          class="w-100 shadow-1-strong rounded" />
-      </div>
-      <div class="col-lg-3">
-        <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(134).jpg"
-          data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(134).jpg" alt="Lightbox image 3"
-          class="w-100 shadow-1-strong rounded" />
-      </div>
-    </div>
+              <v-card-actions>
+                <v-btn color="blue" href="https://www.meeovi.com/stores/elitenovels/products/">
+                  Watch
+                </v-btn>
+              </v-card-actions>
+              <div class="d-flex fill-height align-center justify-center">
+                <v-scale-transition>
+                  <v-icon v-if="isSelected" color="white" size="48" icon="mdi-close-circle-outline"></v-icon>
+                </v-scale-transition>
+              </div>
+            </v-card>
+          </v-slide-group-item>
+        </v-slide-group>
+      </v-sheet>
+    </v-col>
   </div>
-
-</section>
-<!--Section: Design Block-->
-
-</div>
-<!-- Container for demo purpose -->
-    </div>
 </template>
 
 <script>
-export default {
-    
-}
+  export default {
+
+  }
 </script>
 
 <style>
