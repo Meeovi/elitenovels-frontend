@@ -58,7 +58,7 @@ const inlineAppConfig = {};
 
 const appConfig = defuFn(inlineAppConfig);
 
-const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"envPrefix":"NUXT_","routeRules":{"/__nuxt_error":{"cache":false}}},"public":{"content":{"locales":[],"defaultLocale":"","integrity":"","experimental":{"stripQueryParameters":false,"clientDB":false},"api":{"baseURL":"/api/_content"},"navigation":{"fields":[]},"tags":{"p":"prose-p","a":"prose-a","blockquote":"prose-blockquote","code-inline":"prose-code-inline","code":"prose-code","em":"prose-em","h1":"prose-h1","h2":"prose-h2","h3":"prose-h3","h4":"prose-h4","h5":"prose-h5","h6":"prose-h6","hr":"prose-hr","img":"prose-img","ul":"prose-ul","ol":"prose-ol","li":"prose-li","strong":"prose-strong","table":"prose-table","thead":"prose-thead","tbody":"prose-tbody","td":"prose-td","th":"prose-th","tr":"prose-tr"},"highlight":false,"wsUrl":"ws://localhost:4000/","documentDriven":false,"host":"","trailingSlash":false,"anchorLinks":{"depth":4,"exclude":[1]}},"meilisearchClient":{"hostUrl":"https://meeovicms.com:7700/","searchApiKey":"<your_public_key>","serverSideUsage":true,"instantSearch":{"theme":"algolia"},"clientOptions":{"placeholderSearch":true,"paginationTotalHits":50,"finitePagination":true,"primaryKey":"","keepZeroFacets":false}},"directus":{"url":"http://meeovicms.com:8001/","autoFetch":true,"fetchUserParams":"","token":""}},"content":{"cacheVersion":2,"cacheIntegrity":"kc4UzpZUjI","transformers":[],"base":"","api":{"baseURL":"/api/_content"},"watch":{"ws":{"port":{"port":4000,"portRange":[4000,4040]},"hostname":"localhost","showURL":false}},"sources":{},"ignores":["\\.","-"],"locales":[],"defaultLocale":"","highlight":false,"markdown":{"tags":{"p":"prose-p","a":"prose-a","blockquote":"prose-blockquote","code-inline":"prose-code-inline","code":"prose-code","em":"prose-em","h1":"prose-h1","h2":"prose-h2","h3":"prose-h3","h4":"prose-h4","h5":"prose-h5","h6":"prose-h6","hr":"prose-hr","img":"prose-img","ul":"prose-ul","ol":"prose-ol","li":"prose-li","strong":"prose-strong","table":"prose-table","thead":"prose-thead","tbody":"prose-tbody","td":"prose-td","th":"prose-th","tr":"prose-tr"},"anchorLinks":{"depth":4,"exclude":[1]},"remarkPlugins":{},"rehypePlugins":{}},"yaml":{},"csv":{"delimeter":",","json":true},"navigation":{"fields":[]},"documentDriven":false,"experimental":{"clientDB":false,"stripQueryParameters":false}},"serverMeilisearchClient":{"hostUrl":"https://meeovicms.com:7700/","searchApiKey":"<your_public_key>","adminApiKey":"<your_secret_key>","serverSideUsage":true,"instantSearch":{"theme":"algolia"},"clientOptions":{"placeholderSearch":true,"paginationTotalHits":50,"finitePagination":true,"primaryKey":"","keepZeroFacets":false}}};
+const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"envPrefix":"NUXT_","routeRules":{"/__nuxt_error":{"cache":false}}},"public":{"content":{"locales":[],"defaultLocale":"","integrity":"","experimental":{"stripQueryParameters":false,"clientDB":false},"api":{"baseURL":"/api/_content"},"navigation":{"fields":[]},"tags":{"p":"prose-p","a":"prose-a","blockquote":"prose-blockquote","code-inline":"prose-code-inline","code":"prose-code","em":"prose-em","h1":"prose-h1","h2":"prose-h2","h3":"prose-h3","h4":"prose-h4","h5":"prose-h5","h6":"prose-h6","hr":"prose-hr","img":"prose-img","ul":"prose-ul","ol":"prose-ol","li":"prose-li","strong":"prose-strong","table":"prose-table","thead":"prose-thead","tbody":"prose-tbody","td":"prose-td","th":"prose-th","tr":"prose-tr"},"highlight":false,"wsUrl":"ws://localhost:4001/","documentDriven":false,"host":"","trailingSlash":false,"anchorLinks":{"depth":4,"exclude":[1]}},"meilisearchClient":{"hostUrl":"https://meeovicms.com:7700/","searchApiKey":"<your_public_key>","serverSideUsage":true,"instantSearch":{"theme":"algolia"},"clientOptions":{"placeholderSearch":true,"paginationTotalHits":50,"finitePagination":true,"primaryKey":"","keepZeroFacets":false}},"directus":{"url":"http://meeovicms.com:8001/","autoFetch":true,"fetchUserParams":"","token":""}},"content":{"cacheVersion":2,"cacheIntegrity":"kc4UzpZUjI","transformers":[],"base":"","api":{"baseURL":"/api/_content"},"watch":{"ws":{"port":{"port":4000,"portRange":[4000,4040]},"hostname":"localhost","showURL":false}},"sources":{},"ignores":["\\.","-"],"locales":[],"defaultLocale":"","highlight":false,"markdown":{"tags":{"p":"prose-p","a":"prose-a","blockquote":"prose-blockquote","code-inline":"prose-code-inline","code":"prose-code","em":"prose-em","h1":"prose-h1","h2":"prose-h2","h3":"prose-h3","h4":"prose-h4","h5":"prose-h5","h6":"prose-h6","hr":"prose-hr","img":"prose-img","ul":"prose-ul","ol":"prose-ol","li":"prose-li","strong":"prose-strong","table":"prose-table","thead":"prose-thead","tbody":"prose-tbody","td":"prose-td","th":"prose-th","tr":"prose-tr"},"anchorLinks":{"depth":4,"exclude":[1]},"remarkPlugins":{},"rehypePlugins":{}},"yaml":{},"csv":{"delimeter":",","json":true},"navigation":{"fields":[]},"documentDriven":false,"experimental":{"clientDB":false,"stripQueryParameters":false}},"serverMeilisearchClient":{"hostUrl":"https://meeovicms.com:7700/","searchApiKey":"<your_public_key>","adminApiKey":"<your_secret_key>","serverSideUsage":true,"instantSearch":{"theme":"algolia"},"clientOptions":{"placeholderSearch":true,"paginationTotalHits":50,"finitePagination":true,"primaryKey":"","keepZeroFacets":false}}};
 const ENV_PREFIX = "NITRO_";
 const ENV_PREFIX_ALT = _runtimeConfig.nitro.envPrefix ?? process.env.NITRO_ENV_PREFIX ?? "_";
 overrideConfig(_runtimeConfig);
@@ -3540,11 +3540,9 @@ const _VnKb6v = defineEventHandler(async (event) => {
   return createNav(contents, configs);
 });
 
-const _lazy_ZDipy8 = () => Promise.resolve().then(function () { return searchExample$1; });
 const _lazy_0x1vwW = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '/api/searchExample', handler: _lazy_ZDipy8, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_error', handler: _lazy_0x1vwW, lazy: true, middleware: false, method: undefined },
   { route: '', handler: _aZpDbf, lazy: false, middleware: false, method: undefined },
   { route: '/api/_content/query/:qid/**:params', handler: _zpfOIQ, lazy: false, middleware: false, method: "get" },
@@ -3678,25 +3676,6 @@ const template = _template;
 const errorDev = /*#__PURE__*/Object.freeze({
       __proto__: null,
       template: template
-});
-
-const searchExample = defineEventHandler(async (event) => {
-  const { serverMeilisearchClient } = event.context;
-  await serverMeilisearchClient.index("movies").addDocuments(
-    {
-      id: 999999994234,
-      title: "Batman Unmasked: The Psychology of the Dark Knight",
-      poster: "https://image.tmdb.org/t/p/w1280/jjHu128XLARc2k4cJrblAvZe0HE.jpg",
-      overview: "Delve into the world of Batman and the vigilante justice tha",
-      release_date: "2008-07-15"
-    }
-  );
-  return { myCustomResponse: "Document is on the way...." };
-});
-
-const searchExample$1 = /*#__PURE__*/Object.freeze({
-      __proto__: null,
-      default: searchExample
 });
 
 const appRootId = "__nuxt";
