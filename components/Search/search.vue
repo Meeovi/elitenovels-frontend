@@ -6,10 +6,10 @@
                     <v-btn v-bind="props" variant="text" icon="fas fa-search"></v-btn>
                 </template>
 
-                <v-card min-height="500" min-width="500">
-                    <ais-instant-search :search-client="searchClient" index-name="demo_ecommerce">
-                        <ais-search-box />
-                    </ais-instant-search>
+                <v-card min-height="100" min-width="500">
+                    <v-text-field density="compact" variant="outlined" label="Search Meeovi"
+                        append-inner-icon="fas fa-search" single-line hide-details @click:append-inner="onClick">
+                    </v-text-field>
                     <v-card-actions>
                         <v-btn color="primary" block @click="dialog = false">Close Search</v-btn>
                     </v-card-actions>

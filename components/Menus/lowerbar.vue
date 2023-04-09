@@ -1,6 +1,6 @@
 <template>
     <v-card>
-        <v-tabs bg-color="deep-blue-darken-4" fixed-tabs center-active>
+        <v-tabs bg-color="deep-blue-darken-4" center-active>
             <v-tab><a href="/">Home</a></v-tab>
             <v-tab>
                 <v-btn variant="text">
@@ -29,9 +29,11 @@
 </template>
 
 <script>
-    export default {
-
-    }
+  export default {
+    data: () => ({
+      tab: null,
+    }),
+  }
 </script>
 
 <script setup>
