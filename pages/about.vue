@@ -1,91 +1,51 @@
 <template>
   <div>
-    <!-- Container for demo purpose -->
     <div class="container my-5 py-5">
 
-      <!-- Section: Design Block -->
       <section class="">
 
-        <div class="row gx-0">
+        <div class="row gx-0" v-for="about in about" :key="about.id">
           <div class="col-lg-5 mb-4 mb-md-0">
             <div class="d-flex py-md-5">
-              <img src="https://mdbootstrap.com/img/new/standard/people/058.jpg" class="w-100 rounded-5 shadow-3-strong"
-                id="cta-img-nml-50" style="z-index: 10" alt="" />
+              <img :src="`${url}/assets/${about.image}`" class="w-100 rounded-5 shadow-3-strong"
+                id="cta-img-nml-50" style="z-index: 10" :alt="about.name" />
             </div>
           </div>
 
           <div class="col-lg-7 mb-4 mb-md-0">
-            <div class="bg-warning h-100 rounded-6 p-4 ps-lg-5 text-white d-flex align-items-center">
+            <div class="bg-warning h-100 rounded-6 p-4 ps-lg-5 text-black d-flex align-items-center">
               <div class="ps-lg-5">
-                <h2 class="fw-bold mb-4">Let it surprise you</h2>
+                <h2 class="fw-bold mb-4">{{ about.name }}</h2>
                 <p class="">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Maxime, sint, repellat vel quo quisquam accusamus in qui at
-                  ipsa enim quibusdam illo laboriosam omnis. Labore itaque illum
-                  distinctio eum neque!
-                </p>
-
-                <div class="row mb-2">
-                  <div class="col-lg-4">
-                    <p>
-                      <i class="fas fa-check-circle me-2"></i>Best
-                      team
-                    </p>
-                  </div>
-
-                  <div class="col-lg-4">
-                    <p>
-                      <i class="fas fa-check-circle me-2"></i>Best
-                      quality
-                    </p>
-                  </div>
-
-                  <div class="col-lg-4">
-                    <p>
-                      <i class="fas fa-check-circle me-2"></i>Best
-                      experience
-                    </p>
-                  </div>
-                </div>
-                <p>
-                  Duis sagittis, turpis in ullamcorper venenatis, ligula nibh
-                  porta dui, sit amet rutrum enim massa in ante. Curabitur in
-                  justo at lorem laoreet ultricies. Nunc ligula felis, sagittis
-                  eget nisi vitae, sodales vestibulum purus. Vestibulum nibh
-                  ipsum, rhoncus vel sagittis nec, placerat vel justo. Duis
-                  faucibus sapien eget tortor finibus, a eleifend lectus dictum.
-                  Cras tempor convallis magna id rhoncus. Suspendisse potenti.
-                  Nam mattis faucibus imperdiet. Proin tempor lorem at neque
-                  tempus aliquet. Phasellus at ex volutpat, varius arcu id,
-                  aliquam lectus. Vestibulum mattis felis quis ex pharetra
-                  luctus. Etiam luctus sagittis massa, sed iaculis est vehicula
-                  ut.
+                  {{ about.description }}
                 </p>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <!-- Section: Design Block -->
-
     </div>
-    <!-- Container for demo purpose -->
   </div>
 </template>
 
 <script>
   export default {
-
-
+    data: () => ({
+      url: 'http://meeovicms.com:8007'
+    }),
   }
-
 </script>
 
 <script setup>
+const { getSingletonItem } = useDirectusItems()
+
+const about = await getSingletonItem({ collection: "about"});
+
     useHead({
         title: 'About Elite Novels',
     })
 </script>
+
 <style>
   @media (min-width: 992px) {
     #cta-img-nml-50 {
