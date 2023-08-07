@@ -3,7 +3,6 @@
 /// <reference types="nuxt-meilisearch" />
 /// <reference types="nuxt-directus" />
 /// <reference types="@nuxtjs/apollo" />
-/// <reference types="@nuxt/devtools" />
 /// <reference types="@nuxt/telemetry" />
 /// <reference types="nuxt" />
 /// <reference path="types/plugins.d.ts" />

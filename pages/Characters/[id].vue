@@ -1,117 +1,52 @@
 <template>
-    <div>
-      <!-- Container for demo purpose -->
-      <div class="container my-5 py-5 shadow-5">
-  
-        <!--Section: Design Block-->
-        <section>
-  
-          <h3 class="text-center mb-5">Character Name</h3>
-  
-          <div class="row align-items-center">
-            <div class="col-lg-4 col-md-12">
-              <div class="row mb-4">
-                <div class="col-3">
-                  <div class="shadow-2 d-flex align-items-center justify-content-center rounded-circle mx-auto"
-                    style="width: 70px; height: 70px;">
-                    <i class="fas fa-tablet-alt fa-lg text-primary"></i>
-                  </div>
-                </div>
-                <div class="col-9 mb-2">
-                  <h5>Fully responsive</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores.</p>
-                </div>
-              </div>
-              <div class="row mb-4">
-                <div class="col-3">
-                  <div class="shadow-2 d-flex align-items-center justify-content-center rounded-circle mx-auto"
-                    style="width: 70px; height: 70px;">
-                    <i class="fas fa-level-up-alt fa-lg text-primary"></i>
-                  </div>
-                </div>
-                <div class="col-9 mb-2">
-                  <h5>Frequent updates</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores.</p>
-                </div>
-              </div>
-              <div class="row mb-4">
-                <div class="col-3">
-                  <div class="shadow-2 d-flex align-items-center justify-content-center rounded-circle mx-auto"
-                    style="width: 70px; height: 70px;">
-                    <i class="fas fa-phone fa-lg text-primary"></i>
-                  </div>
-                </div>
-                <div class="col-9 mb-2">
-                  <h5>Technical support</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-12 text-center px-5 mb-5">
-              <img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new1.png" alt="" class="img-fluid">
-            </div>
-            <div class="col-lg-4 col-md-12">
-              <div class="row mb-4">
-                <div class="col-3">
-                  <div class="shadow-2 d-flex align-items-center justify-content-center rounded-circle mx-auto"
-                    style="width: 70px; height: 70px;">
-                    <i class="far fa-object-group fa-lg text-primary"></i>
-                  </div>
-                </div>
-                <div class="col-9 mb-2">
-                  <h5>Editable layout</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores.</p>
-                </div>
-              </div>
-              <div class="row mb-4">
-                <div class="col-3">
-                  <div class="shadow-2 d-flex align-items-center justify-content-center rounded-circle mx-auto"
-                    style="width: 70px; height: 70px;">
-                    <i class="fas fa-rocket fa-lg text-primary"></i>
-                  </div>
-                </div>
-                <div class="col-9 mb-2">
-                  <h5>Fast and powerful</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores.</p>
-                </div>
-              </div>
-              <div class="row mb-4">
-                <div class="col-3">
-                  <div class="shadow-2 d-flex align-items-center justify-content-center rounded-circle mx-auto"
-                    style="width: 70px; height: 70px;">
-                    <i class="fas fa-cloud-upload-alt fa-lg text-primary"></i>
-                  </div>
-                </div>
-                <div class="col-9 mb-2">
-                  <h5>Cloud storage</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores.</p>
-                </div>
-              </div>
-  
-            </div>
-            <div class="row">
-              <div class="col descriptionText">
-                <p>Description Text</p>
-              </div>
-            </div>
-          </div>
-  
-        </section>
-        <!--Section: Design Block-->
-  
-      </div>
-      <!-- Container for demo purpose -->
-    </div>
-  </template>
+  <div>
+    <v-row>
+      <v-col cols="12">
+        <v-toolbar dark prominent image="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
+          <v-toolbar-title>Vuetify</v-toolbar-title>
+        </v-toolbar>
+      </v-col>
+
+      <v-col cols="8">
+        <p></p>
+      </v-col>
+
+      <v-col cols="4">
+        <v-row>
+          <v-col cols="12">
+            <v-card class="mx-auto" max-width="400">
+              <v-img class="align-end text-white" height="200" src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                cover>
+                <v-card-title>Top 10 Australian beaches</v-card-title>
+              </v-img>
+
+              <v-card-subtitle class="pt-4">
+                Number 10
+              </v-card-subtitle>
+
+              <v-card-text>
+                <div>Name: </div>
+
+                <div>Alias: </div>
+
+                <div>Abilities: </div>
+
+                <div>Affiliates: </div>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </div>
+</template>
 
 <script>
-
-export default {
-}
+  export default {}
 </script>
 
 <script setup>
-    useHead({
-        title: '',
-    })
+  useHead({
+    title: '',
+  })
 </script>
