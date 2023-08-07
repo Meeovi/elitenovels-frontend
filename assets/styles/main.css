@@ -68,7 +68,7 @@ body {
     padding: 25px;
 }
 
-.lowerbar h5 {
+.lowerbar h5, .characterHeader {
     padding: 15px;
 }
 
@@ -76,7 +76,7 @@ body {
     color: white;
 }
 
-.categorySheet {
+.categorySheet, .mb-10, .mx-auto {
     background-color: transparent !important;
 }
 

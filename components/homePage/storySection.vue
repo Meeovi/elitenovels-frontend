@@ -4,19 +4,19 @@
       <v-toolbar title="READ STORIES FROM ACROSS THE ELITEVERSE" density="comfortable" color="transparent"></v-toolbar>
       <v-sheet class="mx-auto">
         <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-          <v-slide-group-item v-for="n in 6" :key="n" v-slot="{ isSelected, toggle, selectedClass }">
-            <v-card color="white" :class="['ma-4', selectedClass]" height="350" width="250" @click="toggle">
-              <v-img class="align-end text-white" height="200" src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-                cover></v-img>
+          <v-slide-group-item v-for="stories in stories" :key="stories" v-slot="{ isSelected, toggle, selectedClass }">
+            <v-card color="white" :class="['ma-4', selectedClass]" height="550" width="250" @click="toggle">
+              <img class="align-end text-white" height="400" :src="`${url}/assets/${stories.image}`"
+                cover />
 
               <v-card-subtitle class="pt-4">
-                Published: 
+                Published: {{ stories.created_at }}
               </v-card-subtitle>
 
-              <v-card-title>Top 10 Australian beaches</v-card-title>
+              <v-card-title>{{ stories.name }}</v-card-title>
 
               <v-card-actions>
-                <v-btn color="blue">
+                <v-btn color="blue" :href="`/stories/${stories.id}`">
                   Read
                 </v-btn>
               </v-card-actions>
@@ -37,10 +37,13 @@
   export default {
     data: () => ({
       model: null,
+      url: 'http://meeovicms.com:8007'
     }),
   }
 </script>
 
-<style>
+<script setup>
+const { getItems } = useDirectusItems()
 
-</style>
+const stories = await getItems({ collection: "stories", limit: 6 });
+</script>

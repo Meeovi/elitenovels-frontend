@@ -3,10 +3,9 @@
         <v-tabs style="background-color: lightgreen; color: black;" center-active>
             <h5>Mythology</h5>
             <v-tab><a href="/Mythology/">All</a></v-tab>
-            <v-tab><a href="/Mythology/">Angels</a></v-tab>
-            <v-tab><a href="/Mythology/">Demons</a></v-tab>
-            <v-tab><a href="/Mythology/">Mythical Creatures</a></v-tab>
-            <v-tab><a href="/Mythology/"></a></v-tab>
+            <v-tab><a href="/Mythology/angels">Angels</a></v-tab>
+            <v-tab><a href="/Mythology/demons">Demons</a></v-tab>
+            <v-tab><a href="/Mythology/mysticalcreatures">Mythical Creatures</a></v-tab>
         </v-tabs>
     </v-card>
 </template>

@@ -1,18 +1,18 @@
 <template>
   <div>
     <v-row>
-      <v-col cols="3" v-for="n in 4" :key="n">
+      <v-col cols="3" v-for="categories in categories" :key="categories">
         <v-card class="mx-auto" max-width="300">
-          <v-img class="align-end text-white" height="350" src="https://cdn.vuetifyjs.com/images/cards/docks.jpg" cover></v-img>
+          <img class="align-end text-white" height="350" :src="`${url}/assets/${categories.image}`" cover />
 
           <v-card-subtitle class="pt-4">
-            Number 10
+            {{ categories.name }}
           </v-card-subtitle>
 
-          <v-card-title>Top 10 Australian beaches</v-card-title>
+          <v-card-title>{{ categories.name }}</v-card-title>
 
           <v-card-actions>
-            <v-btn color="blue" variant="outlined">
+            <v-btn color="blue" variant="outlined" :href="categories.name">
               Explore
             </v-btn>
           </v-card-actions>
@@ -23,12 +23,17 @@
 </template>
 
 <script>
-  export default {
-
-
+export default {
+  data(){
+      return {
+          url: 'http://meeovicms.com:8007'
+      }
   }
+}
 </script>
 
 <script setup>
+const { getItems } = useDirectusItems()
 
+const categories = await getItems({ collection: "categories", params: { limit: 4 }});
 </script>

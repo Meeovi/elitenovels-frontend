@@ -4,16 +4,6 @@ import {
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  app: {
-    head: {
-      script: [{
-        src: process.env.NUXT_PUBLIC_UMAMI_HOST,
-        async: true,
-        'data-website-id': process.env.NUXT_PUBLIC_UMAMI_ID
-      }],
-    },
-  },
-
   extends: ['@sidebase/core'],
 
   css: [
@@ -35,6 +25,7 @@ export default defineNuxtConfig({
     '@nuxt/content',
     'nuxt-meilisearch',
     'nuxt-directus',
+    '@nuxtjs/apollo',
   ],
 
   directus: {
@@ -56,19 +47,22 @@ export default defineNuxtConfig({
     }
   },
 
-/*  runtimeConfig: {
-    public: {
-      GQL_HOST: process.env.GQL_HOST,
-      'graphql-client': {
-        watch: true,
-        autoImport: true,
-        functionPrefix: 'Gql',
-        //documentPaths: ['./graphql/queries/'],
-        preferGETQueries: false
+  apollo: {
+    authType: "Bearer",
+    authHeader: "Authorization",
+    tokenStorage: "cookie",
+    clients: {
+      default: {
+        tokenName: "apollo-token",
+        httpEndpoint: process.env.GQL_HOST,
+        httpLinkOptions: {
+          headers: {
+            'x-hasura-admin-secret': process.env.GQL_HEADERS,
+          }
+        } /**/
       },
-    }
+    },
   },
-*/
 
 
   build: {
