@@ -2,36 +2,36 @@
   <div>
     <v-row>
       <v-col cols="12">
-        <v-toolbar dark prominent image="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
-          <v-toolbar-title>Vuetify</v-toolbar-title>
+        <v-toolbar dark prominent :image="`${url}/assets/${character.image}`">
+          <v-toolbar-title>{{ character.name }}</v-toolbar-title>
         </v-toolbar>
       </v-col>
 
       <v-col cols="8">
-        <p></p>
+        <v-card class="mx-auto" :text="character.description" variant="outlined"></v-card>
       </v-col>
 
       <v-col cols="4">
         <v-row>
           <v-col cols="12">
-            <v-card class="mx-auto" max-width="400">
-              <v-img class="align-end text-white" height="200" src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-                cover>
-                <v-card-title>Top 10 Australian beaches</v-card-title>
-              </v-img>
+            <v-card class="mx-auto" width="400" variant="outlined">
+              <img class="align-end text-white" height="300" :src="`${url}/assets/${character.image}`" cover />
 
               <v-card-subtitle class="pt-4">
-                Number 10
+                {{ character.categories }}
               </v-card-subtitle>
 
               <v-card-text>
-                <div>Name: </div>
+                <div>Name: {{ character.name }}</div>
+                <v-spacer></v-spacer>
+                
+                <div>Alias: {{ character.alias }}</div>
+                <v-spacer></v-spacer>
 
-                <div>Alias: </div>
+                <div>Abilities: {{ character.abilities }}</div>
+                <v-spacer></v-spacer>
 
-                <div>Abilities: </div>
-
-                <div>Affiliates: </div>
+                <div>Affiliates: {{ character.affiliates }}</div>
               </v-card-text>
             </v-card>
           </v-col>
@@ -42,11 +42,19 @@
 </template>
 
 <script>
-  export default {}
+  export default {
+    data: () => ({
+      url: 'http://meeovicms.com:8007'
+    }),
+  }
 </script>
 
 <script setup>
+const { getItemById } = useDirectusItems();
+
+const character = await getItemById({ collection: "characters", id: 1 });
+
   useHead({
-    title: '',
+    title: character.name,
   })
 </script>

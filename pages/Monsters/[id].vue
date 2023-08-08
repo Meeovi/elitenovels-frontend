@@ -1,56 +1,67 @@
 <template>
-    <div>
-      <v-row>
-        <v-col cols="12">
-          <v-toolbar dark prominent image="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
-            <v-toolbar-title>Vuetify</v-toolbar-title>
-          </v-toolbar>
-        </v-col>
-  
-        <v-col cols="8">
-          <p></p>
-        </v-col>
-  
-        <v-col cols="4">
-          <v-row>
-            <v-col cols="12">
-              <v-card class="mx-auto" max-width="400">
-                <v-img class="align-end text-white" height="200" src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-                  cover>
-                  <v-card-title>Top 10 Australian beaches</v-card-title>
-                </v-img>
-  
-                <v-card-subtitle class="pt-4">
-                  Number 10
-                </v-card-subtitle>
-  
-                <v-card-text>
-                  <div>Name: </div>
-  
-                  <div>Type: </div>
+  <div>
+    <v-row>
+      <v-col cols="12">
+        <v-toolbar dark prominent :image="`${url}/assets/${monster.image}`">
+          <v-toolbar-title>{{ monster.name }}</v-toolbar-title>
+        </v-toolbar>
+      </v-col>
 
-                  <div>Level: </div>
-  
-                  <div>Attacks: </div>
-  
-                  <div>Affiliates: </div>
+      <v-col cols="8">
+        <v-card class="mx-auto" :text="monster.description" variant="outlined"></v-card>
+      </v-col>
 
-                  <div>Evolutions: </div>
-                </v-card-text>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
-    </div>
-  </template>
-  
-  <script>
-    export default {}
-  </script>
-  
-  <script setup>
-    useHead({
-      title: '',
-    })
-  </script>
+      <v-col cols="4">
+        <v-row>
+          <v-col cols="12">
+            <v-card class="mx-auto" width="400" variant="outlined">
+              <img class="align-end text-white" height="300" :src="`${url}/assets/${monster.image}`" cover />
+
+              <v-card-subtitle class="pt-4">
+                {{ monster.categories }}
+              </v-card-subtitle>
+
+              <v-card-text>
+                <div>Name: {{ monster.name }}</div>
+                <v-spacer></v-spacer>
+
+                <div>Type: {{ monster.type }}</div>
+
+                <div>Level: {{ monster.level }}</div>
+
+                <div>Attacks: {{ monster.abilities }}</div>
+
+                <div>Affiliates: {{ monster.affiliates }}</div>
+
+                <div>Evolutions: {{ monster.evolutions }}</div>
+              </v-card-text>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </div>
+</template>
+
+<script>
+  export default {
+    data: () => ({
+      url: 'http://meeovicms.com:8007'
+    }),
+  }
+</script>
+
+<script setup>
+  const {
+    getItemById
+  } = useDirectusItems();
+
+  const monster = await getItemById({
+    collection: "monsters",
+    id: 1
+  });
+
+  useHead({
+    title: monster.name,
+  })
+</script>

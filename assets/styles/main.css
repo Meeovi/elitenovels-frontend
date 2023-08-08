@@ -85,6 +85,10 @@ body {
     position: relative;
 }
 
+.characterBio {
+    padding: 20px;
+}
+
 .categoryPage h4 {
     color: black;
     padding-top: 30px;

@@ -24,22 +24,59 @@
           </div>
         </div>
       </section>
-    </div>
+    
+    <v-row>
+      <v-col cols="12">
+        <v-toolbar title="CHARACTERS FROM ACROSS THE ELITEVERSE" density="comfortable" color="transparent"></v-toolbar>
+      </v-col>
+      <v-col cols="12">
+        <v-sheet class="mx-auto">
+        <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
+          <v-slide-group-item v-for="characters in characters" :key="characters" v-slot="{ isSelected, toggle, selectedClass }">
+            <v-card color="white" :class="['ma-4', selectedClass]" height="550" width="300" @click="toggle">
+              <img class="align-end text-white" height="400" :src="`${url}/assets/${characters.image}`"
+                cover />
+
+              <v-card-subtitle class="pt-4">
+                Published: {{ characters.created_at }}
+              </v-card-subtitle>
+
+              <v-card-title>{{ characters.name }}</v-card-title>
+
+              <v-card-actions>
+                <v-btn color="blue" :href="`/characters/${characters.id}`">
+                  Read
+                </v-btn>
+              </v-card-actions>
+              <div class="d-flex fill-height align-center justify-center">
+                <v-scale-transition>
+                  <v-icon v-if="isSelected" color="white" size="48" icon="mdi-close-circle-outline"></v-icon>
+                </v-scale-transition>
+              </div>
+            </v-card>
+          </v-slide-group-item>
+        </v-slide-group>
+      </v-sheet>
+      </v-col>
+    </v-row>
+  </div>
   </div>
 </template>
 
 <script>
   export default {
     data: () => ({
+      model: null,
       url: 'http://meeovicms.com:8007'
     }),
   }
 </script>
 
 <script setup>
-const { getSingletonItem } = useDirectusItems()
+const { getItems } = useDirectusItems()
 
-const about = await getSingletonItem({ collection: "about"});
+const about = await getItems({ collection: "about"});
+const characters = await getItems({ collection: "characters", params: { limit: 6 }});
 
     useHead({
         title: 'About Elite Novels',
