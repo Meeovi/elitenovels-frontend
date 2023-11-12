@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col cols="12">
-        <v-toolbar dark prominent :image="`${url}/assets/${character.image}`">
+        <v-toolbar dark prominent :image="`${character.content.image.filename}`">
           <v-toolbar-title>{{ character.name }}</v-toolbar-title>
         </v-toolbar>
       </v-col>
@@ -15,7 +15,7 @@
         <v-row>
           <v-col cols="12">
             <v-card class="mx-auto" width="400" variant="outlined">
-              <img class="align-end text-white" height="300" :src="`${url}/assets/${character.image}`" cover />
+              <img class="align-end text-white" height="300" :src="`${character.content.image.filename}`" cover />
 
               <v-card-subtitle class="pt-4">
                 {{ character.categories }}

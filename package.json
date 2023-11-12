@@ -45,6 +45,7 @@
       "@nuxt/types": "^2.15.8",
       "@sidebase/core": "latest",
       "@sidebase/nuxt-auth": "latest",
+      "@storyblok/nuxt": "^5.7.6",
       "@types/graphql": "^14.5.0",
       "graphql-tag": "^2.12.6",
       "instantsearch.css": "^8.0.0",

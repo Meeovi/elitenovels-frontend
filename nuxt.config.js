@@ -26,6 +26,7 @@ export default defineNuxtConfig({
     'nuxt-meilisearch',
     'nuxt-directus',
     '@nuxtjs/apollo',
+    ["@storyblok/nuxt", { accessToken: process.env.accessToken }]
   ],
 
   directus: {
@@ -54,16 +55,17 @@ export default defineNuxtConfig({
     clients: {
       default: {
         tokenName: "apollo-token",
-        httpEndpoint: process.env.GQL_HOST,
+        httpEndpoint: process.env.STORYBLOK_URL,
         httpLinkOptions: {
           headers: {
-            'x-hasura-admin-secret': process.env.GQL_HEADERS,
+            //'Authorization': process.env.STORYBLOK_TOKEN,
+            token: process.env.STORYBLOK_TOKEN,
+            version: 'publish'
           }
-        } /**/
+        }/* */
       },
     },
   },
-
 
   build: {
     transpile: [

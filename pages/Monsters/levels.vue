@@ -3,22 +3,19 @@
       <monsterbar />
       <v-row style="background-color: sienna;">
         <v-col cols="12">
-          <h1 class="characterHeader">Types</h1>
+          <h1 class="characterHeader">Levels</h1>
         </v-col>
       </v-row>
   
       <v-row>
-        <v-col cols="3" v-for="types in data.TypeItems.items" :key="types">
+        <v-col cols="3" v-for="levels in data.LevelItems.items" :key="levels">
         <v-card class="mx-auto" max-width="300">
-          <img class="align-end text-white" height="350" :src="`${types.content.image.filename}`" cover />
 
-          <v-card-title>{{ types.content.name }}</v-card-title>
+          <v-card-title>{{ levels.content.name }}</v-card-title>
 
-          <v-card-actions>
-            <v-btn color="blue" variant="outlined" :href="`/monsters/${types.id}`">
-              Explore
-            </v-btn>
-          </v-card-actions>
+          <v-card-text>
+            <div v-html="levels.content.description"></div>
+          </v-card-text>
         </v-card>
       </v-col>
       </v-row>
@@ -41,15 +38,12 @@
   <script setup>
   const query = gql `
     query {
-  TypeItems(sort_by: "name"){
+  LevelItems (sort_by: "level"){
     items {
       id
       content {
         name
         description
-        image {
-          filename
-        }
       }
     }
   }
@@ -68,6 +62,6 @@
   const monsters = await getItems({ collection: "monsters", params: { limit: 6 }});*/
   
     useHead({
-      title: 'Monster Types',
+      title: 'Monster Levels',
     })
   </script>

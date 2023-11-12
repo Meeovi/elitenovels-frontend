@@ -12,7 +12,7 @@
             <div class="col-lg-8" v-for="blog in blog" :key="blog.id">
               <a :href="`/blog/${blog.id}`"><div class="mb-5">
                 <div class="bg-image hover-overlay hover-zoom ripple rounded-6 mb-4" data-mdb-ripple-color="light">
-                  <img class="w-100" :src="`${url}/assets/${blog.image}`"
+                  <img class="w-100" :src="`${blog.content.image.filename}`"
                     style="max-height: 475px; object-fit: cover;" :alt="blog.name" />
                     <div class="mask" style="background-color: rgba(255,255,255,0.1);"></div>
                   
@@ -29,7 +29,7 @@
               <div class="mb-5" v-for="blog in blog" :key="blog.id">
                 <a :href="`/blog/${blog.id}`">
                 <div class="bg-image hover-overlay hover-zoom ripple rounded-5 mb-4" data-mdb-ripple-color="light">
-                  <img class="w-100" :src="`${url}/assets/${blog.image}`"
+                  <img class="w-100" :src="`${blog.content.image.filename}`"
                     style="height: 227px; object-fit: cover;" :alt="blog.name" />
                     <div class="mask" style="background-color: rgba(255,255,255,0.1);"></div>
                 </div>

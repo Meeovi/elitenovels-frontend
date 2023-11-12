@@ -15,6 +15,7 @@ export { useDirectusToken } from '../node_modules/nuxt-directus/dist/runtime/com
 export { useDirectusUrl } from '../node_modules/nuxt-directus/dist/runtime/composables/useDirectusUrl';
 export { useDirectusUser } from '../node_modules/nuxt-directus/dist/runtime/composables/useDirectusUser';
 export { useDirectusUsers } from '../node_modules/nuxt-directus/dist/runtime/composables/useDirectusUsers';
+export { useAsyncStoryblok } from '../node_modules/@storyblok/nuxt/dist/runtime/composables/useAsyncStoryblok';
 export { queryContent } from '../node_modules/@nuxt/content/dist/runtime/composables/query';
 export { useContentHelpers } from '../node_modules/@nuxt/content/dist/runtime/composables/helpers';
 export { useContentHead } from '../node_modules/@nuxt/content/dist/runtime/composables/head';
@@ -23,4 +24,5 @@ export { fetchContentNavigation } from '../node_modules/@nuxt/content/dist/runti
 export { gql } from 'graphql-tag';
 export { useApollo, useAsyncQuery, useLazyAsyncQuery } from '../node_modules/@nuxtjs/apollo/dist/runtime/composables';
 export { useQuery, useLazyQuery, useMutation, useSubscription, useApolloClient, useQueryLoading, useMutationLoading, useSubscriptionLoading, useGlobalQueryLoading, useGlobalMutationLoading, useGlobalSubscriptionLoading } from '@vue/apollo-composable';
+export { useStoryblok, useStoryblokApi, useStoryblokBridge, renderRichText, RichTextSchema } from '@storyblok/vue';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';

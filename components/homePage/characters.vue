@@ -7,7 +7,7 @@
         <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
           <v-slide-group-item v-for="characters in popularcharacters" :key="characters" v-slot="{ isSelected, toggle, selectedClass }">
             <v-card color="white" :class="['ma-4', selectedClass]" height="550" width="250" @click="toggle">
-              <img class="align-end text-white" height="400" :src="`${url}/assets/${characters.image}`"
+              <img class="align-end text-white" height="400" :src="`${characters.content.image.filename}`"
                 cover />
 
               <v-card-subtitle class="pt-4">
@@ -38,7 +38,7 @@
         <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
           <v-slide-group-item v-for="monsters in monsters" :key="monsters" v-slot="{ isSelected, toggle, selectedClass }">
             <v-card color="white" :class="['ma-4', selectedClass]" height="550" width="250" @click="toggle">
-              <img class="align-end text-white" height="400" :src="`${url}/assets/${monsters.image}`"
+              <img class="align-end text-white" height="400" :src="`${monsters.content.image.filename}`"
                 cover />
 
               <v-card-subtitle class="pt-4">
@@ -69,7 +69,7 @@
         <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
           <v-slide-group-item v-for="characters in characters" :key="characters" v-slot="{ isSelected, toggle, selectedClass }">
             <v-card color="white" :class="['ma-4', selectedClass]" height="550" width="250" @click="toggle">
-              <img class="align-end text-white" height="400" :src="`${url}/assets/${characters.image}`"
+              <img class="align-end text-white" height="400" :src="`${characters.content.image.filename}`"
                 cover />
 
               <v-card-subtitle class="pt-4">

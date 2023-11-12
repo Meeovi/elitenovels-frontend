@@ -6,7 +6,7 @@
         <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
           <v-slide-group-item v-for="stories in stories" :key="stories" v-slot="{ isSelected, toggle, selectedClass }">
             <v-card color="white" :class="['ma-4', selectedClass]" height="550" width="250" @click="toggle">
-              <img class="align-end text-white" height="400" :src="`${url}/assets/${stories.image}`"
+              <img class="align-end text-white" height="400" :src="`${stories.content.image.filename}`"
                 cover />
 
               <v-card-subtitle class="pt-4">

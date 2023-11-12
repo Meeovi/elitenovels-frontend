@@ -1,21 +1,21 @@
 <template>
     <div class="categoryPage">
-      <monsterbar />
-      <v-row style="background-color: sienna;">
+      <mythologybar />
+      <v-row style="background-color: lightgreen;">
         <v-col cols="12">
-          <h1 class="characterHeader">Types</h1>
+          <h1 class="characterHeader">Angels</h1>
         </v-col>
       </v-row>
   
       <v-row>
-        <v-col cols="3" v-for="types in data.TypeItems.items" :key="types">
+        <v-col cols="3" v-for="angels in data.CharacterItems.items" :key="angels">
         <v-card class="mx-auto" max-width="300">
-          <img class="align-end text-white" height="350" :src="`${types.content.image.filename}`" cover />
+          <img class="align-end text-white" height="350" :src="`${angels.content.image.filename}`" cover />
 
-          <v-card-title>{{ types.content.name }}</v-card-title>
+          <v-card-title>{{ angels.content.name }}</v-card-title>
 
           <v-card-actions>
-            <v-btn color="blue" variant="outlined" :href="`/monsters/${types.id}`">
+            <v-btn color="blue" variant="outlined" :href="`/mythology/${angels.id}`">
               Explore
             </v-btn>
           </v-card-actions>
@@ -26,11 +26,11 @@
   </template>
   
   <script>
-    import monsterbar from '../../components/Menus/monsterbar.vue'
+    import mythologybar from '../../components/Menus/mythologybar.vue'
   
     export default {
       components: {
-        monsterbar,
+        mythologybar,
       },
       data: () => ({
         model: null,
@@ -40,12 +40,19 @@
   
   <script setup>
   const query = gql `
-    query {
-  TypeItems(sort_by: "name"){
+  query {
+  CharacterItems (with_tag:"Angel"){
     items {
       id
       content {
         name
+        alias
+        affiliates {
+          name
+        }
+        category {
+          name
+        }
         description
         image {
           filename
@@ -68,6 +75,6 @@
   const monsters = await getItems({ collection: "monsters", params: { limit: 6 }});*/
   
     useHead({
-      title: 'Monster Types',
+      title: 'Angels',
     })
   </script>

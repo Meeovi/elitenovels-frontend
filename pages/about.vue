@@ -7,7 +7,7 @@
         <div class="row gx-0" v-for="about in about" :key="about.id">
           <div class="col-lg-5 mb-4 mb-md-0">
             <div class="d-flex py-md-5">
-              <img :src="`${url}/assets/${about.image}`" class="w-100 rounded-5 shadow-3-strong"
+              <img :src="`${about.content.image.filename}`" class="w-100 rounded-5 shadow-3-strong"
                 id="cta-img-nml-50" style="z-index: 10" :alt="about.name" />
             </div>
           </div>
@@ -34,7 +34,7 @@
         <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
           <v-slide-group-item v-for="characters in characters" :key="characters" v-slot="{ isSelected, toggle, selectedClass }">
             <v-card color="white" :class="['ma-4', selectedClass]" height="550" width="300" @click="toggle">
-              <img class="align-end text-white" height="400" :src="`${url}/assets/${characters.image}`"
+              <img class="align-end text-white" height="400" :src="`${characters.content.image.filename}`"
                 cover />
 
               <v-card-subtitle class="pt-4">

@@ -1,7 +1,7 @@
 <template>
     <div>
       <v-col cols="12">
-        <v-toolbar title="NEW & TRENDING PRODUCTS FROM MEEOVI SHOP" density="comfortable" color="transparent"></v-toolbar>
+        <v-toolbar title="NEW & TRENDING PRODUCTS FROM ELITENOVELS SHOP" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
             <v-slide-group-item v-for="n in 6" :key="n" v-slot="{ isSelected, toggle, selectedClass }">
@@ -32,11 +32,13 @@
     </div>
   </template>
   
-  <script>
-    export default {
-  
-    }
-  </script>
+<script>
+  export default {
+    data: () => ({
+      model: null,
+    }),
+  }
+</script>
   
   <style>
   

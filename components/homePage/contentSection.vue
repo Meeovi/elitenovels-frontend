@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="3" v-for="categories in categories" :key="categories">
         <v-card class="mx-auto" max-width="300">
-          <img class="align-end text-white" height="350" :src="`${url}/assets/${categories.image}`" cover />
+          <img class="align-end text-white" height="350" :src="`${categories.content.image.filename}`" cover />
 
           <v-card-subtitle class="pt-4">
             {{ categories.name }}

@@ -5,7 +5,7 @@
 
       <!-- Section: Design Block -->
       <section class="mb-10">
-        <img :src="`${url}/assets/${blog.image}`" class="img-fluid shadow-1-strong rounded-5 mb-4"
+        <img :src="`${blog.content.image.filename}`" class="img-fluid shadow-1-strong rounded-5 mb-4"
           :alt="blog.name" />
 
         <div class="row align-items-center mb-4">

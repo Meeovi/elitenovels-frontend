@@ -8,45 +8,79 @@
     </v-row>
 
     <v-row>
-      <v-col cols="3" v-for="places in places" :key="places">
+      <v-col cols="12">
+        <v-toolbar title="BROWSE ITEMS ACROSS THE ELITEVERSE" density="comfortable" color="transparent"></v-toolbar>
+      </v-col>
+      <v-col cols="3" v-for="places in data.PlacesItems.items" :key="places">
         <v-card class="mx-auto" max-width="300">
-          <img class="align-end text-white" height="450" :src="`${url}/assets/${places.image}`" cover />
+          <img class="align-end text-white" height="350" :src="`${places.content.image.filename}`" cover />
 
           <v-card-subtitle class="pt-4">
-            {{ places.categories }}
+            {{ places.content.location.name }}
           </v-card-subtitle>
 
-          <v-card-title>{{ places.name }}</v-card-title>
+          <v-card-title>{{ places.content.name }}</v-card-title>
 
           <v-card-actions>
-            <v-btn color="blue" variant="outlined" :href="`/places/${places.id}`">
+            <v-btn color="blue" variant="outlined" :href="`/characters/${places.id}`">
               Explore
             </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
+      <relatedstories />
     </v-row>
+    <latestproducts />
   </div>
 </template>
 
 <script>
   import characterbar from '../../components/Menus/characterbar.vue'
+  import latestproducts from '../../components/Related/relatedproducts.vue'
+  import relatedstories from '../../components/Related/relatedstories.vue'
 
   export default {
     components: {
       characterbar,
+      latestproducts,
+      relatedstories
     },
     data: () => ({
       model: null,
-      url: 'http://meeovicms.com:8007'
     }),
   }
 </script>
 
 <script setup>
-const { getItems } = useDirectusItems()
+  const query = gql `
+  query {
+  PlacesItems {
+    items {
+      id
+      content {
+        name
+        location {
+          name
+        }
+        description
+        image {
+          filename
+        }
+      }
+    }
+  }
+}
+`
+  const {
+    data
+  } = await useAsyncQuery(query)
 
-const places = await getItems({ collection: "places", limit: 20 });
+  /*const { getItems } = useDirectusItems()
+
+  const teams = await getItems({ collection: "teams", params: { limit: 6 }});
+  const stories = await getItems({ collection: "stories", params: { limit: 6 }});
+  const popularcharacters = await getItems({ collection: "characters", params: { limit: 6, filter: {name: "popular"}} });
+  const characters = await getItems({ collection: "characters", params: { limit: 20 }}); */
 
   useHead({
     title: 'Places',

@@ -2,7 +2,7 @@
   <div>
     <v-toolbar title="POSTS FROM ACROSS THE MULTIVERSE" density="comfortable" color="transparent"></v-toolbar>
     <v-carousel v-for="blog in blog" :key="blog.id">
-      <v-carousel-item :src="`${url}/assets/${blog.image.filename_disk}`" cover></v-carousel-item>
+      <v-carousel-item :src="`${blog.image.filename_disk}`" cover></v-carousel-item>
     </v-carousel>
   </div>
 </template>
