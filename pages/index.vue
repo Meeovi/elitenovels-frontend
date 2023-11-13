@@ -2,7 +2,7 @@
   <div>
     <intro />
     <div class="homePage">
-      <contentSection />
+      <!-- <contentSection /> -->
       <characters />
       <storySection />
       <shopSection />
@@ -14,9 +14,9 @@
 
 <script>
   import intro from '~/components/homePage/intro.vue'
-  import contentSection from '~/components/homePage/contentSection.vue'
+  //import contentSection from '~/components/homePage/contentSection.vue'
   import storySection from '~/components/homePage/storySection.vue'
-  import shopSection from '~/components/homePage/shopSection.vue'
+  import shopSection from '~/components/Related/relatedproducts.vue'
   import videoSection from '~/components/homePage/videoSection.vue'
   import characters from '~/components/homePage/characters.vue'
   import multiversebanner from '~/components/homePage/multiversebanner.vue'
@@ -24,7 +24,7 @@
   export default {
     components: {
       intro,
-      contentSection,
+      //contentSection,
       characters,
       storySection,
       shopSection,

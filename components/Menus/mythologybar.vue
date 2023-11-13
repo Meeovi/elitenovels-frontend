@@ -5,7 +5,7 @@
             <v-tab><a href="/Mythology/">All</a></v-tab>
             <v-tab><a href="/Mythology/angels">Angels</a></v-tab>
             <v-tab><a href="/Mythology/demons">Demons</a></v-tab>
-            <v-tab><a href="/Mythology/mysticalcreatures">Mythical Creatures</a></v-tab>
+            <v-tab><a href="/Mythology/mythicalcreatures">Mythical Creatures</a></v-tab>
             <v-tab><a href="/Mythology/othermyths">Other Myths</a></v-tab>
         </v-tabs>
     </v-card>
