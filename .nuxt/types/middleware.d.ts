@@ -1,7 +1,12 @@
 import type { NavigationGuard } from 'vue-router'
-export type MiddlewareKey = string
-declare module "C:/Users/Basti/OneDrive/Documents/My Websites/Handmade Sites/Javascript-Projects/Nuxt-Projects/AlternateCMS-Framework/TheMeeoviCompany-Sites/elitenovels-frontend/node_modules/nuxt/dist/pages/runtime/composables" {
+export type MiddlewareKey = "authenticated"
+declare module "../../node_modules/nuxt/dist/pages/runtime/composables" {
   interface PageMeta {
     middleware?: MiddlewareKey | NavigationGuard | Array<MiddlewareKey | NavigationGuard>
+  }
+}
+declare module 'nitropack' {
+  interface NitroRouteConfig {
+    appMiddleware?: MiddlewareKey | MiddlewareKey[] | Record<MiddlewareKey, boolean>
   }
 }

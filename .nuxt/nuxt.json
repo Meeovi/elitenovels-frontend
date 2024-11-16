@@ -1,9 +1,9 @@
 {
-  "_hash": "s1eP8yDEWr",
+  "_hash": "S1RbsoXxW4",
   "project": {
-    "rootDir": "C:/Users/Basti/OneDrive/Documents/My Websites/Handmade Sites/Javascript-Projects/Nuxt-Projects/AlternateCMS-Framework/TheMeeoviCompany-Sites/elitenovels-frontend"
+    "rootDir": "C:/Users/Basti/OneDrive/Documents/My_Websites/Handmade_Sites/Javascript-Projects/Nuxt-Projects/AlternateCMS-Framework/TheMeeoviCompany-Sites/elitenovels-frontend"
   },
   "versions": {
-    "nuxt": "3.3.3"
+    "nuxt": "3.14.159"
   }
 }

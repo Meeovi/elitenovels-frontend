@@ -1,18 +1,26 @@
 <template>
     <v-card class="lowerbar" variant="text">
         <v-tabs style="background-color: powderblue; color: black;" center-active>
-            <h5>Characters</h5>
-            <v-tab><a href="/Characters/">All</a></v-tab>
-            <v-tab><a href="/Characters/aliens">Aliens</a></v-tab>
-            <v-tab><a href="/Characters/humans">Humans</a></v-tab>
-            <v-tab><a href="/Characters/items">Items</a></v-tab>
-            <v-tab><a href="/Characters/places">Places</a></v-tab>
+            <div v-for="(menu, index) in characterbar?.menus" :key="index">
+            <h5>{{ characterbar?.name }}</h5>
+                <v-tab>
+                    <a :href="menu?.url">{{ menu?.name }}</a>
+                </v-tab>
+            </div>
         </v-tabs>
     </v-card>
 </template>
 
-<script>
-    export default {
+<script setup>
+    const {
+        $directus,
+        $readItem
+    } = useNuxtApp()
+    const route = useRoute()
 
-    }
+    const {
+        data: characterbar
+    } = await useAsyncData('characterbar', () => {
+        return $directus.request($readItem('navigation', '6'))
+    })
 </script>

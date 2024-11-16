@@ -1,10 +1,52 @@
-import {
+/*import {
   defineNuxtConfig
-} from 'nuxt/config'
+} from 'nuxt' */
+import vuetify, {
+  transformAssetUrls
+} from 'vite-plugin-vuetify'
+require("dotenv").config()
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  extends: ['@sidebase/core'],
+  ssr: false,
+  app: {
+    head: {
+      viewport: 'minimum-scale=1, initial-scale=1, width=device-width',
+      htmlAttrs: {
+        lang: 'en',
+      },
+      meta: [{
+        name: 'description',
+        content: 'Universe of over 7000 characters'
+      }, ],
+      link: [{
+          rel: 'icon',
+          href: '/favicon.ico'
+        },
+        {
+          rel: 'apple-touch-icon',
+          href: '/icons/apple-touch-icon-180x180.png'
+        },
+        {
+          rel: 'stylesheet',
+          href: 'https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/satellite-min.css'
+        },
+      ],
+      script: [{
+          src: `https://platform-api.sharethis.com/js/sharethis.js#property=${process.env.NUXT_PROJECT_ID}&product=sticky-share-buttons`,
+          async: true
+        },
+        {
+          src: `${process.env.NUXT_PUBLIC_COMMENTS_URL}/comments/embed.js`,
+          async: true
+        },
+      ],
+    },
+  },
+
+  appConfig: {
+    titleSuffix: 'Elite Novels',
+  },
 
   css: [
     'assets/web/assets/mobirise-icons2/mobirise2.css',
@@ -21,57 +63,134 @@ export default defineNuxtConfig({
   ],
 
   modules: [
-    //'nuxt-graphql-client',
-    '@nuxt/content',
-    'nuxt-meilisearch',
-    'nuxt-directus',
-    '@nuxtjs/apollo',
-    ["@storyblok/nuxt", { accessToken: process.env.accessToken }]
+    "@nuxt/image",
+    '@nuxtjs/tailwindcss',
+    '@pinia/nuxt',
+    'nuxt-vuefire',
+    '@nuxtjs/seo',
+    (_options, nuxt) => {
+      nuxt.hooks.hook('vite:extendConfig', (config) => {
+        // @ts-expect-error
+        config.plugins.push(vuetify({
+          autoImport: true
+        }))
+      })
+    },
   ],
 
-  directus: {
-    url: process.env.DIRECTUS_URL,
-    auth: {
-      email: process.env.DIRECTUS_EMAIL,
-      password: process.env.DIRECTUS_PASSWORD,
-      token: process.env.DIRECTUS_TOKEN,
-    }
-  },
-
-  meilisearch: {
-    hostUrl: process.env.HOSTURL,
-    searchApiKey: process.env.SEARCH_APIKEY,
-    adminApiKey: process.env.ADMIN_APIKEY,
-    serverSideUsage: true,
+  algolia: {
+    apiKey: process.env.ALGOLIA_API_KEY,
+    applicationId: process.env.ALGOLIA_APPLICATION_ID,
+    globalIndex: process.env.ALGOLIA_INDEX_NAME,
+    lite: true,
+    cache: false,
     instantSearch: {
       theme: 'algolia'
-    }
+    },
+    useFetch: false,
+    crawler: {
+      apiKey: process.env.ALGOLIA_CRAWLER_ID,
+      indexName: process.env.ALGOLIA_INDEX_NAME,
+      meta: ['title', 'description'],
+      include: () => true
+    },
+    recommend: true,
   },
 
-  apollo: {
-    authType: "Bearer",
-    authHeader: "Authorization",
-    tokenStorage: "cookie",
-    clients: {
-      default: {
-        tokenName: "apollo-token",
-        httpEndpoint: process.env.STORYBLOK_URL,
-        httpLinkOptions: {
-          headers: {
-            //'Authorization': process.env.STORYBLOK_TOKEN,
-            token: process.env.STORYBLOK_TOKEN,
-            version: 'publish'
-          }
-        }/* */
+  // https://nuxtseo.com/robots
+  robots: {
+    groups: [{
+      userAgent: ['*'],
+      disallow: ['/account'],
+      allow: ['/pages/*'],
+      comments: 'Allow Google AdsBot to index the login page but no-admin pages'
+    }, ]
+  },
+
+  vuefire: {
+    emulators: {
+      // uncomment this line to run the application in production mode without emulators during dev
+      // enabled: false,
+      auth: {
+        options: {
+          disableWarnings: true,
+        },
       },
     },
+    auth: {
+      enabled: true,
+      sessionCookie: false,
+    },
+
+    appCheck: {
+      provider: 'ReCaptchaV3',
+      // site key, NOT secret key
+      key: process.env.FIREBASE_APPCHECK_DEBUG_TOKEN,
+      isTokenAutoRefreshEnabled: true,
+    },
+
+    config: {
+      apiKey: process.env.NUXT_FIREBASE_API_KEY,
+      authDomain: process.env.NUXT_FIREBASE_AUTH_DOMAIN,
+      projectId: process.env.NUXT_FIREBASE_PROJECT_ID,
+      storageBucket: process.env.NUXT_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.NUXT_FIREBASE_MESSAGING_SENDER_ID,
+      appId: process.env.NUXT_FIREBASE_APP_ID,
+      measurementId: process.env.NUXT_MEASUREMENT_ID,
+    },
   },
+
+  runtimeConfig: {
+    // Cloudflare Turnstile
+    turnstile: {
+      // This can be overridden at runtime via the NUXT_TURNSTILE_SECRET_KEY
+      // environment variable.
+      secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY,
+    },
+    public: {
+
+      //Algolia
+      appId: process.env.ALGOLIA_APPLICATION_ID,
+      apiKey: process.env.ALGOLIA_API_KEY,
+      indexName: process.env.ALGOLIA_INDEX_NAME,
+
+      // Graphql
+      //websiteURL: process.env.GQL_HOST,
+      //websiteToken: process.env.WEBSITE_TOKEN,
+
+      // Authentication Secret
+      authSecret: process.env.NUXT_AUTH_SECRET,
+
+      // JWT Secret
+      jwtSecret: process.env.JWT_SECRET,
+
+      // Directus
+      directus: {
+        url: process.env.DIRECTUS_URL,
+        auth: {
+          email: process.env.NUXTUS_DIRECTUS_ADMIN_EMAIL,
+          password: process.env.NUXTUS_DIRECTUS_ADMIN_PASSWORD,
+          token: process.env.NUXTUS_DIRECTUS_STATIC_TOKEN,
+        }
+      },
+
+      // Firebase
+      firebaseApiKey: process.env.NUXT_FIREBASE_API_KEY,
+      firebaseAuthDomain: process.env.NUXT_FIREBASE_AUTH_DOMAIN,
+      firebaseProjectId: process.env.NUXT_FIREBASE_PROJECT_ID,
+      firebaseStorageBucket: process.env.NUXT_FIREBASE_STORAGE_BUCKET,
+      firebaseMessagingSenderId: process.env.NUXT_FIREBASE_MESSAGING_SENDER_ID,
+      firebaseAppId: process.env.NUXT_FIREBASE_APP_ID,
+      measurementId: process.env.NUXT_MEASUREMENT_ID,
+
+      // Budibase
+      budibaseEmbed: process.env.BUDIBASE_EMBED || '',
+  }
+},
 
   build: {
     transpile: [
       'vuetify',
-      '@apollo/client',
-      'ts-invariant/process',
       "@fortawesome/vue-fontawesome",
       "@fortawesome/fontawesome-svg-core",
       "@fortawesome/pro-solid-svg-icons",
@@ -83,6 +202,9 @@ export default defineNuxtConfig({
   vite: {
     define: {
       'process.env.DEBUG': false,
+    },
+    optimizeDeps: {
+      include: ['algoliasearch/lite'],
     },
   },
 })

@@ -1,0 +1,59 @@
+<template>
+  <div>
+    <div>
+      <section data-bs-version="5.1" class="header4 cid-u48BYncuPn mbr-fullscreen" id="header4-87"
+        data-sortbtn="btn-primary" :style="`background: url(${page?.image?.filename_disk})`">
+        <div class="container">
+          <div class="row">
+            <div class="content-wrap">
+              <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1">
+                <strong>{{ page?.name }}</strong>
+              </h1>
+
+              <p class="mbr-fonts-style mbr-text mbr-white mb-3 display-7" style="color: white !important;"
+                v-html="page?.content"></p>
+
+              <div class="mbr-section-btn"><a class="btn btn-primary display-4" href="/">Go Back</a></div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="padding: 15px;">{{ page?.information[0]?.description }}</h3>
+        <v-row>
+          <v-col cols="3" v-for="characters in characters" :key="characters">
+            <characters :character="characters" />
+          </v-col>
+        </v-row>
+      </section>
+    </div>
+    <!---->
+  </div>
+</template>
+
+<script setup>
+  import {
+    useQuery
+  } from '@vue/apollo-composable'
+  import latestproducts from '~/components/commerce/related/latestproducts.vue'
+
+  const {
+    $directus,
+    $readItem
+  } = useNuxtApp()
+
+  const {
+    data: page
+  } = await useAsyncData('page', () => {
+    return $directus.request($readItem('pages', '1'))
+  })
+
+  const {
+    data: characters
+  } = await useAsyncData('characters', () => {
+    return $directus.request($readItems('characters'))
+  })
+
+  useHead({
+    title: computed(() => page?.value?.name || 'Page Name')
+  })
+</script>

@@ -1,18 +1,26 @@
 <template>
     <v-card class="lowerbar" variant="text">
         <v-tabs style="background-color: lightgreen; color: black;" center-active>
-            <h5>Mythology</h5>
-            <v-tab><a href="/Mythology/">All</a></v-tab>
-            <v-tab><a href="/Mythology/angels">Angels</a></v-tab>
-            <v-tab><a href="/Mythology/demons">Demons</a></v-tab>
-            <v-tab><a href="/Mythology/mythicalcreatures">Mythical Creatures</a></v-tab>
-            <v-tab><a href="/Mythology/othermyths">Other Myths</a></v-tab>
+            <div v-for="(menu, index) in mythologybar?.menus" :key="index">
+            <h5>{{ mythologybar?.name }}</h5>
+                <v-tab>
+                    <a :href="menu?.url">{{ menu?.name }}</a>
+                </v-tab>
+            </div>
         </v-tabs>
     </v-card>
 </template>
 
-<script>
-    export default {
+<script setup>
+    const {
+        $directus,
+        $readItem
+    } = useNuxtApp()
+    const route = useRoute()
 
-    }
+    const {
+        data: mythologybar
+    } = await useAsyncData('mythologybar', () => {
+        return $directus.request($readItem('navigation', '5'))
+    })
 </script>
