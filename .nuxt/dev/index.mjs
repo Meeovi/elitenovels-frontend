@@ -344,6 +344,12 @@ const _inlineRuntimeConfig = {
         "token": ""
       }
     },
+    "meeDirectusUrl": "http://89.116.38.24:8011",
+    "auth": {
+      "meeDirectusEmail": "support@meeovi.com",
+      "meeDirectusPassword": "Libraxus@1986",
+      "meeDirectusToken": "PDnx1iczA_e_4DDoCN5ZC24M8PbZ4FrF"
+    },
     "firebaseApiKey": "AIzaSyD-dg_01f70V_rC34ri5wGy3b7EfBVFx24",
     "firebaseAuthDomain": "elite-novels.firebaseapp.com",
     "firebaseProjectId": "elite-novels",
@@ -351,6 +357,10 @@ const _inlineRuntimeConfig = {
     "firebaseMessagingSenderId": "16798454259",
     "firebaseAppId": "1:16798454259:web:92f3a7cc87bf950ddac286",
     "measurementId": "G-Y4X810TPZ4",
+    "commerceUrl": "https://commerce.meeovicms.com",
+    "commerceGraphql": "https://commerce.meeovicms.com/graphql",
+    "commerceApiToken": "qzwo3xyfs1o06eznniqo2vepuz2b17fz",
+    "commentsUrl": "Elite-Novels",
     "budibaseEmbed": "http://89.116.38.24:10000/embed/",
     "vuefire": {
       "config": {

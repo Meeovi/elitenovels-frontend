@@ -18,6 +18,7 @@
       <v-spacer></v-spacer>
 
       <div class="d-flex align-center flex-column flex-sm-row fill-height">
+        <ecosystemmenu />
         <v-divider class="border-opacity-100" inset vertical color="success"></v-divider>
         <v-col>
           <search />
@@ -44,24 +45,7 @@
 </template>
 
 <script>
-  import search from '../components/Search/search.vue'
-  import lowerbar from '../components/Menus/lowerbar.vue'
-
   export default {
-    data() {
-      return {
-        components: {
-          search,
-          lowerbar
-        },
-        drawer: null,
-        location: 'bottom',
-        rail: true,
-        loaded: false,
-        loading: false,
-      }
-    },
-
     methods: {
       onClick() {
         this.loading = true
@@ -79,8 +63,16 @@
   import {
     ref
   } from 'vue'
+  import ecosystemmenu from '~/components/Menus/ecosystemmenu.vue'
+  import search from '~/components/Search/search.vue'
+  import lowerbar from '~/components/Menus/lowerbar.vue'
 
   const theme = ref('light')
+  const location = ref('bottom');
+  const rail = ref(true);
+  const loaded = ref(false);
+  const loading = ref(false);
+  const drawer = ref(null);
 
   function onClick() {
     theme.value = theme.value === 'light' ? 'dark' : 'light'

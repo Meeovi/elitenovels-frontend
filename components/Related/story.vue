@@ -1,8 +1,15 @@
 <template>
     <div>
-        <a :href="`/stories/${story.slug}`">
+        <a :href="`/stories/${story?.slug}`">
             <v-card color="white" :class="['ma-4', selectedClass]" height="550" width="300" @click="toggle">
-                <img class="align-end text-white" height="400" :src="`${story?.image?.filename_disk}`" cover />
+                <div v-if="story?.image?.filename_disk">
+                    <img class="align-end text-white" height="400" :alt="story?.name"
+                        :src="`${$directus.url}/assets/${story?.image?.filename_disk}`" cover />
+                </div>
+
+                <div v-else>
+                    <img class="align-end text-white" height="300" src="~/assets/images/coming_soon.png" cover />
+                </div>
 
                 <v-card-subtitle class="pt-4">
                     Published: {{ story?.created_at }}
@@ -11,7 +18,7 @@
                 <v-card-title>{{ story?.name }}</v-card-title>
 
                 <v-card-actions>
-                    <v-btn color="blue" :href="`/story/${story?.id}`">
+                    <v-btn color="blue" :href="`/stories/${story?.slug}`">
                         Read
                     </v-btn>
                 </v-card-actions>

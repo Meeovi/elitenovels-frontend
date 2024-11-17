@@ -9,6 +9,7 @@ require("dotenv").config()
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: false,
+
   app: {
     head: {
       viewport: 'minimum-scale=1, initial-scale=1, width=device-width',
@@ -65,6 +66,7 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/image",
     '@nuxtjs/tailwindcss',
+    '@storefront-ui/nuxt',
     '@pinia/nuxt',
     'nuxt-vuefire',
     '@nuxtjs/seo',
@@ -174,6 +176,14 @@ export default defineNuxtConfig({
         }
       },
 
+      // Meeovi Directus
+      meeDirectusUrl: process.env.MEE_DIRECTUS_URL,
+      auth: {
+        meeDirectusEmail: process.env.MEE_NUXTUS_DIRECTUS_ADMIN_EMAIL,
+        meeDirectusPassword: process.env.MEE_NUXTUS_DIRECTUS_ADMIN_PASSWORD,
+        meeDirectusToken: process.env.MEE_NUXTUS_DIRECTUS_STATIC_TOKEN,
+      },
+
       // Firebase
       firebaseApiKey: process.env.NUXT_FIREBASE_API_KEY,
       firebaseAuthDomain: process.env.NUXT_FIREBASE_AUTH_DOMAIN,
@@ -183,13 +193,18 @@ export default defineNuxtConfig({
       firebaseAppId: process.env.NUXT_FIREBASE_APP_ID,
       measurementId: process.env.NUXT_MEASUREMENT_ID,
 
+      // Magento 
+      commerceUrl: process.env.MAGE_STORE_URL,
+      commerceGraphql: process.env.MAGE_MAGENTO_GRAPHQL_URL,
+      commerceApiToken: process.env.WEBSITE_TOKEN,
+
       // Comments
       commentsUrl: process.env.NUXT_COMMENT_ID,
 
       // Budibase
       budibaseEmbed: process.env.BUDIBASE_EMBED || '',
-  }
-},
+    }
+  },
 
   build: {
     transpile: [
@@ -210,4 +225,6 @@ export default defineNuxtConfig({
       include: ['algoliasearch/lite'],
     },
   },
+
+  compatibilityDate: '2024-11-17',
 })

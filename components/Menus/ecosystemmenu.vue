@@ -32,12 +32,28 @@
 
 <script setup>
 import { ref } from 'vue'
-const { $directus, $readItem } = useNuxtApp()
+import {
+    useQuery
+  } from '@vue/apollo-composable'
+import ecosystemmenu from '~/graphql/queries/ecosystemmenu'
+  
+
+    const tab = ref(null);
+
+    const {
+    result: eco
+  } = useQuery(ecosystemmenu, null, {
+    context: {
+      clientName: 'secondary' // This will use the secondary endpoint
+    }
+  })
+
+/*const { $directus, $readItem } = useNuxtApp()
 const route = useRoute()
 
 const { data: eco } = await useAsyncData('eco', () => {
   return $directus.request($readItem('navigation', '12'))
-})
+})*/
 
 const dialog = ref(false);
 </script>

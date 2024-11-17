@@ -95,6 +95,11 @@ body {
     padding-left: 5%;
 }
 
+.characterLowerPage {
+    padding-left: 15px;
+    padding-bottom: 50px;
+}
+
 /******************** Sidebar CSS *************/
 
 #sidebarNav {

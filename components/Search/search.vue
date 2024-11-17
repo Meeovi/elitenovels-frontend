@@ -1,19 +1,17 @@
 <template>
   <div>
     <div class="text-center">
-      <v-dialog v-model="dialog" width="auto">
+      <v-dialog v-model="dialog" transition="dialog-bottom-transition" fullscreen>
         <template v-slot:activator="{ props }">
           <v-btn v-bind="props" variant="text" icon="fas fa-search"></v-btn>
         </template>
 
         <v-card min-height="100" min-width="500">
-          <div class="searchField">
-            <ais-instant-search class="mainSearch" :index-name="indexName" :search-client="searchClient">
-              <ais-search-box placeholder="Search Meeovi" :queryHook="queryHook" @submit="submitSearch" />
-            </ais-instant-search>
-            <!--<v-text-field id="searchQuery" class="mainSearch" density="compact" variant="solo" label="Search Meeovi" append-inner-icon="fas fa-search" single-line hide-details v-model="searchQuery" @keyup.enter="submitSearch"></v-text-field>-->
+          <div class="searchField" style="top: 50px; position: relative; border: 1px thin">
+            <!-- Add Google Custom Search Element -->
+            <div ref="searchContainer" class="gcse-search"></div>
           </div>
-          <v-card-actions>
+          <v-card-actions style="bottom: 0px; position: fixed;">
             <v-btn color="primary" block @click="dialog = false">Close Search</v-btn>
           </v-card-actions>
         </v-card>
@@ -23,47 +21,59 @@
 </template>
 
 <script setup>
-  import {
-    ref
-  } from 'vue';
-  import {
-    useRouter
-  } from 'vue-router';
-  import {
-    liteClient as algoliasearch
-  } from 'algoliasearch/lite';
-  import {
-    useRuntimeConfig
-  } from '#imports';
+import { ref, onMounted } from 'vue'
 
-  const config = useRuntimeConfig();
+const dialog = ref(false)
+const searchContainer = ref(null)
 
-  // Use environment variables for Algolia credentials
-  const searchClient = algoliasearch(
-    config.public.appId,
-    config.public.apiKey
-  );
+// Function to load Google Custom Search script
+const loadGoogleSearch = () => {
+  // Check if script is already loaded
+  if (window.google && window.google.search) return
 
-  const dialog = ref(false);
-  const searchQuery = ref('');
-  const router = useRouter();
-  const indexName = config.public.indexName;
+  // Create script element
+  const script = document.createElement('script')
+  script.async = true
+  script.src = 'https://cse.google.com/cse.js?cx=00ee76e9d64c344cc' // Replace with your CSE ID
+  
+  // Add script to document
+  document.head.appendChild(script)
+}
 
-  // Query hook to capture the input query
-  const queryHook = (query, refine) => {
-    searchQuery.value = query;
-    refine(query);
-  };
+// Initialize Google Custom Search when component mounts
+onMounted(() => {
+  loadGoogleSearch()
+})
 
-  // Function to submit search on "Enter"
-  const submitSearch = () => {
-    if (searchQuery.value.trim()) {
-      router.push({
-        path: '/results',
-        query: {
-          q: searchQuery.value.trim()
-        }
-      });
-    }
-  };
+// Watch dialog state to reinitialize search when opened
+watch(dialog, (newVal) => {
+  if (newVal) {
+    // Small delay to ensure DOM is ready
+    setTimeout(() => {
+      if (window.google && window.google.search) {
+        window.google.search.cse.element.render({
+          div: searchContainer.value,
+          tag: 'search'
+        })
+      }
+    }, 100)
+  }
+})
 </script>
+
+<style scoped>
+/* Add custom styles for Google Custom Search */
+:deep(.gsc-control-cse) {
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+:deep(.gsc-input-box) {
+  border: none !important;
+}
+
+:deep(.gsc-search-button) {
+  margin-left: 0 !important;
+}
+</style>
