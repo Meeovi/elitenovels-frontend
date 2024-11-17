@@ -6,7 +6,7 @@
         <h4>Popular Characters</h4>
         <v-sheet class="mx-auto categorySheet">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="characters in characters" :key="characters"
+            <v-slide-group-item v-for="characters in character" :key="characters"
               v-slot="{ isSelected, toggle }">
               <characters :character="characters" />
             </v-slide-group-item>

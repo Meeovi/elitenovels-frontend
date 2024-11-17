@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a :href="`/stories/${story.id}`">
+        <a :href="`/stories/${story.slug}`">
             <v-card color="white" :class="['ma-4', selectedClass]" height="550" width="300" @click="toggle">
                 <img class="align-end text-white" height="400" :src="`${story?.image?.filename_disk}`" cover />
 

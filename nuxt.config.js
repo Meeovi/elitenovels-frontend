@@ -183,6 +183,9 @@ export default defineNuxtConfig({
       firebaseAppId: process.env.NUXT_FIREBASE_APP_ID,
       measurementId: process.env.NUXT_MEASUREMENT_ID,
 
+      // Comments
+      commentsUrl: process.env.NUXT_COMMENT_ID,
+
       // Budibase
       budibaseEmbed: process.env.BUDIBASE_EMBED || '',
   }

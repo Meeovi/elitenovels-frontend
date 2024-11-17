@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a :href="`/characters/${character?.id}`">
+        <a :href="`/characters/${character?.slug}`">
             <v-card :color="isSelected ? 'primary' : 'white'" class="ma-4" height="350" width="200" @click="toggle">
                 <img class="align-end text-white" height="250" :src="`${character?.image?.filename_disk}`" :alt="character?.name" cover />
                 <v-card-title class="pt-4">{{ character?.name }}</v-card-title>

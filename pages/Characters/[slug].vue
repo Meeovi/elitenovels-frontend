@@ -88,7 +88,7 @@
     const {
         data: character
     } = await useAsyncData('character', () => {
-        return $directus.request($readItem('characters', route.params.id))
+        return $directus.request($readItem('characters', route.params.slug))
     })
 
     useHead({

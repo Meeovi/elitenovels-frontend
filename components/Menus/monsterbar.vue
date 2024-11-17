@@ -1,10 +1,16 @@
 <template>
     <v-card class="lowerbar" variant="text">
-        <v-tabs style="background-color: sienna; color: white;" center-active>
-            <div v-for="(menu, index) in monsterbar?.menus" :key="index">
-            <h5>{{ monsterbar?.name }}</h5>
+        <v-tabs style="background-color: sienna;" center-active>
+            <h5>{{ characterbar?.name }}</h5>
+            <!-- Update v-for to correctly access tags data -->
+            <div v-for="tag in characterbar?.tags" :key="tag.tags_id.id">
                 <v-tab>
-                    <a :href="menu?.url">{{ menu?.name }}</a>
+                    <a 
+                        style="color: black !important;" 
+                        :href="`/characters/character/${tag.tags_id.slug}`"
+                    >
+                        {{ tag.tags_id.name }}
+                    </a>
                 </v-tab>
             </div>
         </v-tabs>
@@ -12,15 +18,12 @@
 </template>
 
 <script setup>
-    const {
-        $directus,
-        $readItem
-    } = useNuxtApp()
-    const route = useRoute()
+const { $directus, $readItem } = useNuxtApp()
+const route = useRoute()
 
-    const {
-        data: monsterbar
-    } = await useAsyncData('monsterbar', () => {
-        return $directus.request($readItem('navigation', '4'))
-    })
+const { data: characterbar } = await useAsyncData('characterbar', () => {
+    return $directus.request($readItem('categories', '3', {
+        fields: ['*', 'tags.tags_id.*'] // Include all tags fields
+    }))
+})
 </script>
