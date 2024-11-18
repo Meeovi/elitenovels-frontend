@@ -3,7 +3,7 @@
     <monsterbar />
     <v-row style="background-color: sienna;">
       <v-col cols="12">
-        <h4>Popular Monsters</h4>
+        <h4 style="color: white;">Popular Monsters</h4>
         <v-sheet class="mx-auto categorySheet">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="monsters in monsters" :key="monsters"
@@ -42,7 +42,7 @@
 <script setup>
   import { ref } from 'vue'
   import monsterbar from '~/components/Menus/monsterbar.vue'
-  import characters from '~/components/related/character.vue'
+  import characters from '~/components/Related/character.vue'
   const model = ref(null);
 
   const {
@@ -55,8 +55,12 @@
     } = await useAsyncData('monsters', () => {
         return $directus.request($readItems('characters', {
             filter: {
-                type: {
-                    _eq: "Monsters"
+                tags: {
+                  tags_id: {
+                    name: {
+                      _eq: "Monsters"
+                    }
+                  }
                 }
             }
         }))
@@ -66,9 +70,13 @@
         data: aurelian
     } = await useAsyncData('aurelian', () => {
         return $directus.request($readItems('characters', {
-            filter: {
-                type: {
-                    _eq: "Aurelian Characters"
+          filter: {
+                tags: {
+                  tags_id: {
+                    name: {
+                      _eq: "Aurelian Characters"
+                    }
+                  }
                 }
             }
         }))

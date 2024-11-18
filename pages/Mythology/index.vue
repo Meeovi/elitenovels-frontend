@@ -42,7 +42,7 @@
 <script setup>
   import { ref } from 'vue'
   import mythologybar from '~/components/Menus/mythologybar.vue'
-  import characters from '~/components/related/character.vue'
+  import characters from '~/components/Related/character.vue'
   const model = ref(null);
 
   const {
@@ -54,9 +54,13 @@
         data: mythology
     } = await useAsyncData('mythology', () => {
         return $directus.request($readItems('characters', {
-            filter: {
-                type: {
-                    _eq: "Mythology"
+          filter: {
+                tags: {
+                  tags_id: {
+                    name: {
+                      _eq: "Gods and Goddesses"
+                    }
+                  }
                 }
             }
         }))

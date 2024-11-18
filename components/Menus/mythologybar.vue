@@ -7,7 +7,7 @@
                 <v-tab>
                     <a 
                         style="color: black !important;" 
-                        :href="`/characters/character/${tag.tags_id.slug}`"
+                        :href="`/characters/category/${tag.tags_id.id}`"
                     >
                         {{ tag.tags_id.name }}
                     </a>

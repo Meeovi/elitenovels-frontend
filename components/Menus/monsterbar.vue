@@ -1,14 +1,11 @@
 <template>
     <v-card class="lowerbar" variant="text">
-        <v-tabs style="background-color: sienna;" center-active>
+        <v-tabs style="background-color: sienna; color: white;" center-active>
             <h5>{{ characterbar?.name }}</h5>
             <!-- Update v-for to correctly access tags data -->
             <div v-for="tag in characterbar?.tags" :key="tag.tags_id.id">
                 <v-tab>
-                    <a 
-                        style="color: black !important;" 
-                        :href="`/characters/character/${tag.tags_id.slug}`"
-                    >
+                    <a style="color: white !important;" :href="`/characters/category/${tag.tags_id.id}`">
                         {{ tag.tags_id.name }}
                     </a>
                 </v-tab>

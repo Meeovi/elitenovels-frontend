@@ -49,26 +49,42 @@
                 <div>Name: {{ character?.name }}</div>
                 <v-spacer></v-spacer>
 
-                <div v-if="character?.tags?.tags_id === 'Human'">Age: {{ character?.age }}</div>
+                <div v-if="character?.tags?.tags_id?.name === 'Human'">Age: {{ character?.age }}</div>
                 <v-spacer></v-spacer>
 
                 <div>Alias: {{ character?.alias }}</div>
                 <v-spacer></v-spacer>
 
-                <div>Abilities:
-                  <div v-for="ability in character?.abilities?.abilities_id" :key="ability">
-                    {{ ability?.name }}
+                <div style="display: flex; padding-right: 5px;">Abilities:&nbsp;
+                  <div v-for="abilities in character?.abilities" :key="abilities">
+                    <a :href="`/characters/ability/${abilities?.abilities_id?.id}`">{{ abilities?.abilities_id?.name }}</a> &nbsp;
                   </div>
                 </div>
                 <v-spacer></v-spacer>
 
-                <div>Affiliates: {{ character?.affiliates }}</div>
+                <div style="display: flex; padding-right: 5px;">Affiliates:&nbsp;
+                  <div v-for="affiliates in character?.characters" :key="affiliates">
+                    <a :href="`/characters/${affiliates?.characters_id?.id}`">{{ affiliates?.characters_id?.name }}</a> &nbsp;
+                  </div>
+                </div>
 
                 <div>Universe: {{ character?.type }}</div>
 
                 <div style="display: flex; padding-right: 5px;">Species:&nbsp;
                   <div v-for="species in character?.tags" :key="species">
                     <a :href="`/characters/category/${species?.tags_id?.id}`">{{ species?.tags_id?.name }}</a> &nbsp;
+                  </div>
+                </div>
+
+                <div v-if="character?.types" style="display: flex; padding-right: 5px;">Types:&nbsp;
+                  <div v-for="type in character?.types" :key="types">
+                    <a :href="`/characters/type/${type?.types_id?.id}`">{{ type?.types_id?.name }}</a> &nbsp;
+                  </div>
+                </div>
+
+                <div v-if="character?.levels" style="display: flex; padding-right: 5px;">Level:&nbsp;
+                  <div v-for="level in character?.levels" :key="level">
+                    <a :href="`/characters/level/${level?.levels_id?.id}`">{{ level?.levels_id?.name }}</a> &nbsp;
                   </div>
                 </div>
               </v-card-text>
@@ -84,7 +100,7 @@
             <h3>Items</h3>
             <v-row>
               <v-col cols="4" v-for="items in character?.items" :key="items">
-                <place :place="items?.items_id" />
+                <item :item="items?.items_id" />
               </v-col>
             </v-row>
           </v-col>
@@ -102,7 +118,7 @@
             <h3>Stories</h3>
             <v-row>
               <v-col cols="4" v-for="stories in character?.stories" :key="stories">
-                <place :place="stories?.stories_id" />
+                <story :story="stories?.stories_id" />
               </v-col>
             </v-row>
           </v-col>
@@ -111,7 +127,7 @@
             <h3>Videos</h3>
             <v-row>
               <v-col cols="4" v-for="videos in character?.videos" :key="videos">
-                <place :place="videos?.videos_id" />
+                <video :video="videos?.videos_id" />
               </v-col>
             </v-row>
           </v-col>
