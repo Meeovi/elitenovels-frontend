@@ -42,7 +42,7 @@
 <script setup>
   import { ref } from 'vue'
   import characterbar from '~/components/Menus/characterbar.vue'
-  import characters from '~/components/related/character.vue'
+  import characters from '~/components/Related/character.vue'
   const model = ref(null);
 
   const {

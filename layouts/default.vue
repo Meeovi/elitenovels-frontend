@@ -36,6 +36,8 @@
           <main id="mainSection">
             <lowerbar />
             <slot />
+
+            <relatedproducts />
           </main>
         </v-layout>
       </v-card>
@@ -66,6 +68,7 @@
   import ecosystemmenu from '~/components/Menus/ecosystemmenu.vue'
   import search from '~/components/Search/search.vue'
   import lowerbar from '~/components/Menus/lowerbar.vue'
+  import relatedproducts from '~/components/Related/relatedproducts.vue'
 
   const theme = ref('light')
   const location = ref('bottom');

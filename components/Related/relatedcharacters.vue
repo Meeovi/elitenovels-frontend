@@ -5,9 +5,9 @@
         </v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item v-for="stories in stories" :key="stories"
+            <v-slide-group-item v-for="characters in characters" :key="characters"
               v-slot="{ isSelected, toggle, selectedClass }">
-              <story :story="stories" />
+              <character :character="characters" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -17,7 +17,7 @@
 
   <script setup>
   import { ref } from 'vue'
-  import story from '~/components/Related/story.vue'
+  import character from '~/components/Related/character.vue'
 
   const model = ref(null)
   const {
@@ -26,9 +26,9 @@
     } = useNuxtApp()
 
     const {
-        data: stories
-    } = await useAsyncData('stories', () => {
-        return $directus.request($readItems('stories'))
+        data: characters
+    } = await useAsyncData('characters', () => {
+        return $directus.request($readItems('characters'))
     })
   useHead({
     title: 'Characters',

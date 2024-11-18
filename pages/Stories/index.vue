@@ -17,6 +17,7 @@
 </template>
 
 <script setup>
+import story from '~/components/Related/story.vue'
   const {
         $directus,
         $readItems

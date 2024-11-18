@@ -26,10 +26,8 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
-import comments from '~/components/partials/comments.vue'
-import characters from '~/components/related/character.vue'
+import characters from '~/components/Related/character.vue'
 import characterbar from '~/components/Menus/characterbar.vue'
-import place from '~/components/related/place.vue'
 
 const tab = ref(null)
 const route = useRoute()

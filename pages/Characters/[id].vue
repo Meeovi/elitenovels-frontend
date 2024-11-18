@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col cols="12">
-        <v-toolbar dark prominent>
+        <v-toolbar dark prominent color="#6592e6">
           <v-toolbar-title>{{ character?.name }}</v-toolbar-title>
 
           <v-img>
@@ -49,7 +49,7 @@
                 <div>Name: {{ character?.name }}</div>
                 <v-spacer></v-spacer>
 
-                <div v-if="character?.type === 'Human'">Age: {{ character?.age }}</div>
+                <div v-if="character?.tags?.tags_id === 'Human'">Age: {{ character?.age }}</div>
                 <v-spacer></v-spacer>
 
                 <div>Alias: {{ character?.alias }}</div>
@@ -57,50 +57,68 @@
 
                 <div>Abilities:
                   <div v-for="ability in character?.abilities?.abilities_id" :key="ability">
-                    {{ ability?.abilities?.name }}
+                    {{ ability?.name }}
                   </div>
                 </div>
                 <v-spacer></v-spacer>
 
                 <div>Affiliates: {{ character?.affiliates }}</div>
 
-                <div>Type: {{ character?.type }}</div>
+                <div>Universe: {{ character?.type }}</div>
+
+                <div style="display: flex; padding-right: 5px;">Species:&nbsp;
+                  <div v-for="species in character?.tags" :key="species">
+                    <a :href="`/characters/category/${species?.tags_id?.id}`">{{ species?.tags_id?.name }}</a> &nbsp;
+                  </div>
+                </div>
               </v-card-text>
             </v-card>
           </v-col>
         </v-row>
       </v-col>
 
+
       <div class="characterLowerPage">
-        <v-col cols="12">
-          <h3>Items</h3>
-          <div v-for="items in character?.items" :key="items">
-            <item :item="items?.items_id" />
-          </div>
-        </v-col>
+        <v-row>
+          <v-col cols="12">
+            <h3>Items</h3>
+            <v-row>
+              <v-col cols="4" v-for="items in character?.items" :key="items">
+                <place :place="items?.items_id" />
+              </v-col>
+            </v-row>
+          </v-col>
 
-        <v-col cols="12">
-          <h3>Places</h3>
-          <div v-for="places in character?.places" :key="places">
-            <place :place="places?.places_id" />
-          </div>
-        </v-col>
+          <v-col cols="12">
+            <h3>Places</h3>
+            <v-row>
+              <v-col cols="4" v-for="places in character?.places" :key="places">
+                <place :place="places?.places_id" />
+              </v-col>
+            </v-row>
+          </v-col>
 
-        <v-col cols="12">
-          <h3>Stories</h3>
-          <div v-for="stories in character?.stories" :key="stories?.stories_id?.id">
-            <story :story="stories?.stories_id" />
-          </div>
-        </v-col>
+          <v-col cols="12">
+            <h3>Stories</h3>
+            <v-row>
+              <v-col cols="4" v-for="stories in character?.stories" :key="stories">
+                <place :place="stories?.stories_id" />
+              </v-col>
+            </v-row>
+          </v-col>
 
-        <v-col cols="12">
-          <h3>Videos</h3>
-          <div v-for="videos in character?.videos?.videos_id" :key="videos">
-            <video :video="videos" />
-          </div>
-        </v-col>
+          <v-col cols="12">
+            <h3>Videos</h3>
+            <v-row>
+              <v-col cols="4" v-for="videos in character?.videos" :key="videos">
+                <place :place="videos?.videos_id" />
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
       </div>
 
+      <relatedcharacters />
       <v-col cols="12">
         <comments />
       </v-col>
@@ -114,10 +132,11 @@
     useRouter
   } from 'vue-router'
   import comments from '~/components/partials/comments.vue'
-  import item from '~/components/related/item.vue'
-  import place from '~/components/related/place.vue'
-  import story from '~/components/related/story.vue'
-  import video from '~/components/related/video.vue'
+  import item from '~/components/Related/item.vue'
+  import place from '~/components/Related/place.vue'
+  import story from '~/components/Related/story.vue'
+  import relatedcharacters from '~/components/Related/relatedcharacters.vue'
+  import video from '~/components/Related/video.vue'
 
   const route = useRoute()
   const {
@@ -128,7 +147,7 @@
   const {
     data: character
   } = await useAsyncData('character', () => {
-    return $directus.request($readItem('characters', route.params.slug, {
+    return $directus.request($readItem('characters', route.params.id, {
       fields: ['*', '*.*.*'],
     }))
   })

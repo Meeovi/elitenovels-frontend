@@ -35,6 +35,11 @@ body {
     height: 100% !important;
 }
 
+.contentSection {
+    position: relative !important;
+    padding-right: 15px;
+}
+
 .homeSection {
     padding: 45px !important;
 }
@@ -96,8 +101,15 @@ body {
 }
 
 .characterLowerPage {
-    padding-left: 15px;
+    padding-left: 25px;
     padding-bottom: 50px;
+}
+
+.storyNotFound {
+    position: relative;
+    text-align: center;
+    margin-top: 5%;
+    font-size: 25px;
 }
 
 /******************** Sidebar CSS *************/

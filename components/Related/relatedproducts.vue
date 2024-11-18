@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="contentSection">
     <v-toolbar title="NEW & TRENDING PRODUCTS FROM ELITENOVELS SHOP" density="comfortable" color="transparent">
       <a href="https://www.meeovi.com/outlets/ODU=">More from Our Meeovi Shop</a>
     </v-toolbar>
@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-  import productCard from '~/components/related/productCard.vue'
+  import productCard from '~/components/Related/productCard.vue'
   import {
     ref
   } from 'vue'

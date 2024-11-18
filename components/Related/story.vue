@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a :href="`/stories/${story?.slug}`">
+        <a :href="`/stories/${story?.id}`">
             <v-card color="white" :class="['ma-4', selectedClass]" height="550" width="300" @click="toggle">
                 <div v-if="story?.image?.filename_disk">
                     <img class="align-end text-white" height="400" :alt="story?.name"
@@ -12,13 +12,13 @@
                 </div>
 
                 <v-card-subtitle class="pt-4">
-                    Published: {{ story?.created_at }}
+                    Published: {{ new Date(story?.date_created).toLocaleDateString() }}
                 </v-card-subtitle>
 
                 <v-card-title>{{ story?.name }}</v-card-title>
 
                 <v-card-actions>
-                    <v-btn color="blue" :href="`/stories/${story?.slug}`">
+                    <v-btn color="blue" :href="`/stories/${story?.id}`">
                         Read
                     </v-btn>
                 </v-card-actions>

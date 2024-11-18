@@ -22,7 +22,7 @@
             <v-slide-group-item v-for="monsters in monsters" :key="monsters"
               v-slot="{ isSelected, toggle }">
               <v-col cols="3">
-                <characters :character="characters" />
+                <characters :character="monsters" />
               </v-col>
             </v-slide-group-item>
           </v-slide-group>
@@ -36,7 +36,7 @@
             <v-slide-group-item v-for="mythology in mythology" :key="mythology"
               v-slot="{ isSelected, toggle }">
               <v-col cols="3">
-                <characters :character="characters" />
+                <characters :character="mythology" />
               </v-col>
             </v-slide-group-item>
           </v-slide-group>
@@ -48,7 +48,7 @@
 
 <script setup>
   import { ref } from 'vue'
-  import characters from '~/components/related/character.vue'
+  import characters from '~/components/Related/character.vue'
   const model = ref(null);
 
   const {
@@ -66,8 +66,12 @@ const {
     } = await useAsyncData('monsters', () => {
         return $directus.request($readItems('characters', {
             filter: {
-                type: {
-                    _eq: "Monsters"
+                tags: {
+                  tags_id: {
+                    name: {
+                      _eq: "Monsters"
+                    }
+                  }
                 }
             }
         }))
@@ -77,9 +81,13 @@ const {
         data: mythology
     } = await useAsyncData('mythology', () => {
         return $directus.request($readItems('characters', {
-            filter: {
-                type: {
-                    _eq: "Mythology"
+          filter: {
+                tags: {
+                  tags_id: {
+                    name: {
+                      _eq: "Gods and Goddesses"
+                    }
+                  }
                 }
             }
         }))
