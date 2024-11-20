@@ -41,46 +41,6 @@
                 <v-pagination v-model="currentPage" :length="totalPages" :total-visible="5"
                   @update:modelValue="fetchSearchResults"></v-pagination>
               </v-tabs-window-item>
-
-              <!--Video Results -->
-              <v-tabs-window-item value="two">
-                <videoSearch />
-              </v-tabs-window-item>
-
-              <!--News Results -->
-              <v-tabs-window-item value="three">
-                <newsSearch />
-              </v-tabs-window-item>
-
-              <!--Images Results -->
-              <v-tabs-window-item value="four">
-                <imageSearch />
-              </v-tabs-window-item>
-
-              <!--Music Results -->
-              <v-tabs-window-item value="five">
-                <musicSearch />
-              </v-tabs-window-item>
-
-              <!--Spaces Results -->
-              <v-tabs-window-item value="six">
-                <spaceSearch />
-              </v-tabs-window-item>
-
-              <!--Books Results -->
-              <v-tabs-window-item value="seven">
-                <booksSearch />
-              </v-tabs-window-item>
-
-              <!--Travel Results -->
-              <v-tabs-window-item value="eight">
-                <travelSearch />
-              </v-tabs-window-item>
-
-              <!--Finance Results -->
-              <v-tabs-window-item value="nine">
-                <financeSearch />
-              </v-tabs-window-item>
             </v-tabs-window>
           </v-card-text>
         </v-main>
@@ -98,16 +58,9 @@
   import {
     useRoute
   } from 'vue-router';
-  import FilterComponent from '~/components/search/filters.vue';
+  import FilterComponent from '~/components/Search/filters.vue';
   import productCard from '~/components/commerce/commerce/product/productCard.vue';
-  import videoSearch from '~/components/search/results/videoSearch.vue'
-  import imageSearch from '~/components/search/results/imageSearch.vue'
-  import musicSearch from '~/components/search/results/musicSearch.vue'
-  import spaceSearch from '~/components/search/results/spaceSearch.vue'
-  import travelSearch from '~/components/search/results/travelSearch.vue'
-  import newsSearch from '~/components/search/results/newsSearch.vue'
-  import financeSearch from '~/components/search/results/financeSearch.vue'
-  import booksSearch from '~/components/search/results/booksSearch.vue'
+
   import {
     liteClient as algoliasearch
   } from 'algoliasearch/lite';

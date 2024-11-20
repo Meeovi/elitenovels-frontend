@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-
+import characters from '~/composables/Related/character.vue';
   const {
     $directus,
     $readItem
