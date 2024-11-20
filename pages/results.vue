@@ -59,7 +59,7 @@
     useRoute
   } from 'vue-router';
   import FilterComponent from '~/components/Search/filters.vue';
-  import productCard from '~/components/commerce/commerce/product/productCard.vue';
+  import productCard from '~/components/Related/productCard.vue';
 
   import {
     liteClient as algoliasearch
