@@ -225,6 +225,4 @@ export default defineNuxtConfig({
       include: ['algoliasearch/lite'],
     },
   },
-
-  compatibilityDate: '2024-11-17',
 })
