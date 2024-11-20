@@ -16,7 +16,7 @@
                     </v-card-title>
                 </v-toolbar>
                 <v-row style="padding: 10px;">
-                    <v-col cols="3" v-for="menu in eco?.menus" :key="menu?.id">
+                    <v-col cols="3" v-for="menu in eco[0]?.menus" :key="menu?.id">
                         <a :href="menu?.url">
                             <v-card class="mx-auto" max-width="300">
                               <v-avatar :icon="`fas fa-${menu?.icon}`" size="180"></v-avatar>
@@ -32,28 +32,17 @@
 
 <script setup>
 import { ref } from 'vue'
-import {
-    useQuery
-  } from '@vue/apollo-composable'
-import ecosystemmenu from '~/graphql/queries/ecosystemmenu'
-  
+import { createDirectus, rest, readItems } from '@directus/sdk';
 
-    const tab = ref(null);
-
-    const {
-    result: eco
-  } = useQuery(ecosystemmenu, null, {
-    context: {
-      clientName: 'secondary' // This will use the secondary endpoint
-    }
-  })
-
-/*const { $directus, $readItem } = useNuxtApp()
-const route = useRoute()
-
-const { data: eco } = await useAsyncData('eco', () => {
-  return $directus.request($readItem('navigation', '12'))
-})*/
-
+const config = useRuntimeConfig()
 const dialog = ref(false);
+const client = createDirectus(`${config.public.meeDirectusUrl}`).with(rest());
+
+const eco = await client.request(readItems('navigation', {
+    filter: {
+        name: {
+            _eq: 'The Meeovi Company'
+        }
+    }
+}));
 </script>

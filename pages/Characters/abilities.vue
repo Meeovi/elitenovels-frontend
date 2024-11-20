@@ -16,12 +16,6 @@
 
     <v-row>
       <v-col cols="12">
-        <v-card elevation="0">
-          <v-card-text>{{ ability?.description }}</v-card-text>
-        </v-card>
-      </v-col>
-
-      <v-col cols="12">
         <v-toolbar title="CHARACTER ABILITIES" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>

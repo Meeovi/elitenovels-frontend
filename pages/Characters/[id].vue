@@ -49,7 +49,7 @@
                 <div>Name: {{ character?.name }}</div>
                 <v-spacer></v-spacer>
 
-                <div v-if="character?.tags?.tags_id?.name === 'Human'">Age: {{ character?.age }}</div>
+                <div v-if="character?.tags?.some(tag => tag.tags_id.name === 'Humans')">Age: {{ character?.age }}</div>
                 <v-spacer></v-spacer>
 
                 <div>Alias: {{ character?.alias }}</div>
@@ -76,13 +76,13 @@
                   </div>
                 </div>
 
-                <div v-if="character?.types" style="display: flex; padding-right: 5px;">Types:&nbsp;
+                <div v-if="character?.tags?.some(tag => tag.tags_id.name === 'Monsters')" style="display: flex; padding-right: 5px;">Types:&nbsp;
                   <div v-for="type in character?.types" :key="types">
                     <a :href="`/characters/type/${type?.types_id?.id}`">{{ type?.types_id?.name }}</a> &nbsp;
                   </div>
                 </div>
 
-                <div v-if="character?.levels" style="display: flex; padding-right: 5px;">Level:&nbsp;
+                <div v-if="character?.tags?.some(tag => tag.tags_id.name === 'Monsters')" style="display: flex; padding-right: 5px;">Level:&nbsp;
                   <div v-for="level in character?.levels" :key="level">
                     <a :href="`/characters/level/${level?.levels_id?.id}`">{{ level?.levels_id?.name }}</a> &nbsp;
                   </div>

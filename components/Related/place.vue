@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a :href="`/places/${place?.id}`">
+    <a :href="`/characters/place/${place?.id}`">
       <v-card :color="isSelected ? 'primary' : 'white'" class="ma-4" height="350" width="200" @click="toggle">
         <div v-if="place?.image?.filename_disk">
           <img class="align-end text-white" height="250" :src="`${$directus.url}/assets/${place?.image?.filename_disk}`" :alt="place?.name"
