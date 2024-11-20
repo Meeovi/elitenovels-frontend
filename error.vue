@@ -20,7 +20,7 @@
 
         <h3 style="padding: 15px;">{{ page?.information[0]?.description }}</h3>
         <v-row>
-          <v-col cols="3" v-for="characters in characters" :key="characters">
+          <v-col cols="3" v-for="characters in charactersData" :key="characters">
             <characters :character="characters" />
           </v-col>
         </v-row>
@@ -31,9 +31,10 @@
 </template>
 
 <script setup>
-import characters from '~/composables/Related/character.vue';
+import characters from '~/components/Related/character.vue';
   const {
     $directus,
+    $readItems,
     $readItem
   } = useNuxtApp()
 
@@ -44,8 +45,8 @@ import characters from '~/composables/Related/character.vue';
   })
 
   const {
-    data: characters
-  } = await useAsyncData('characters', () => {
+    data: charactersData
+  } = await useAsyncData('charactersData', () => {
     return $directus.request($readItems('characters'))
   })
 
