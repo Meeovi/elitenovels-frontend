@@ -31,10 +31,6 @@
 </template>
 
 <script setup>
-  import {
-    useQuery
-  } from '@vue/apollo-composable'
-  import latestproducts from '~/components/commerce/related/latestproducts.vue'
 
   const {
     $directus,
