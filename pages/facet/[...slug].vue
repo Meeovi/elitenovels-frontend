@@ -109,7 +109,7 @@
             <h3>Places</h3>
             <v-row>
               <v-col cols="4" v-for="places in facet?.places" :key="places">
-                <place :place="places?.places_id" />
+                <item :item="places?.places_id" />
               </v-col>
             </v-row>
           </v-col>
@@ -127,7 +127,7 @@
             <h3>Videos</h3>
             <v-row>
               <v-col cols="4" v-for="videos in facet?.videos" :key="videos">
-                <video :video="videos?.videos_id" />
+                <videoComponent :video="videos?.videos_id" />
               </v-col>
             </v-row>
           </v-col>
@@ -149,10 +149,10 @@
   } from 'vue-router'
   import comments from '~/components/partials/comments.vue'
   import item from '~/components/Related/facet.vue'
-  import place from '~/components/Related/place.vue'
+  //import place from '~/components/Related/place.vue'
   import story from '~/components/Related/story.vue'
   import relatedcharacters from '~/components/Related/relatedcharacters.vue'
-  import video from '~/components/Related/video.vue'
+  import videoComponent from '~/components/Related/video.vue'
 
   const route = useRoute()
   const {
