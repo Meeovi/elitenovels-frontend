@@ -34,7 +34,6 @@
 
 <script setup>
   import { ref } from 'vue'
-  import characterbar from '~/components/Menus/characterbar.vue'
   import places from '~/components/Related/place.vue'
   const model = ref(null);
 
@@ -46,7 +45,14 @@
     const {
         data: place
     } = await useAsyncData('place', () => {
-        return $directus.request($readItems('places'))
+        return $directus.request($readItems('options', {
+            fields: ['*', { '*': ['*'] }],
+            filter: {
+              type: {
+                _eq: 'Places'
+              }
+            }
+        }))
     })
 
   useHead({

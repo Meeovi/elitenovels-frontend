@@ -34,6 +34,8 @@ const {
   const {
       data: categories
   } = await useAsyncData('categories', () => {
-      return $directus.request($readItems('categories'))
+      return $directus.request($readItems('categories', {
+            fields: ['*', { '*': ['*'] }]
+        }))
   })
 </script>

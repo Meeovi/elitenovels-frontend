@@ -34,7 +34,6 @@
 
 <script setup>
   import { ref } from 'vue'
-  import characterbar from '~/components/Menus/characterbar.vue'
   import levels from '~/components/Related/level.vue'
   const model = ref(null);
 
@@ -46,7 +45,14 @@
     const {
         data: level
     } = await useAsyncData('level', () => {
-        return $directus.request($readItems('levels'))
+        return $directus.request($readItems('options', {
+            fields: ['*', { '*': ['*'] }],
+            filter: {
+              type: {
+                _eq: 'Level'
+              }
+            }
+        }))
     })
 
   useHead({

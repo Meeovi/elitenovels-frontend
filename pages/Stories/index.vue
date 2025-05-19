@@ -26,7 +26,9 @@ import story from '~/components/Related/story.vue'
     const {
         data: stories
     } = await useAsyncData('stories', () => {
-        return $directus.request($readItems('stories'))
+        return $directus.request($readItems('stories', {
+            fields: ['*', { '*': ['*'] }]
+        }))
     })
 
   useHead({

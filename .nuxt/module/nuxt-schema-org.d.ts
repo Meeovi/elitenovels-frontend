@@ -2,12 +2,12 @@
 
 declare module '@nuxt/schema' {
   export interface RuntimeNuxtHooks {
-    'schema-org:meta': (meta: import('../../node_modules/nuxt-schema-org/dist/runtime/types').MetaInput) => void | Promise<void>
+    'schema-org:meta': (meta: import('../../../../node_modules/nuxt-schema-org/dist/runtime/types').MetaInput) => void | Promise<void>
   }
 }
 declare module '#app' {
   export interface RuntimeNuxtHooks {
-    'schema-org:meta': (meta: import('../../node_modules/nuxt-schema-org/dist/runtime/types').MetaInput) => void | Promise<void>
+    'schema-org:meta': (meta: import('../../../../node_modules/nuxt-schema-org/dist/runtime/types').MetaInput) => void | Promise<void>
   }
 }
 

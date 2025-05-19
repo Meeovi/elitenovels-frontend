@@ -17,7 +17,7 @@ declare module "#build/vuefire-auth-plugin.client.mjs";
 declare module "#build/routes.mjs";
 declare module "#build/pages.mjs";
 declare module "#build/router.options.mjs";
-declare module "#build/unhead-plugins.mjs";
+declare module "#build/unhead-options.mjs";
 declare module "#build/unhead.config.mjs";
 declare module "#build/components.plugin.mjs";
 declare module "#build/component-names.mjs";

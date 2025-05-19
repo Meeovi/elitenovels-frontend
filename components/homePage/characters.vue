@@ -58,13 +58,16 @@
 const {
         data: character
     } = await useAsyncData('character', () => {
-        return $directus.request($readItems('characters'))
+        return $directus.request($readItems('characters', {
+            fields: ['*', { '*': ['*'] }]
+        }))
     })
 
     const {
         data: monsters
     } = await useAsyncData('monsters', () => {
         return $directus.request($readItems('characters', {
+          fields: ['*', { '*': ['*'] }],
             filter: {
                 tags: {
                   tags_id: {
@@ -81,6 +84,7 @@ const {
         data: mythology
     } = await useAsyncData('mythology', () => {
         return $directus.request($readItems('characters', {
+          fields: ['*', { '*': ['*'] }],
           filter: {
                 tags: {
                   tags_id: {

@@ -55,13 +55,16 @@
   const {
     data: ability
   } = await useAsyncData('ability', () => {
-    return $directus.request($readItems('abilities'))
+    return $directus.request($readItems('abilities', {
+            fields: ['*', { '*': ['*'] }]
+        }))
   })
 
   const {
     data: characterAbility
   } = await useAsyncData('characterAbility', () => {
     return $directus.request($readItems('abilities', {
+      fields: ['*', { '*': ['*'] }],
       filter: {
         type: {
           _eq: "Character Ability"
@@ -74,6 +77,7 @@
     data: monsterAbility
   } = await useAsyncData('monsterAbility', () => {
     return $directus.request($readItems('abilities', {
+      fields: ['*', { '*': ['*'] }],
       filter: {
         type: {
           _eq: "Monster Ability"

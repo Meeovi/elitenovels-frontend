@@ -34,7 +34,6 @@
 
 <script setup>
   import { ref } from 'vue'
-  import characterbar from '~/components/Menus/characterbar.vue'
   import types from '~/components/Related/type.vue'
   const model = ref(null);
 
@@ -46,7 +45,14 @@
     const {
         data: type
     } = await useAsyncData('type', () => {
-        return $directus.request($readItems('types'))
+        return $directus.request($readItems('options', {
+            fields: ['*', { '*': ['*'] }],
+            filter: {
+              type: {
+                _eq: 'Type'
+              }
+            }
+        }))
     })
 
   useHead({

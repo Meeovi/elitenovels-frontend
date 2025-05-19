@@ -53,7 +53,9 @@
     const {
         data: character
     } = await useAsyncData('character', () => {
-        return $directus.request($readItems('characters'))
+        return $directus.request($readItems('characters', {
+            fields: ['*', { '*': ['*'] }]
+        }))
     })
 
     const {

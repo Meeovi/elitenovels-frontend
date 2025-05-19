@@ -54,6 +54,7 @@
         data: monsters
     } = await useAsyncData('monsters', () => {
         return $directus.request($readItems('characters', {
+          fields: ['*', { '*': ['*'] }],
             filter: {
                 tags: {
                   tags_id: {
@@ -70,6 +71,7 @@
         data: aurelian
     } = await useAsyncData('aurelian', () => {
         return $directus.request($readItems('characters', {
+          fields: ['*', { '*': ['*'] }],
           filter: {
                 tags: {
                   tags_id: {

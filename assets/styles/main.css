@@ -13,6 +13,7 @@ body {
 
 .logobrand {
     text-decoration: none;
+    display: inline-block;
 }
 
 .ais-InstantSearch {

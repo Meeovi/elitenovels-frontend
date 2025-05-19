@@ -30,7 +30,14 @@
     const {
         data: dictionaryData
     } = await useAsyncData('dictionary', () => {
-        return $directus.request($readItems('dictionary'))
+        return $directus.request($readItems('dictionary', {
+            fields: ['*', { '*': ['*'] }],
+            filter: {
+              type: {
+                _eq: 'Dictionary'
+              }
+            }
+        }))
     })
 
   useHead({

@@ -28,7 +28,9 @@
     const {
         data: videos
     } = await useAsyncData('videos', () => {
-        return $directus.request($readItems('videos'))
+        return $directus.request($readItems('videos', {
+            fields: ['*', { '*': ['*'] }]
+        }))
     })
 
   useHead({

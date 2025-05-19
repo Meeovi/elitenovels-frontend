@@ -54,6 +54,7 @@
         data: mythology
     } = await useAsyncData('mythology', () => {
         return $directus.request($readItems('characters', {
+          fields: ['*', { '*': ['*'] }],
           filter: {
                 tags: {
                   tags_id: {

@@ -19,6 +19,8 @@ const {
   const {
       data: blogs
   } = await useAsyncData('blogs', () => {
-      return $directus.request($readItems('blogs'))
+      return $directus.request($readItems('blogs', {
+            fields: ['*', { '*': ['*'] }]
+        }))
   })
 </script>
