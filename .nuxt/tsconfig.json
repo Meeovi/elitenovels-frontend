@@ -123,7 +123,7 @@
         "./imports"
       ],
       "#app-manifest": [
-        "./manifest/meta/ec0d94c3-d3bc-4317-a928-ed96390f8283"
+        "./manifest/meta/e1d6f4ca-1e7d-4cce-8a88-b09208a22505"
       ],
       "#components": [
         "./components"
@@ -171,6 +171,8 @@
     "../../../node_modules/@nuxt/image/dist/runtime",
     "../../../node_modules/@nuxtjs/tailwindcss/runtime",
     "../../../node_modules/@nuxtjs/tailwindcss/dist/runtime",
+    "../../../node_modules/@storefront-ui/nuxt/runtime",
+    "../../../node_modules/@storefront-ui/nuxt/dist/runtime",
     "../../../node_modules/@pinia/nuxt/runtime",
     "../../../node_modules/@pinia/nuxt/dist/runtime",
     "../../../node_modules/nuxt-vuefire/runtime",
@@ -194,6 +196,7 @@
     "../../../node_modules/nuxt/node_modules",
     "../../../node_modules/@nuxt/image/node_modules",
     "../../../node_modules/@nuxtjs/tailwindcss/node_modules",
+    "../../../node_modules/@storefront-ui/nuxt/node_modules",
     "../../../node_modules/@pinia/nuxt/node_modules",
     "../../../node_modules/nuxt-vuefire/node_modules",
     "../../../../../../../../../../../../AppData/Roaming/npm/node_modules/@nuxt/devtools/node_modules",
@@ -202,6 +205,8 @@
     "../../../node_modules/@nuxt/image/dist/runtime/server",
     "../../../node_modules/@nuxtjs/tailwindcss/runtime/server",
     "../../../node_modules/@nuxtjs/tailwindcss/dist/runtime/server",
+    "../../../node_modules/@storefront-ui/nuxt/runtime/server",
+    "../../../node_modules/@storefront-ui/nuxt/dist/runtime/server",
     "../../../node_modules/@pinia/nuxt/runtime/server",
     "../../../node_modules/@pinia/nuxt/dist/runtime/server",
     "../../../node_modules/nuxt-vuefire/runtime/server",

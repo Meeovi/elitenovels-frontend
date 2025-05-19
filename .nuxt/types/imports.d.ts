@@ -102,6 +102,7 @@ declare global {
   const useAppConfig: typeof import('../../../../node_modules/nuxt/dist/app/config')['useAppConfig']
   const useAsyncData: typeof import('../../../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']
   const useAttrs: typeof import('../../../../node_modules/vue')['useAttrs']
+  const useAttrsRef: typeof import('../../../../node_modules/@storefront-ui/vue')['useAttrsRef']
   const useCollection: typeof import('vuefire')['useCollection']
   const useCookie: typeof import('../../../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']
   const useCssModule: typeof import('../../../../node_modules/vue')['useCssModule']
@@ -110,13 +111,16 @@ declare global {
   const useDatabase: typeof import('vuefire')['useDatabase']
   const useDatabaseList: typeof import('vuefire')['useDatabaseList']
   const useDatabaseObject: typeof import('vuefire')['useDatabaseObject']
+  const useDisclosure: typeof import('../../../../node_modules/@storefront-ui/vue')['useDisclosure']
   const useDocument: typeof import('vuefire')['useDocument']
+  const useDropdown: typeof import('../../../../node_modules/@storefront-ui/vue')['useDropdown']
   const useError: typeof import('../../../../node_modules/nuxt/dist/app/composables/error')['useError']
   const useFetch: typeof import('../../../../node_modules/nuxt/dist/app/composables/fetch')['useFetch']
   const useFirebaseApp: typeof import('../../../../node_modules/nuxt-vuefire/dist/runtime/app/composables')['useFirebaseApp']
   const useFirebaseAuth: typeof import('vuefire')['useFirebaseAuth']
   const useFirebaseStorage: typeof import('vuefire')['useFirebaseStorage']
   const useFirestore: typeof import('vuefire')['useFirestore']
+  const useFocusVisible: typeof import('../../../../node_modules/@storefront-ui/vue')['useFocusVisible']
   const useHead: typeof import('../../../../node_modules/nuxt/dist/app/composables/head')['useHead']
   const useHeadSafe: typeof import('../../../../node_modules/nuxt/dist/app/composables/head')['useHeadSafe']
   const useHydration: typeof import('../../../../node_modules/nuxt/dist/app/composables/hydrate')['useHydration']
@@ -129,7 +133,9 @@ declare global {
   const useModel: typeof import('../../../../node_modules/vue')['useModel']
   const useNuxtApp: typeof import('../../../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']
   const useNuxtData: typeof import('../../../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']
+  const usePagination: typeof import('../../../../node_modules/@storefront-ui/vue')['usePagination']
   const usePinia: typeof import('../../../../node_modules/@pinia/nuxt/dist/runtime/composables')['usePinia']
+  const usePopover: typeof import('../../../../node_modules/@storefront-ui/vue')['usePopover']
   const usePreviewMode: typeof import('../../../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']
   const useRequestEvent: typeof import('../../../../node_modules/nuxt/dist/app/composables/ssr')['useRequestEvent']
   const useRequestFetch: typeof import('../../../../node_modules/nuxt/dist/app/composables/ssr')['useRequestFetch']
@@ -168,18 +174,22 @@ declare global {
   const useScriptVimeoPlayer: typeof import('../../../../node_modules/nuxt/dist/app/composables/script-stubs')['useScriptVimeoPlayer']
   const useScriptXPixel: typeof import('../../../../node_modules/nuxt/dist/app/composables/script-stubs')['useScriptXPixel']
   const useScriptYouTubePlayer: typeof import('../../../../node_modules/nuxt/dist/app/composables/script-stubs')['useScriptYouTubePlayer']
+  const useScrollable: typeof import('../../../../node_modules/@storefront-ui/vue')['useScrollable']
   const useSeoMeta: typeof import('../../../../node_modules/nuxt/dist/app/composables/head')['useSeoMeta']
   const useServerHead: typeof import('../../../../node_modules/nuxt/dist/app/composables/head')['useServerHead']
   const useServerHeadSafe: typeof import('../../../../node_modules/nuxt/dist/app/composables/head')['useServerHeadSafe']
   const useServerSeoMeta: typeof import('../../../../node_modules/nuxt/dist/app/composables/head')['useServerSeoMeta']
   const useShadowRoot: typeof import('../../../../node_modules/vue')['useShadowRoot']
   const useSlots: typeof import('../../../../node_modules/vue')['useSlots']
+  const useSlotsRef: typeof import('../../../../node_modules/@storefront-ui/vue')['useSlotsRef']
   const useState: typeof import('../../../../node_modules/nuxt/dist/app/composables/state')['useState']
   const useStorageFile: typeof import('vuefire')['useStorageFile']
   const useStorageFileMetadata: typeof import('vuefire')['useStorageFileMetadata']
   const useStorageFileUrl: typeof import('vuefire')['useStorageFileUrl']
   const useTemplateRef: typeof import('../../../../node_modules/vue')['useTemplateRef']
+  const useTooltip: typeof import('../../../../node_modules/@storefront-ui/vue')['useTooltip']
   const useTransitionState: typeof import('../../../../node_modules/vue')['useTransitionState']
+  const useTrapFocus: typeof import('../../../../node_modules/@storefront-ui/vue')['useTrapFocus']
   const useUserStore: typeof import('../../stores/user')['useUserStore']
   const watch: typeof import('../../../../node_modules/vue')['watch']
   const watchEffect: typeof import('../../../../node_modules/vue')['watchEffect']
@@ -303,6 +313,7 @@ declare module 'vue' {
     readonly useAppConfig: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/config')['useAppConfig']>
     readonly useAsyncData: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']>
     readonly useAttrs: UnwrapRef<typeof import('../../../../node_modules/vue')['useAttrs']>
+    readonly useAttrsRef: UnwrapRef<typeof import('../../../../node_modules/@storefront-ui/vue')['useAttrsRef']>
     readonly useCollection: UnwrapRef<typeof import('vuefire')['useCollection']>
     readonly useCookie: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']>
     readonly useCssModule: UnwrapRef<typeof import('../../../../node_modules/vue')['useCssModule']>
@@ -311,13 +322,16 @@ declare module 'vue' {
     readonly useDatabase: UnwrapRef<typeof import('vuefire')['useDatabase']>
     readonly useDatabaseList: UnwrapRef<typeof import('vuefire')['useDatabaseList']>
     readonly useDatabaseObject: UnwrapRef<typeof import('vuefire')['useDatabaseObject']>
+    readonly useDisclosure: UnwrapRef<typeof import('../../../../node_modules/@storefront-ui/vue')['useDisclosure']>
     readonly useDocument: UnwrapRef<typeof import('vuefire')['useDocument']>
+    readonly useDropdown: UnwrapRef<typeof import('../../../../node_modules/@storefront-ui/vue')['useDropdown']>
     readonly useError: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/error')['useError']>
     readonly useFetch: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/fetch')['useFetch']>
     readonly useFirebaseApp: UnwrapRef<typeof import('../../../../node_modules/nuxt-vuefire/dist/runtime/app/composables')['useFirebaseApp']>
     readonly useFirebaseAuth: UnwrapRef<typeof import('vuefire')['useFirebaseAuth']>
     readonly useFirebaseStorage: UnwrapRef<typeof import('vuefire')['useFirebaseStorage']>
     readonly useFirestore: UnwrapRef<typeof import('vuefire')['useFirestore']>
+    readonly useFocusVisible: UnwrapRef<typeof import('../../../../node_modules/@storefront-ui/vue')['useFocusVisible']>
     readonly useHead: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/head')['useHead']>
     readonly useHeadSafe: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/head')['useHeadSafe']>
     readonly useHydration: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/hydrate')['useHydration']>
@@ -330,7 +344,9 @@ declare module 'vue' {
     readonly useModel: UnwrapRef<typeof import('../../../../node_modules/vue')['useModel']>
     readonly useNuxtApp: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']>
+    readonly usePagination: UnwrapRef<typeof import('../../../../node_modules/@storefront-ui/vue')['usePagination']>
     readonly usePinia: UnwrapRef<typeof import('../../../../node_modules/@pinia/nuxt/dist/runtime/composables')['usePinia']>
+    readonly usePopover: UnwrapRef<typeof import('../../../../node_modules/@storefront-ui/vue')['usePopover']>
     readonly usePreviewMode: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']>
     readonly useRequestEvent: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/ssr')['useRequestEvent']>
     readonly useRequestFetch: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/ssr')['useRequestFetch']>
@@ -369,18 +385,22 @@ declare module 'vue' {
     readonly useScriptVimeoPlayer: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/script-stubs')['useScriptVimeoPlayer']>
     readonly useScriptXPixel: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/script-stubs')['useScriptXPixel']>
     readonly useScriptYouTubePlayer: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/script-stubs')['useScriptYouTubePlayer']>
+    readonly useScrollable: UnwrapRef<typeof import('../../../../node_modules/@storefront-ui/vue')['useScrollable']>
     readonly useSeoMeta: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/head')['useSeoMeta']>
     readonly useServerHead: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/head')['useServerHead']>
     readonly useServerHeadSafe: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/head')['useServerHeadSafe']>
     readonly useServerSeoMeta: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/head')['useServerSeoMeta']>
     readonly useShadowRoot: UnwrapRef<typeof import('../../../../node_modules/vue')['useShadowRoot']>
     readonly useSlots: UnwrapRef<typeof import('../../../../node_modules/vue')['useSlots']>
+    readonly useSlotsRef: UnwrapRef<typeof import('../../../../node_modules/@storefront-ui/vue')['useSlotsRef']>
     readonly useState: UnwrapRef<typeof import('../../../../node_modules/nuxt/dist/app/composables/state')['useState']>
     readonly useStorageFile: UnwrapRef<typeof import('vuefire')['useStorageFile']>
     readonly useStorageFileMetadata: UnwrapRef<typeof import('vuefire')['useStorageFileMetadata']>
     readonly useStorageFileUrl: UnwrapRef<typeof import('vuefire')['useStorageFileUrl']>
     readonly useTemplateRef: UnwrapRef<typeof import('../../../../node_modules/vue')['useTemplateRef']>
+    readonly useTooltip: UnwrapRef<typeof import('../../../../node_modules/@storefront-ui/vue')['useTooltip']>
     readonly useTransitionState: UnwrapRef<typeof import('../../../../node_modules/vue')['useTransitionState']>
+    readonly useTrapFocus: UnwrapRef<typeof import('../../../../node_modules/@storefront-ui/vue')['useTrapFocus']>
     readonly useUserStore: UnwrapRef<typeof import('../../stores/user')['useUserStore']>
     readonly watch: UnwrapRef<typeof import('../../../../node_modules/vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('../../../../node_modules/vue')['watchEffect']>

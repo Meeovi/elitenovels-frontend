@@ -65,6 +65,7 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/image",
     '@nuxtjs/tailwindcss',
+    '@storefront-ui/nuxt',
     '@pinia/nuxt',
     'nuxt-vuefire',
     (_options, nuxt) => {
