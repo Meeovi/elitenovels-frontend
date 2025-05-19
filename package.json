@@ -35,10 +35,8 @@
       "@fortawesome/vue-fontawesome": "latest",
       "@nuxtjs/algolia": "latest",
       "@nuxtjs/i18n": "latest",
-      "@nuxtjs/seo": "latest",
       "@nuxtjs/tailwindcss": "latest",
       "@pinia/nuxt": "latest",
-      "@storyblok/nuxt": "^6.2.4",
       "@vue/apollo-composable": "latest",
       "algoliasearch": "latest",
       "firebase": "latest",
@@ -62,7 +60,6 @@
       "@types/node": "latest",
       "graphql-tag": "latest",
       "nuxt": "^3.17.3",
-      "prisma": "latest",
       "sass": "latest",
       "typescript": "latest"
    }
