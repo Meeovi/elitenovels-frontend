@@ -1,22 +1,20 @@
 <template>
   <div>
     <a :href="`/characters/${character?.id}`">
-      <v-card :color="isSelected ? 'primary' : 'white'" class="ma-4" height="350" width="200" @click="toggle">
-        <div v-if="character?.image?.filename_disk">
-          <img class="align-end text-white" height="250" :alt="character?.name"
-            :src="`${$directus.url}/assets/${character?.image?.filename_disk}`" cover />
+      <div class="card-wrap item-wrapper">
+        <div class="image-wrap">
+          <NuxtImg v-if="char?.image?.filename_disk" :src="`${$directus.url}assets/${char?.image?.filename_disk}`"
+            :alt="char?.name" />
         </div>
-
-        <div v-else>
-          <img class="align-end text-white" height="300" src="~/assets/images/coming_soon.png" cover />
+        <div class="content-wrap">
+          <h5 class="mbr-section-title card-title mbr-fonts-style mb-0 display-5">
+            <strong>{{ char?.name }}</strong>
+          </h5>
+          <h6 class="mbr-role mbr-fonts-style mb-0 display-4">
+            {{ char?.alias }}
+          </h6>
         </div>
-        <v-card-title class="pt-4">{{ character?.name }}</v-card-title>
-        <div class="d-flex fill-height align-center justify-center">
-          <v-scale-transition>
-            <v-icon v-if="isSelected" color="white" size="48" icon="mdi-close-circle-outline"></v-icon>
-          </v-scale-transition>
-        </div>
-      </v-card>
+      </div>
     </a>
   </div>
 </template>

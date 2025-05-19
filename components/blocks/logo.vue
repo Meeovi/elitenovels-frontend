@@ -4,7 +4,7 @@
             <NuxtLink class="logobrand" to="/">
                 <v-icon start color="orange">
                     <NuxtImg loading="lazy"
-                        :src="`${$directus?.url}/assets/${blocksSiteoverview?.image?.filename_disk}`"
+                        :src="`${$directus?.url}assets/${blocksSiteoverview?.image?.filename_disk}`"
                         :alt="blocksSiteoverview?.name" />
                 </v-icon>
                 <p class="logotext">{{ blocksSiteoverview?.name }}<!--Elite Novels--></p>

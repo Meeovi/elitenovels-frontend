@@ -1,88 +1,59 @@
 <template>
   <div class="categoryPage">
-    <characterbar />
-    <v-row style="background-color: powderblue;">
+    <v-toolbar title="Items" style="background-color: orange;"></v-toolbar>
+    <v-row style="background-color: orange;">
       <v-col cols="12">
-        <h1 class="characterHeader">Items</h1>
+        <h4 style="color: white;">Popular Items</h4>
+        <v-sheet class="mx-auto categorySheet">
+          <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
+            <v-slide-group-item v-for="items in characterItems" :key="items"
+              v-slot="{ isSelected, toggle }">
+              <items :item="items" />
+            </v-slide-group-item>
+          </v-slide-group>
+        </v-sheet>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col cols="12">
-        <v-toolbar title="BROWSE ITEMS ACROSS THE ELITEVERSE" density="comfortable" color="transparent"></v-toolbar>
+        <v-sheet class="mx-auto">
+          <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
+            <v-slide-group-item v-for="items in characterItems" :key="items" v-slot="{ isSelected, toggle, selectedClass }">
+              <items :item="items" />
+            </v-slide-group-item>
+          </v-slide-group>
+        </v-sheet>
       </v-col>
-      <v-col cols="3" v-for="items in data.ItemsItems.items" :key="items">
-        <v-card class="mx-auto" max-width="300">
-          <img class="align-end text-white" height="350" :src="`${items.content.image.filename}`" cover />
 
-          <v-card-subtitle class="pt-4">
-            {{ items.content.affiliates.name }}
-          </v-card-subtitle>
-
-          <v-card-title>{{ items.content.name }}</v-card-title>
-
-          <v-card-actions>
-            <v-btn color="blue" variant="outlined" :href="`/characters/${items.id}`">
-              Explore
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
       <relatedstories />
     </v-row>
     <latestproducts />
   </div>
 </template>
 
-<script>
-  import characterbar from '../../components/Menus/characterbar.vue'
-  import latestproducts from '../../components/Related/relatedproducts.vue'
-  import relatedstories from '../../components/Related/relatedstories.vue'
-
-  export default {
-    components: {
-      characterbar,
-      latestproducts,
-      relatedstories
-    },
-    data: () => ({
-      model: null,
-    }),
-  }
-</script>
-
 <script setup>
-  const query = gql `
-  query {
-  ItemsItems {
-    items {
-      id
-      content {
-        name
-        alias
-        abilities
-        affiliates {
-          name
-        }
-        description
-        image {
-          filename
-        }
-      }
-    }
-  }
-}
-`
+  import { ref } from 'vue'
+  import items from '~/components/Related/facet.vue'
+  const model = ref(null);
+
   const {
-    data
-  } = await useAsyncQuery(query)
+        $directus,
+        $readItems
+    } = useNuxtApp()
 
-  /*const { getItems } = useDirectusItems()
-
-  const teams = await getItems({ collection: "teams", params: { limit: 6 }});
-  const stories = await getItems({ collection: "stories", params: { limit: 6 }});
-  const popularcharacters = await getItems({ collection: "characters", params: { limit: 6, filter: {name: "popular"}} });
-  const characters = await getItems({ collection: "characters", params: { limit: 20 }}); */
+    const {
+        data: characterItems
+    } = await useAsyncData('characterItems', () => {
+        return $directus.request($readItems('options', {
+            fields: ['*', { '*': ['*'] }],
+            filter: {
+              type: {
+                _eq: 'item'
+              }
+            }
+        }))
+    })
 
   useHead({
     title: 'Items',

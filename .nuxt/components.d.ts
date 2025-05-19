@@ -25,9 +25,7 @@ interface _GlobalComponents {
     'RelatedAbility': typeof import("../components/Related/ability.vue")['default']
     'RelatedCharacter': typeof import("../components/Related/character.vue")['default']
     'RelatedDictionary': typeof import("../components/Related/dictionary.vue")['default']
-    'RelatedItem': typeof import("../components/Related/item.vue")['default']
-    'RelatedLevel': typeof import("../components/Related/level.vue")['default']
-    'RelatedPlace': typeof import("../components/Related/place.vue")['default']
+    'RelatedFacet': typeof import("../components/Related/facet.vue")['default']
     'RelatedProductCard': typeof import("../components/Related/productCard.vue")['default']
     'RelatedRelatedabilities': typeof import("../components/Related/relatedabilities.vue")['default']
     'RelatedRelatedcharacters': typeof import("../components/Related/relatedcharacters.vue")['default']
@@ -36,7 +34,6 @@ interface _GlobalComponents {
     'RelatedRelatedproducts': typeof import("../components/Related/relatedproducts.vue")['default']
     'RelatedRelatedstories': typeof import("../components/Related/relatedstories.vue")['default']
     'RelatedStory': typeof import("../components/Related/story.vue")['default']
-    'RelatedType': typeof import("../components/Related/type.vue")['default']
     'RelatedVideo': typeof import("../components/Related/video.vue")['default']
     'SearchFilters': typeof import("../components/Search/filters.vue")['default']
     'SearchResultsBooksSearch': typeof import("../components/Search/results/booksSearch.vue")['default']
@@ -60,15 +57,14 @@ interface _GlobalComponents {
     'MediaAudioPlayer': typeof import("../components/media/audio/audioPlayer.vue")['default']
     'MediaLivePlayer': typeof import("../components/media/live/livePlayer.vue")['default']
     'MediaVideoVideojs': typeof import("../components/media/video/videojs.vue")['default']
-    'PagesAliens': typeof import("../components/pages/aliens.vue")['default']
-    'PagesAngels': typeof import("../components/pages/angels.vue")['default']
-    'PagesDemons': typeof import("../components/pages/demons.vue")['default']
-    'PagesHumans': typeof import("../components/pages/humans.vue")['default']
+    'PagesAbilities': typeof import("../components/pages/abilities.vue")['default']
+    'PagesDictionary': typeof import("../components/pages/dictionary.vue")['default']
     'PagesItems': typeof import("../components/pages/items.vue")['default']
     'PagesLevels': typeof import("../components/pages/levels.vue")['default']
-    'PagesMythicalcreatures': typeof import("../components/pages/mythicalcreatures.vue")['default']
-    'PagesOthermyths': typeof import("../components/pages/othermyths.vue")['default']
+    'PagesMonsters': typeof import("../components/pages/monsters/index.vue")['default']
+    'PagesMythology': typeof import("../components/pages/mythology/index.vue")['default']
     'PagesPlaces': typeof import("../components/pages/places.vue")['default']
+    'PagesStories': typeof import("../components/pages/stories.vue")['default']
     'PagesTypes': typeof import("../components/pages/types.vue")['default']
     'PartialsAddtolist': typeof import("../components/partials/addtolist.vue")['default']
     'PartialsComments': typeof import("../components/partials/comments.vue")['default']
@@ -77,10 +73,6 @@ interface _GlobalComponents {
     'PartialsListBtn': typeof import("../components/partials/listBtn.vue")['default']
     'PartialsShare': typeof import("../components/partials/share.vue")['default']
     'PartialsShareDialog': typeof import("../components/partials/shareDialog.vue")['default']
-    'Feature': typeof import("../storyblok/Feature.vue")['default']
-    'Grid': typeof import("../storyblok/Grid.vue")['default']
-    'Page': typeof import("../storyblok/Page.vue")['default']
-    'Teaser': typeof import("../storyblok/Teaser.vue")['default']
     'NuxtWelcome': typeof import("../../../node_modules/nuxt/dist/app/components/welcome.vue")['default']
     'NuxtLayout': typeof import("../../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
     'NuxtErrorBoundary': typeof import("../../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -93,30 +85,6 @@ interface _GlobalComponents {
     'NuxtRouteAnnouncer': typeof import("../../../node_modules/nuxt/dist/app/components/nuxt-route-announcer")['default']
     'NuxtImg': typeof import("../../../node_modules/@nuxt/image/dist/runtime/components/NuxtImg.vue")['default']
     'NuxtPicture': typeof import("../../../node_modules/@nuxt/image/dist/runtime/components/NuxtPicture.vue")['default']
-    'SchemaOrgDebug': typeof import("@unhead/schema-org/vue")['SchemaOrgDebug']
-    'SchemaOrgArticle': typeof import("@unhead/schema-org/vue")['SchemaOrgArticle']
-    'SchemaOrgBreadcrumb': typeof import("@unhead/schema-org/vue")['SchemaOrgBreadcrumb']
-    'SchemaOrgComment': typeof import("@unhead/schema-org/vue")['SchemaOrgComment']
-    'SchemaOrgEvent': typeof import("@unhead/schema-org/vue")['SchemaOrgEvent']
-    'SchemaOrgFoodEstablishment': typeof import("@unhead/schema-org/vue")['SchemaOrgFoodEstablishment']
-    'SchemaOrgHowTo': typeof import("@unhead/schema-org/vue")['SchemaOrgHowTo']
-    'SchemaOrgImage': typeof import("@unhead/schema-org/vue")['SchemaOrgImage']
-    'SchemaOrgJobPosting': typeof import("@unhead/schema-org/vue")['SchemaOrgJobPosting']
-    'SchemaOrgLocalBusiness': typeof import("@unhead/schema-org/vue")['SchemaOrgLocalBusiness']
-    'SchemaOrgOrganization': typeof import("@unhead/schema-org/vue")['SchemaOrgOrganization']
-    'SchemaOrgPerson': typeof import("@unhead/schema-org/vue")['SchemaOrgPerson']
-    'SchemaOrgProduct': typeof import("@unhead/schema-org/vue")['SchemaOrgProduct']
-    'SchemaOrgQuestion': typeof import("@unhead/schema-org/vue")['SchemaOrgQuestion']
-    'SchemaOrgRecipe': typeof import("@unhead/schema-org/vue")['SchemaOrgRecipe']
-    'SchemaOrgReview': typeof import("@unhead/schema-org/vue")['SchemaOrgReview']
-    'SchemaOrgVideo': typeof import("@unhead/schema-org/vue")['SchemaOrgVideo']
-    'SchemaOrgWebPage': typeof import("@unhead/schema-org/vue")['SchemaOrgWebPage']
-    'SchemaOrgWebSite': typeof import("@unhead/schema-org/vue")['SchemaOrgWebSite']
-    'SchemaOrgMovie': typeof import("@unhead/schema-org/vue")['SchemaOrgMovie']
-    'SchemaOrgCourse': typeof import("@unhead/schema-org/vue")['SchemaOrgCourse']
-    'SchemaOrgItemList': typeof import("@unhead/schema-org/vue")['SchemaOrgItemList']
-    'SchemaOrgBook': typeof import("@unhead/schema-org/vue")['SchemaOrgBook']
-    'SchemaOrgSoftwareApp': typeof import("@unhead/schema-org/vue")['SchemaOrgSoftwareApp']
     'NuxtPage': typeof import("../../../node_modules/nuxt/dist/pages/runtime/page")['default']
     'NoScript': typeof import("../../../node_modules/nuxt/dist/head/runtime/components")['NoScript']
     'Link': typeof import("../../../node_modules/nuxt/dist/head/runtime/components")['Link']
@@ -142,9 +110,7 @@ interface _GlobalComponents {
     'LazyRelatedAbility': LazyComponent<typeof import("../components/Related/ability.vue")['default']>
     'LazyRelatedCharacter': LazyComponent<typeof import("../components/Related/character.vue")['default']>
     'LazyRelatedDictionary': LazyComponent<typeof import("../components/Related/dictionary.vue")['default']>
-    'LazyRelatedItem': LazyComponent<typeof import("../components/Related/item.vue")['default']>
-    'LazyRelatedLevel': LazyComponent<typeof import("../components/Related/level.vue")['default']>
-    'LazyRelatedPlace': LazyComponent<typeof import("../components/Related/place.vue")['default']>
+    'LazyRelatedFacet': LazyComponent<typeof import("../components/Related/facet.vue")['default']>
     'LazyRelatedProductCard': LazyComponent<typeof import("../components/Related/productCard.vue")['default']>
     'LazyRelatedRelatedabilities': LazyComponent<typeof import("../components/Related/relatedabilities.vue")['default']>
     'LazyRelatedRelatedcharacters': LazyComponent<typeof import("../components/Related/relatedcharacters.vue")['default']>
@@ -153,7 +119,6 @@ interface _GlobalComponents {
     'LazyRelatedRelatedproducts': LazyComponent<typeof import("../components/Related/relatedproducts.vue")['default']>
     'LazyRelatedRelatedstories': LazyComponent<typeof import("../components/Related/relatedstories.vue")['default']>
     'LazyRelatedStory': LazyComponent<typeof import("../components/Related/story.vue")['default']>
-    'LazyRelatedType': LazyComponent<typeof import("../components/Related/type.vue")['default']>
     'LazyRelatedVideo': LazyComponent<typeof import("../components/Related/video.vue")['default']>
     'LazySearchFilters': LazyComponent<typeof import("../components/Search/filters.vue")['default']>
     'LazySearchResultsBooksSearch': LazyComponent<typeof import("../components/Search/results/booksSearch.vue")['default']>
@@ -177,15 +142,14 @@ interface _GlobalComponents {
     'LazyMediaAudioPlayer': LazyComponent<typeof import("../components/media/audio/audioPlayer.vue")['default']>
     'LazyMediaLivePlayer': LazyComponent<typeof import("../components/media/live/livePlayer.vue")['default']>
     'LazyMediaVideoVideojs': LazyComponent<typeof import("../components/media/video/videojs.vue")['default']>
-    'LazyPagesAliens': LazyComponent<typeof import("../components/pages/aliens.vue")['default']>
-    'LazyPagesAngels': LazyComponent<typeof import("../components/pages/angels.vue")['default']>
-    'LazyPagesDemons': LazyComponent<typeof import("../components/pages/demons.vue")['default']>
-    'LazyPagesHumans': LazyComponent<typeof import("../components/pages/humans.vue")['default']>
+    'LazyPagesAbilities': LazyComponent<typeof import("../components/pages/abilities.vue")['default']>
+    'LazyPagesDictionary': LazyComponent<typeof import("../components/pages/dictionary.vue")['default']>
     'LazyPagesItems': LazyComponent<typeof import("../components/pages/items.vue")['default']>
     'LazyPagesLevels': LazyComponent<typeof import("../components/pages/levels.vue")['default']>
-    'LazyPagesMythicalcreatures': LazyComponent<typeof import("../components/pages/mythicalcreatures.vue")['default']>
-    'LazyPagesOthermyths': LazyComponent<typeof import("../components/pages/othermyths.vue")['default']>
+    'LazyPagesMonsters': LazyComponent<typeof import("../components/pages/monsters/index.vue")['default']>
+    'LazyPagesMythology': LazyComponent<typeof import("../components/pages/mythology/index.vue")['default']>
     'LazyPagesPlaces': LazyComponent<typeof import("../components/pages/places.vue")['default']>
+    'LazyPagesStories': LazyComponent<typeof import("../components/pages/stories.vue")['default']>
     'LazyPagesTypes': LazyComponent<typeof import("../components/pages/types.vue")['default']>
     'LazyPartialsAddtolist': LazyComponent<typeof import("../components/partials/addtolist.vue")['default']>
     'LazyPartialsComments': LazyComponent<typeof import("../components/partials/comments.vue")['default']>
@@ -194,10 +158,6 @@ interface _GlobalComponents {
     'LazyPartialsListBtn': LazyComponent<typeof import("../components/partials/listBtn.vue")['default']>
     'LazyPartialsShare': LazyComponent<typeof import("../components/partials/share.vue")['default']>
     'LazyPartialsShareDialog': LazyComponent<typeof import("../components/partials/shareDialog.vue")['default']>
-    'LazyFeature': LazyComponent<typeof import("../storyblok/Feature.vue")['default']>
-    'LazyGrid': LazyComponent<typeof import("../storyblok/Grid.vue")['default']>
-    'LazyPage': LazyComponent<typeof import("../storyblok/Page.vue")['default']>
-    'LazyTeaser': LazyComponent<typeof import("../storyblok/Teaser.vue")['default']>
     'LazyNuxtWelcome': LazyComponent<typeof import("../../../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
     'LazyNuxtLayout': LazyComponent<typeof import("../../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
     'LazyNuxtErrorBoundary': LazyComponent<typeof import("../../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>
@@ -210,30 +170,6 @@ interface _GlobalComponents {
     'LazyNuxtRouteAnnouncer': LazyComponent<typeof import("../../../node_modules/nuxt/dist/app/components/nuxt-route-announcer")['default']>
     'LazyNuxtImg': LazyComponent<typeof import("../../../node_modules/@nuxt/image/dist/runtime/components/NuxtImg.vue")['default']>
     'LazyNuxtPicture': LazyComponent<typeof import("../../../node_modules/@nuxt/image/dist/runtime/components/NuxtPicture.vue")['default']>
-    'LazySchemaOrgDebug': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgDebug']>
-    'LazySchemaOrgArticle': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgArticle']>
-    'LazySchemaOrgBreadcrumb': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgBreadcrumb']>
-    'LazySchemaOrgComment': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgComment']>
-    'LazySchemaOrgEvent': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgEvent']>
-    'LazySchemaOrgFoodEstablishment': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgFoodEstablishment']>
-    'LazySchemaOrgHowTo': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgHowTo']>
-    'LazySchemaOrgImage': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgImage']>
-    'LazySchemaOrgJobPosting': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgJobPosting']>
-    'LazySchemaOrgLocalBusiness': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgLocalBusiness']>
-    'LazySchemaOrgOrganization': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgOrganization']>
-    'LazySchemaOrgPerson': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgPerson']>
-    'LazySchemaOrgProduct': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgProduct']>
-    'LazySchemaOrgQuestion': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgQuestion']>
-    'LazySchemaOrgRecipe': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgRecipe']>
-    'LazySchemaOrgReview': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgReview']>
-    'LazySchemaOrgVideo': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgVideo']>
-    'LazySchemaOrgWebPage': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgWebPage']>
-    'LazySchemaOrgWebSite': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgWebSite']>
-    'LazySchemaOrgMovie': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgMovie']>
-    'LazySchemaOrgCourse': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgCourse']>
-    'LazySchemaOrgItemList': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgItemList']>
-    'LazySchemaOrgBook': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgBook']>
-    'LazySchemaOrgSoftwareApp': LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgSoftwareApp']>
     'LazyNuxtPage': LazyComponent<typeof import("../../../node_modules/nuxt/dist/pages/runtime/page")['default']>
     'LazyNoScript': LazyComponent<typeof import("../../../node_modules/nuxt/dist/head/runtime/components")['NoScript']>
     'LazyLink': LazyComponent<typeof import("../../../node_modules/nuxt/dist/head/runtime/components")['Link']>
@@ -265,9 +201,7 @@ export const MenusStorybar: typeof import("../components/Menus/storybar.vue")['d
 export const RelatedAbility: typeof import("../components/Related/ability.vue")['default']
 export const RelatedCharacter: typeof import("../components/Related/character.vue")['default']
 export const RelatedDictionary: typeof import("../components/Related/dictionary.vue")['default']
-export const RelatedItem: typeof import("../components/Related/item.vue")['default']
-export const RelatedLevel: typeof import("../components/Related/level.vue")['default']
-export const RelatedPlace: typeof import("../components/Related/place.vue")['default']
+export const RelatedFacet: typeof import("../components/Related/facet.vue")['default']
 export const RelatedProductCard: typeof import("../components/Related/productCard.vue")['default']
 export const RelatedRelatedabilities: typeof import("../components/Related/relatedabilities.vue")['default']
 export const RelatedRelatedcharacters: typeof import("../components/Related/relatedcharacters.vue")['default']
@@ -276,7 +210,6 @@ export const RelatedRelatedposts: typeof import("../components/Related/relatedpo
 export const RelatedRelatedproducts: typeof import("../components/Related/relatedproducts.vue")['default']
 export const RelatedRelatedstories: typeof import("../components/Related/relatedstories.vue")['default']
 export const RelatedStory: typeof import("../components/Related/story.vue")['default']
-export const RelatedType: typeof import("../components/Related/type.vue")['default']
 export const RelatedVideo: typeof import("../components/Related/video.vue")['default']
 export const SearchFilters: typeof import("../components/Search/filters.vue")['default']
 export const SearchResultsBooksSearch: typeof import("../components/Search/results/booksSearch.vue")['default']
@@ -300,15 +233,14 @@ export const HomePageVideoSection: typeof import("../components/homePage/videoSe
 export const MediaAudioPlayer: typeof import("../components/media/audio/audioPlayer.vue")['default']
 export const MediaLivePlayer: typeof import("../components/media/live/livePlayer.vue")['default']
 export const MediaVideoVideojs: typeof import("../components/media/video/videojs.vue")['default']
-export const PagesAliens: typeof import("../components/pages/aliens.vue")['default']
-export const PagesAngels: typeof import("../components/pages/angels.vue")['default']
-export const PagesDemons: typeof import("../components/pages/demons.vue")['default']
-export const PagesHumans: typeof import("../components/pages/humans.vue")['default']
+export const PagesAbilities: typeof import("../components/pages/abilities.vue")['default']
+export const PagesDictionary: typeof import("../components/pages/dictionary.vue")['default']
 export const PagesItems: typeof import("../components/pages/items.vue")['default']
 export const PagesLevels: typeof import("../components/pages/levels.vue")['default']
-export const PagesMythicalcreatures: typeof import("../components/pages/mythicalcreatures.vue")['default']
-export const PagesOthermyths: typeof import("../components/pages/othermyths.vue")['default']
+export const PagesMonsters: typeof import("../components/pages/monsters/index.vue")['default']
+export const PagesMythology: typeof import("../components/pages/mythology/index.vue")['default']
 export const PagesPlaces: typeof import("../components/pages/places.vue")['default']
+export const PagesStories: typeof import("../components/pages/stories.vue")['default']
 export const PagesTypes: typeof import("../components/pages/types.vue")['default']
 export const PartialsAddtolist: typeof import("../components/partials/addtolist.vue")['default']
 export const PartialsComments: typeof import("../components/partials/comments.vue")['default']
@@ -317,10 +249,6 @@ export const PartialsFollowButton: typeof import("../components/partials/followB
 export const PartialsListBtn: typeof import("../components/partials/listBtn.vue")['default']
 export const PartialsShare: typeof import("../components/partials/share.vue")['default']
 export const PartialsShareDialog: typeof import("../components/partials/shareDialog.vue")['default']
-export const Feature: typeof import("../storyblok/Feature.vue")['default']
-export const Grid: typeof import("../storyblok/Grid.vue")['default']
-export const Page: typeof import("../storyblok/Page.vue")['default']
-export const Teaser: typeof import("../storyblok/Teaser.vue")['default']
 export const NuxtWelcome: typeof import("../../../node_modules/nuxt/dist/app/components/welcome.vue")['default']
 export const NuxtLayout: typeof import("../../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
 export const NuxtErrorBoundary: typeof import("../../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']
@@ -333,30 +261,6 @@ export const NuxtTime: typeof import("../../../node_modules/nuxt/dist/app/compon
 export const NuxtRouteAnnouncer: typeof import("../../../node_modules/nuxt/dist/app/components/nuxt-route-announcer")['default']
 export const NuxtImg: typeof import("../../../node_modules/@nuxt/image/dist/runtime/components/NuxtImg.vue")['default']
 export const NuxtPicture: typeof import("../../../node_modules/@nuxt/image/dist/runtime/components/NuxtPicture.vue")['default']
-export const SchemaOrgDebug: typeof import("@unhead/schema-org/vue")['SchemaOrgDebug']
-export const SchemaOrgArticle: typeof import("@unhead/schema-org/vue")['SchemaOrgArticle']
-export const SchemaOrgBreadcrumb: typeof import("@unhead/schema-org/vue")['SchemaOrgBreadcrumb']
-export const SchemaOrgComment: typeof import("@unhead/schema-org/vue")['SchemaOrgComment']
-export const SchemaOrgEvent: typeof import("@unhead/schema-org/vue")['SchemaOrgEvent']
-export const SchemaOrgFoodEstablishment: typeof import("@unhead/schema-org/vue")['SchemaOrgFoodEstablishment']
-export const SchemaOrgHowTo: typeof import("@unhead/schema-org/vue")['SchemaOrgHowTo']
-export const SchemaOrgImage: typeof import("@unhead/schema-org/vue")['SchemaOrgImage']
-export const SchemaOrgJobPosting: typeof import("@unhead/schema-org/vue")['SchemaOrgJobPosting']
-export const SchemaOrgLocalBusiness: typeof import("@unhead/schema-org/vue")['SchemaOrgLocalBusiness']
-export const SchemaOrgOrganization: typeof import("@unhead/schema-org/vue")['SchemaOrgOrganization']
-export const SchemaOrgPerson: typeof import("@unhead/schema-org/vue")['SchemaOrgPerson']
-export const SchemaOrgProduct: typeof import("@unhead/schema-org/vue")['SchemaOrgProduct']
-export const SchemaOrgQuestion: typeof import("@unhead/schema-org/vue")['SchemaOrgQuestion']
-export const SchemaOrgRecipe: typeof import("@unhead/schema-org/vue")['SchemaOrgRecipe']
-export const SchemaOrgReview: typeof import("@unhead/schema-org/vue")['SchemaOrgReview']
-export const SchemaOrgVideo: typeof import("@unhead/schema-org/vue")['SchemaOrgVideo']
-export const SchemaOrgWebPage: typeof import("@unhead/schema-org/vue")['SchemaOrgWebPage']
-export const SchemaOrgWebSite: typeof import("@unhead/schema-org/vue")['SchemaOrgWebSite']
-export const SchemaOrgMovie: typeof import("@unhead/schema-org/vue")['SchemaOrgMovie']
-export const SchemaOrgCourse: typeof import("@unhead/schema-org/vue")['SchemaOrgCourse']
-export const SchemaOrgItemList: typeof import("@unhead/schema-org/vue")['SchemaOrgItemList']
-export const SchemaOrgBook: typeof import("@unhead/schema-org/vue")['SchemaOrgBook']
-export const SchemaOrgSoftwareApp: typeof import("@unhead/schema-org/vue")['SchemaOrgSoftwareApp']
 export const NuxtPage: typeof import("../../../node_modules/nuxt/dist/pages/runtime/page")['default']
 export const NoScript: typeof import("../../../node_modules/nuxt/dist/head/runtime/components")['NoScript']
 export const Link: typeof import("../../../node_modules/nuxt/dist/head/runtime/components")['Link']
@@ -382,9 +286,7 @@ export const LazyMenusStorybar: LazyComponent<typeof import("../components/Menus
 export const LazyRelatedAbility: LazyComponent<typeof import("../components/Related/ability.vue")['default']>
 export const LazyRelatedCharacter: LazyComponent<typeof import("../components/Related/character.vue")['default']>
 export const LazyRelatedDictionary: LazyComponent<typeof import("../components/Related/dictionary.vue")['default']>
-export const LazyRelatedItem: LazyComponent<typeof import("../components/Related/item.vue")['default']>
-export const LazyRelatedLevel: LazyComponent<typeof import("../components/Related/level.vue")['default']>
-export const LazyRelatedPlace: LazyComponent<typeof import("../components/Related/place.vue")['default']>
+export const LazyRelatedFacet: LazyComponent<typeof import("../components/Related/facet.vue")['default']>
 export const LazyRelatedProductCard: LazyComponent<typeof import("../components/Related/productCard.vue")['default']>
 export const LazyRelatedRelatedabilities: LazyComponent<typeof import("../components/Related/relatedabilities.vue")['default']>
 export const LazyRelatedRelatedcharacters: LazyComponent<typeof import("../components/Related/relatedcharacters.vue")['default']>
@@ -393,7 +295,6 @@ export const LazyRelatedRelatedposts: LazyComponent<typeof import("../components
 export const LazyRelatedRelatedproducts: LazyComponent<typeof import("../components/Related/relatedproducts.vue")['default']>
 export const LazyRelatedRelatedstories: LazyComponent<typeof import("../components/Related/relatedstories.vue")['default']>
 export const LazyRelatedStory: LazyComponent<typeof import("../components/Related/story.vue")['default']>
-export const LazyRelatedType: LazyComponent<typeof import("../components/Related/type.vue")['default']>
 export const LazyRelatedVideo: LazyComponent<typeof import("../components/Related/video.vue")['default']>
 export const LazySearchFilters: LazyComponent<typeof import("../components/Search/filters.vue")['default']>
 export const LazySearchResultsBooksSearch: LazyComponent<typeof import("../components/Search/results/booksSearch.vue")['default']>
@@ -417,15 +318,14 @@ export const LazyHomePageVideoSection: LazyComponent<typeof import("../component
 export const LazyMediaAudioPlayer: LazyComponent<typeof import("../components/media/audio/audioPlayer.vue")['default']>
 export const LazyMediaLivePlayer: LazyComponent<typeof import("../components/media/live/livePlayer.vue")['default']>
 export const LazyMediaVideoVideojs: LazyComponent<typeof import("../components/media/video/videojs.vue")['default']>
-export const LazyPagesAliens: LazyComponent<typeof import("../components/pages/aliens.vue")['default']>
-export const LazyPagesAngels: LazyComponent<typeof import("../components/pages/angels.vue")['default']>
-export const LazyPagesDemons: LazyComponent<typeof import("../components/pages/demons.vue")['default']>
-export const LazyPagesHumans: LazyComponent<typeof import("../components/pages/humans.vue")['default']>
+export const LazyPagesAbilities: LazyComponent<typeof import("../components/pages/abilities.vue")['default']>
+export const LazyPagesDictionary: LazyComponent<typeof import("../components/pages/dictionary.vue")['default']>
 export const LazyPagesItems: LazyComponent<typeof import("../components/pages/items.vue")['default']>
 export const LazyPagesLevels: LazyComponent<typeof import("../components/pages/levels.vue")['default']>
-export const LazyPagesMythicalcreatures: LazyComponent<typeof import("../components/pages/mythicalcreatures.vue")['default']>
-export const LazyPagesOthermyths: LazyComponent<typeof import("../components/pages/othermyths.vue")['default']>
+export const LazyPagesMonsters: LazyComponent<typeof import("../components/pages/monsters/index.vue")['default']>
+export const LazyPagesMythology: LazyComponent<typeof import("../components/pages/mythology/index.vue")['default']>
 export const LazyPagesPlaces: LazyComponent<typeof import("../components/pages/places.vue")['default']>
+export const LazyPagesStories: LazyComponent<typeof import("../components/pages/stories.vue")['default']>
 export const LazyPagesTypes: LazyComponent<typeof import("../components/pages/types.vue")['default']>
 export const LazyPartialsAddtolist: LazyComponent<typeof import("../components/partials/addtolist.vue")['default']>
 export const LazyPartialsComments: LazyComponent<typeof import("../components/partials/comments.vue")['default']>
@@ -434,10 +334,6 @@ export const LazyPartialsFollowButton: LazyComponent<typeof import("../component
 export const LazyPartialsListBtn: LazyComponent<typeof import("../components/partials/listBtn.vue")['default']>
 export const LazyPartialsShare: LazyComponent<typeof import("../components/partials/share.vue")['default']>
 export const LazyPartialsShareDialog: LazyComponent<typeof import("../components/partials/shareDialog.vue")['default']>
-export const LazyFeature: LazyComponent<typeof import("../storyblok/Feature.vue")['default']>
-export const LazyGrid: LazyComponent<typeof import("../storyblok/Grid.vue")['default']>
-export const LazyPage: LazyComponent<typeof import("../storyblok/Page.vue")['default']>
-export const LazyTeaser: LazyComponent<typeof import("../storyblok/Teaser.vue")['default']>
 export const LazyNuxtWelcome: LazyComponent<typeof import("../../../node_modules/nuxt/dist/app/components/welcome.vue")['default']>
 export const LazyNuxtLayout: LazyComponent<typeof import("../../../node_modules/nuxt/dist/app/components/nuxt-layout")['default']>
 export const LazyNuxtErrorBoundary: LazyComponent<typeof import("../../../node_modules/nuxt/dist/app/components/nuxt-error-boundary.vue")['default']>
@@ -450,30 +346,6 @@ export const LazyNuxtTime: LazyComponent<typeof import("../../../node_modules/nu
 export const LazyNuxtRouteAnnouncer: LazyComponent<typeof import("../../../node_modules/nuxt/dist/app/components/nuxt-route-announcer")['default']>
 export const LazyNuxtImg: LazyComponent<typeof import("../../../node_modules/@nuxt/image/dist/runtime/components/NuxtImg.vue")['default']>
 export const LazyNuxtPicture: LazyComponent<typeof import("../../../node_modules/@nuxt/image/dist/runtime/components/NuxtPicture.vue")['default']>
-export const LazySchemaOrgDebug: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgDebug']>
-export const LazySchemaOrgArticle: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgArticle']>
-export const LazySchemaOrgBreadcrumb: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgBreadcrumb']>
-export const LazySchemaOrgComment: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgComment']>
-export const LazySchemaOrgEvent: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgEvent']>
-export const LazySchemaOrgFoodEstablishment: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgFoodEstablishment']>
-export const LazySchemaOrgHowTo: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgHowTo']>
-export const LazySchemaOrgImage: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgImage']>
-export const LazySchemaOrgJobPosting: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgJobPosting']>
-export const LazySchemaOrgLocalBusiness: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgLocalBusiness']>
-export const LazySchemaOrgOrganization: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgOrganization']>
-export const LazySchemaOrgPerson: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgPerson']>
-export const LazySchemaOrgProduct: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgProduct']>
-export const LazySchemaOrgQuestion: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgQuestion']>
-export const LazySchemaOrgRecipe: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgRecipe']>
-export const LazySchemaOrgReview: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgReview']>
-export const LazySchemaOrgVideo: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgVideo']>
-export const LazySchemaOrgWebPage: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgWebPage']>
-export const LazySchemaOrgWebSite: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgWebSite']>
-export const LazySchemaOrgMovie: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgMovie']>
-export const LazySchemaOrgCourse: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgCourse']>
-export const LazySchemaOrgItemList: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgItemList']>
-export const LazySchemaOrgBook: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgBook']>
-export const LazySchemaOrgSoftwareApp: LazyComponent<typeof import("@unhead/schema-org/vue")['SchemaOrgSoftwareApp']>
 export const LazyNuxtPage: LazyComponent<typeof import("../../../node_modules/nuxt/dist/pages/runtime/page")['default']>
 export const LazyNoScript: LazyComponent<typeof import("../../../node_modules/nuxt/dist/head/runtime/components")['NoScript']>
 export const LazyLink: LazyComponent<typeof import("../../../node_modules/nuxt/dist/head/runtime/components")['Link']>

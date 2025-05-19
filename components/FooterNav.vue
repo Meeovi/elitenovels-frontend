@@ -1,44 +1,56 @@
 <template>
-    <v-footer border>
-        <v-row justify="center" no-gutters>
-            <v-col cols="4" class="md-pb">
-                <NuxtImg :href="`${$directus.url}/assets/${footerBlock?.image?.filename_disk}`" />
-            </v-col>
-            <v-col cols="4" class="md-pb">
-                <h2 class="mbr-section-title pb-2 mbr-fonts-style display-7">
-                    <strong>{{ aboutNav?.name }}</strong>
-                </h2>
-                <div v-for="child in aboutNav?.menus" :key="child.id">
-                    <h3 class="mbr-section-subtitle mbr-fonts-style mbr-lighter display-4">
-                        <NuxtLink :to="`${child.url}`">{{ child?.name }}</NuxtLink>
-                    </h3>
-                </div>
-            </v-col>
-            <v-col cols="4" class="md-pb">
-                <h2 class="mbr-section-title pb-2 mbr-fonts-style display-7">
-                    <strong>{{ personalNav?.name }}</strong>
-                </h2>
-                <div v-for="child in personalNav?.menus" :key="child.id">
-                    <h3 class="mbr-section-subtitle mbr-fonts-style mbr-lighter display-4">
-                        <NuxtLink :to="`${child.url}`">{{ child?.name }}</NuxtLink>
-                    </h3>
-                </div>
-            </v-col>
-            <v-col class="text-center mt-4" v-for="(menu, index) in legalNav?.menus" :key="index">
-                <div>
-                    <NuxtLink :to="`${menu?.url}`">
-                        {{ menu?.name }}
-                    </NuxtLink>
-                </div>
-            </v-col>
-            <v-col class="text-center mt-4" cols="12">
-                {{ new Date().getFullYear() }} — <strong>
-                    <NuxtLink :to="copyrightNav?.url">{{ copyrightNav?.description }}</NuxtLink>
-                </strong>
-            </v-col>
+    <div>
+        <section data-bs-version="5.1" class="footer1 growthm5 cid-uLE9Kol17N" once="footers" id="afooter1-1j">
+            <div class="container">
+                <div class="row">
+                    <div><v-avatar class="circle-bg" size="480">
+                            <NuxtImg :src="`${$directus.url}assets/${footerBlock?.image?.filename_disk}`" /></v-avatar></div>
+                    <div class="footer-top-container">
+                        <div class="col-link">
+                            <ul class="list mbr-fonts-style display-7"
+                                v-for="child in aboutNav?.menus && aboutNav?.menus" :key="child.id">
+                                <li class="mbr-text item-wrap">
+                                    <NuxtLink class="text-white" :to="`${child.url}`">{{ child?.name }}</NuxtLink>
+                                </li>
+                            </ul>
+                        </div>
 
-        </v-row>
-    </v-footer>
+                        <div class="col-link">
+                            <ul class="list mbr-fonts-style display-7"
+                                v-for="child in personalNav?.menus && personalNav?.menus" :key="child.id">
+                                <li class="mbr-text item-wrap">
+                                    <NuxtLink class="text-white" :to="`${child.url}`">{{ child?.name }}</NuxtLink>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="footer-text-wrap">
+                        <h5 class="mbr-section-subtitle mbr-fonts-style display-1">
+                            Step into the Eliteverse</h5>
+                    </div>
+
+                    <v-col class="text-center mt-4" v-for="(menu, index) in legalNav?.menus" :key="index">
+                        <div>
+                            <NuxtLink :to="`${menu?.url}`">
+                                {{ menu?.name }}
+                            </NuxtLink>
+                        </div>
+                    </v-col>
+
+                    <div class="footer-bottom-container">
+                        <div class="col-copyright">
+                            <p class="mbr-text mb-0 mbr-fonts-style copyright align-center display-7">
+                                {{ copyrightNav?.name }} {{ new Date().getFullYear() }} — <strong>
+                                    <NuxtLink :to="copyrightNav?.url">{{ copyrightNav?.description }}</NuxtLink>
+                                </strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </template>
 
 <script setup>

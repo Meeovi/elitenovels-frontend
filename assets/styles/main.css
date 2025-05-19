@@ -13,7 +13,10 @@ body {
 
 .logobrand {
     text-decoration: none;
-    display: inline-block;
+}
+
+.logotext {
+  display: inline-block;  
 }
 
 .ais-InstantSearch {
@@ -111,6 +114,10 @@ body {
     text-align: center;
     margin-top: 5%;
     font-size: 25px;
+}
+
+.pageDescription {
+    padding: 20px;
 }
 
 /******************** Sidebar CSS *************/

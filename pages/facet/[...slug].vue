@@ -148,7 +148,7 @@
     useRouter
   } from 'vue-router'
   import comments from '~/components/partials/comments.vue'
-  import item from '~/components/Related/item.vue'
+  import item from '~/components/Related/facet.vue'
   import place from '~/components/Related/place.vue'
   import story from '~/components/Related/story.vue'
   import relatedcharacters from '~/components/Related/relatedcharacters.vue'

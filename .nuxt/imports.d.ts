@@ -1,4 +1,3 @@
-export { defineAddress, defineAggregateOffer, defineAggregateRating, defineArticle, defineBook, defineBookEdition, defineBreadcrumb, defineComment, defineCourse, defineEvent, defineFoodEstablishment, defineHowTo, defineHowToStep, defineImage, defineItemList, defineJobPosting, defineListItem, defineLocalBusiness, defineMovie, defineOffer, defineOpeningHours, defineOrganization, definePerson, definePlace, defineProduct, defineQuestion, defineReadAction, defineRecipe, defineReview, defineSearchAction, defineSoftwareApp, defineVideo, defineVirtualLocation, defineWebPage, defineWebSite } from '@unhead/schema-org/vue';
 export { useScriptTriggerConsent, useScriptEventPage, useScriptTriggerElement, useScript, useScriptGoogleAnalytics, useScriptPlausibleAnalytics, useScriptCrisp, useScriptClarity, useScriptCloudflareWebAnalytics, useScriptFathomAnalytics, useScriptMatomoAnalytics, useScriptGoogleTagManager, useScriptGoogleAdsense, useScriptSegment, useScriptMetaPixel, useScriptXPixel, useScriptIntercom, useScriptHotjar, useScriptStripe, useScriptLemonSqueezy, useScriptVimeoPlayer, useScriptYouTubePlayer, useScriptGoogleMaps, useScriptNpm, useScriptUmamiAnalytics, useScriptSnapchatPixel } from '#app/composables/script-stubs';
 export { isVue2, isVue3 } from 'vue-demi';
 export { defineNuxtLink } from '#app/components/nuxt-link';
@@ -31,19 +30,9 @@ export { requestIdleCallback, cancelIdleCallback } from '#app/compat/idle-callba
 export { setInterval } from '#app/compat/interval';
 export { isLoggedIn, getUser } from '../utils/auth';
 export { useUserStore } from '../stores/user';
-export { updateSiteConfig } from '../../../node_modules/nuxt-site-config/dist/runtime/app/composables/updateSiteConfig';
-export { useNitroOrigin } from '../../../node_modules/nuxt-site-config/dist/runtime/app/composables/useNitroOrigin';
-export { useSiteConfig } from '../../../node_modules/nuxt-site-config/dist/runtime/app/composables/useSiteConfig';
-export { createSitePathResolver, withSiteTrailingSlash, withSiteUrl } from '../../../node_modules/nuxt-site-config/dist/runtime/app/composables/utils';
-export { useAsyncStoryblok } from '../../../node_modules/@storyblok/nuxt/dist/runtime/composables/useAsyncStoryblok';
 export { useImage } from '../../../node_modules/@nuxt/image/dist/runtime/composables';
 export { defineStore, acceptHMRUpdate, usePinia, storeToRefs } from '../../../node_modules/@pinia/nuxt/dist/runtime/composables';
 export { useFirebaseAuth, useCurrentUser, useFirestore, useDocument, useCollection, useDatabase, useDatabaseList, useDatabaseObject, useFirebaseStorage, useStorageFile, useStorageFileUrl, useStorageFileMetadata } from 'vuefire';
 export { getCurrentUser } from '../../../node_modules/nuxt-vuefire/dist/runtime/auth/composables';
 export { useFirebaseApp } from '../../../node_modules/nuxt-vuefire/dist/runtime/app/composables';
-export { useRobotsRule } from '../../../node_modules/@nuxtjs/robots/dist/runtime/app/composables/useRobotsRule';
-export { useSchemaOrg } from '../../../node_modules/nuxt-schema-org/dist/runtime/app/composables/useSchemaOrg';
-export { useI18n } from '../../../node_modules/nuxt-seo-utils/dist/runtime/app/composables/polyfills';
-export { useBreadcrumbItems } from '../../../node_modules/nuxt-seo-utils/dist/runtime/app/composables/useBreadcrumbItems';
-export { useStoryblok, useStoryblokApi, useStoryblokBridge, renderRichText, RichTextSchema, StoryblokRichText, useStoryblokRichText, MarkTypes, BlockTypes, LinkTypes, AssetTypes } from '@storyblok/vue';
 export { definePageMeta } from '../../../node_modules/nuxt/dist/pages/runtime/composables';
