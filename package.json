@@ -38,6 +38,7 @@
       "@nuxtjs/tailwindcss": "latest",
       "@pinia/nuxt": "latest",
       "@vue/apollo-composable": "latest",
+      "@vueuse/core": "^13.2.0",
       "algoliasearch": "latest",
       "firebase": "latest",
       "firebase-admin": "latest",
