@@ -37,6 +37,7 @@
       "@nuxtjs/i18n": "latest",
       "@nuxtjs/tailwindcss": "latest",
       "@pinia/nuxt": "latest",
+      "@storefront-ui/vue": "^2.6.5",
       "@vue/apollo-composable": "latest",
       "@vueuse/core": "^13.2.0",
       "algoliasearch": "latest",
