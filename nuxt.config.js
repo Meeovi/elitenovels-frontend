@@ -58,7 +58,6 @@ export default defineNuxtConfig({
     'assets/theme/css/style.css',
     'assets/mobirise/css/mbr-additional.css',
     'vuetify/lib/styles/main.sass',
-    '@mdi/font/css/materialdesignicons.min.css',
     '@fortawesome/fontawesome-svg-core/styles.css',
     'assets/styles/main.css',
   ],

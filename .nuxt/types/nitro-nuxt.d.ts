@@ -29,6 +29,4 @@ declare module 'nitropack' {
   interface NitroRuntimeHooks {
     'dev:ssr-logs': (ctx: { logs: LogObject[], path: string }) => void | Promise<void>
     'render:html': (htmlContext: NuxtRenderHTMLContext, context: { event: H3Event }) => void | Promise<void>
-    'render:island': (islandResponse: NuxtIslandResponse, context: { event: H3Event, islandContext: NuxtIslandContext }) => void | Promise<void>
-  }
-}
+    'render:island': (islandResponse: NuxtIslandResponse, context: { event: H3Event, islandContext: NuxtI
