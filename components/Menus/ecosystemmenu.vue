@@ -2,7 +2,7 @@
     <v-row justify="center">
         <v-dialog v-model="dialog" :scrim="false" transition="dialog-bottom-transition">
             <template v-slot:activator="{ props }">
-                <v-btn v-bind="props" title="Explore The Meeovi Company">
+                <v-btn v-bind="props" title="Explore The Meeovi Company" class="ecomenu">
                     <v-icon start icon="fas fa-bars-staggered"></v-icon>
                 </v-btn>
             </template>

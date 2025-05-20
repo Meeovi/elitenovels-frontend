@@ -14,13 +14,13 @@ type LazyComponent<T> = (T & DefineComponent<HydrationStrategies, {}, {}, {}, {}
 interface _GlobalComponents {
       'FooterNav': typeof import("../components/FooterNav.vue")['default']
     'MenusLayoutNotifications': typeof import("../components/Menus/LayoutNotifications.vue")['default']
-    'MenusBlogbar': typeof import("../components/Menus/blogbar.vue")['default']
     'MenusCharacterbar': typeof import("../components/Menus/characterbar.vue")['default']
     'MenusEcosystemmenu': typeof import("../components/Menus/ecosystemmenu.vue")['default']
     'MenusGamebar': typeof import("../components/Menus/gamebar.vue")['default']
     'MenusLowerbar': typeof import("../components/Menus/lowerbar.vue")['default']
     'MenusMonsterbar': typeof import("../components/Menus/monsterbar.vue")['default']
     'MenusMythologybar': typeof import("../components/Menus/mythologybar.vue")['default']
+    'MenusSidebar': typeof import("../components/Menus/sidebar.vue")['default']
     'MenusStorybar': typeof import("../components/Menus/storybar.vue")['default']
     'RelatedAbility': typeof import("../components/Related/ability.vue")['default']
     'RelatedCharacter': typeof import("../components/Related/character.vue")['default']
@@ -215,13 +215,13 @@ interface _GlobalComponents {
     'NuxtRouteAnnouncer': IslandComponent<typeof import("../../../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
       'LazyFooterNav': LazyComponent<typeof import("../components/FooterNav.vue")['default']>
     'LazyMenusLayoutNotifications': LazyComponent<typeof import("../components/Menus/LayoutNotifications.vue")['default']>
-    'LazyMenusBlogbar': LazyComponent<typeof import("../components/Menus/blogbar.vue")['default']>
     'LazyMenusCharacterbar': LazyComponent<typeof import("../components/Menus/characterbar.vue")['default']>
     'LazyMenusEcosystemmenu': LazyComponent<typeof import("../components/Menus/ecosystemmenu.vue")['default']>
     'LazyMenusGamebar': LazyComponent<typeof import("../components/Menus/gamebar.vue")['default']>
     'LazyMenusLowerbar': LazyComponent<typeof import("../components/Menus/lowerbar.vue")['default']>
     'LazyMenusMonsterbar': LazyComponent<typeof import("../components/Menus/monsterbar.vue")['default']>
     'LazyMenusMythologybar': LazyComponent<typeof import("../components/Menus/mythologybar.vue")['default']>
+    'LazyMenusSidebar': LazyComponent<typeof import("../components/Menus/sidebar.vue")['default']>
     'LazyMenusStorybar': LazyComponent<typeof import("../components/Menus/storybar.vue")['default']>
     'LazyRelatedAbility': LazyComponent<typeof import("../components/Related/ability.vue")['default']>
     'LazyRelatedCharacter': LazyComponent<typeof import("../components/Related/character.vue")['default']>
@@ -422,13 +422,13 @@ declare module 'vue' {
 
 export const FooterNav: typeof import("../components/FooterNav.vue")['default']
 export const MenusLayoutNotifications: typeof import("../components/Menus/LayoutNotifications.vue")['default']
-export const MenusBlogbar: typeof import("../components/Menus/blogbar.vue")['default']
 export const MenusCharacterbar: typeof import("../components/Menus/characterbar.vue")['default']
 export const MenusEcosystemmenu: typeof import("../components/Menus/ecosystemmenu.vue")['default']
 export const MenusGamebar: typeof import("../components/Menus/gamebar.vue")['default']
 export const MenusLowerbar: typeof import("../components/Menus/lowerbar.vue")['default']
 export const MenusMonsterbar: typeof import("../components/Menus/monsterbar.vue")['default']
 export const MenusMythologybar: typeof import("../components/Menus/mythologybar.vue")['default']
+export const MenusSidebar: typeof import("../components/Menus/sidebar.vue")['default']
 export const MenusStorybar: typeof import("../components/Menus/storybar.vue")['default']
 export const RelatedAbility: typeof import("../components/Related/ability.vue")['default']
 export const RelatedCharacter: typeof import("../components/Related/character.vue")['default']
@@ -623,13 +623,13 @@ export const NuxtIsland: typeof import("../../../node_modules/nuxt/dist/app/comp
 export const NuxtRouteAnnouncer: IslandComponent<typeof import("../../../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
 export const LazyFooterNav: LazyComponent<typeof import("../components/FooterNav.vue")['default']>
 export const LazyMenusLayoutNotifications: LazyComponent<typeof import("../components/Menus/LayoutNotifications.vue")['default']>
-export const LazyMenusBlogbar: LazyComponent<typeof import("../components/Menus/blogbar.vue")['default']>
 export const LazyMenusCharacterbar: LazyComponent<typeof import("../components/Menus/characterbar.vue")['default']>
 export const LazyMenusEcosystemmenu: LazyComponent<typeof import("../components/Menus/ecosystemmenu.vue")['default']>
 export const LazyMenusGamebar: LazyComponent<typeof import("../components/Menus/gamebar.vue")['default']>
 export const LazyMenusLowerbar: LazyComponent<typeof import("../components/Menus/lowerbar.vue")['default']>
 export const LazyMenusMonsterbar: LazyComponent<typeof import("../components/Menus/monsterbar.vue")['default']>
 export const LazyMenusMythologybar: LazyComponent<typeof import("../components/Menus/mythologybar.vue")['default']>
+export const LazyMenusSidebar: LazyComponent<typeof import("../components/Menus/sidebar.vue")['default']>
 export const LazyMenusStorybar: LazyComponent<typeof import("../components/Menus/storybar.vue")['default']>
 export const LazyRelatedAbility: LazyComponent<typeof import("../components/Related/ability.vue")['default']>
 export const LazyRelatedCharacter: LazyComponent<typeof import("../components/Related/character.vue")['default']>

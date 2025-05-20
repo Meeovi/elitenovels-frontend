@@ -1,22 +1,25 @@
 <template>
-  <div>
-    <v-carousel hide-delimiters show-arrows="hover">
-      <v-carousel-item src="https://cdn.vuetifyjs.com/images/cards/docks.jpg" cover></v-carousel-item>
-
-      <v-carousel-item src="https://cdn.vuetifyjs.com/images/cards/hotel.jpg" cover></v-carousel-item>
-
-      <v-carousel-item src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" cover></v-carousel-item>
-    </v-carousel>
-  </div>
+    <div class="indexHeaderSlider">
+        <v-carousel hide-delimiters show-arrows="hover" :continuous="true">
+            <div v-for="(media, index) in blocksSlider?.media" :key="index">
+                <v-carousel-item :src="`${$directus.url}assets/${media?.directus_files_id?.filename_disk}`"
+                    cover></v-carousel-item>
+            </div>
+        </v-carousel>
+    </div>
 </template>
 
-<script>
-  export default {
+<script setup>
+    const {
+        $directus,
+        $readItem
+    } = useNuxtApp()
 
-
-  }
+    const {
+        data: blocksSlider
+    } = await useAsyncData('blocksSlider', () => {
+        return $directus.request($readItem('blocks', '8', {
+            fields: ['*', 'media.*.*'],
+        }))
+    })
 </script>
-
-<style>
-
-</style>

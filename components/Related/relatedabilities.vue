@@ -30,7 +30,4 @@
     } = await useAsyncData('abilities', () => {
         return $directus.request($readItems('abilities'))
     })
-  useHead({
-    title: 'Abilities',
-  })
 </script>

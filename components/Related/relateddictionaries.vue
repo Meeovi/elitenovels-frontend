@@ -30,7 +30,4 @@
     } = await useAsyncData('definition', () => {
         return $directus.request($readItems('dictionary'))
     })
-  useHead({
-    title: 'Abilities',
-  })
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="contentSection">
-    <v-toolbar title="NEW & TRENDING PRODUCTS FROM ELITENOVELS SHOP" density="comfortable" color="transparent">
-      <a href="https://www.meeovi.com/outlets/ODU=">More from Our Meeovi Shop</a>
+    <v-toolbar :title="shopBlock?.name" density="comfortable" color="transparent">
+      <NuxtLink :to="shopBlock?.content?.[0]?.subject">{{ shopBlock?.content?.[0]?.name }}</NuxtLink>
     </v-toolbar>
     <v-sheet class="mx-auto">
       <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
@@ -34,4 +34,19 @@
   const {
     result
   } = useQuery(products)
+
+      const {
+        $directus,
+        $readItem
+    } = useNuxtApp()
+
+    const {
+        data: shopBlock
+    } = await useAsyncData('shopBlock', () => {
+        return $directus.request($readItem('blocks', '7', {
+            fields: ['*', {
+                '*': ['*']
+            }],
+        }))
+    })
 </script>

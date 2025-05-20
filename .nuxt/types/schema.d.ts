@@ -253,6 +253,8 @@ declare module 'nuxt/schema' {
          key: string,
 
          isTokenAutoRefreshEnabled: boolean,
+
+         debug: string,
       },
    },
   }
