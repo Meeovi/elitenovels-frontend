@@ -3,7 +3,7 @@
         <v-app-bar-title>
             <NuxtLink class="logobrand" to="/">
                 <v-icon start color="orange">
-                    <NuxtImg loading="lazy"
+                    <img loading="lazy"
                         :src="`${$directus?.url}assets/${blocksSiteoverview?.image?.filename_disk}`"
                         :alt="blocksSiteoverview?.name" />
                 </v-icon>

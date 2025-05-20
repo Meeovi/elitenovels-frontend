@@ -31,7 +31,7 @@
           <div class="item features-image col-12 col-lg-4" v-for="block in characterBlocks" :key="block?.id">
             <div class="item-wrapper card_1">
               <div class="item-img">
-                <NuxtImg v-if="block?.image?.filename_disk" :src="`${$directus.url}assets/${block?.image?.filename_disk}`" :alt="block?.name" />
+                <img :src="`${$directus.url}assets/${block?.image?.filename_disk}`" :alt="block?.name" />
               </div>
               <div class="card-box">
                 <h4 class="item-title mbr-fonts-style display-5">
@@ -54,7 +54,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-12 col-title">
-            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+            <h3 class="mbr-section-title mbr-fonts-style align-left mb-0 display-2">
               <strong>
                 Characters from the Eliteverse
               </strong>
@@ -70,7 +70,6 @@
       </div>
     </section>
     <relatedstories />
-    <latestproducts />
   </div>
 </template>
 
@@ -80,7 +79,6 @@
   } from 'vue'
   //import characterbar from '~/components/Menus/characterbar.vue'
   import relatedstories from '~/components/Related/relatedstories.vue'
-  import relatedproducts from '~/components/Related/relatedproducts.vue'
   import characterComponent from '~/components/Related/character.vue'
   //const model = ref(null);
 

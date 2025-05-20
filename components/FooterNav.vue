@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div><v-avatar class="circle-bg" size="480">
-                            <NuxtImg :src="`${$directus.url}assets/${footerBlock?.image?.filename_disk}`" /></v-avatar></div>
+                            <img :src="`${$directus.url}assets/${footerBlock?.image?.filename_disk}`" /></v-avatar></div>
                     <div class="footer-top-container">
                         <div class="col-link">
                             <ul class="list mbr-fonts-style display-7"

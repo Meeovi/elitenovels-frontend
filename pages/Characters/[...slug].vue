@@ -21,7 +21,7 @@
           <div class="col-12 col-lg-6">
             <div class="image-wrapper">
               <NuxtImg
-                :src="`${$directus.url}/assets/${character?.image?.filename_disk} || '../../../assets/images/coming_soon.png'`"
+                :src="`${$directus.url}assets/${character?.image?.filename_disk} || '../../../assets/images/coming_soon.png'`"
                 :alt="character?.name" />
             </div>
           </div>
