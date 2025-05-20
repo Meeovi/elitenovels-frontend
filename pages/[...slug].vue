@@ -46,12 +46,12 @@
         </div>
 
         <div v-if="page?.name === 'Kids'">
-            <typePage />
+            <kidsPage />
         </div>
 
         <div v-if="page?.name === 'Stories'">
             <div class="col-md-12 col-lg-4" v-for="stories in stories" :key="stories">
-                <story :story="stories" />
+                <storyComponent :story="stories" />
             </div>
         </div>
 
@@ -68,7 +68,7 @@
         </div>
 
         <div v-else>
-            <v-toolbar v-if="page?.name !== 'About'" title="DESCRIPTION" density="comfortable" color="transparent"></v-toolbar>
+            <v-toolbar v-if="page?.name !== 'About' && page?.name !== 'Videos' && page?.name !== 'Games'" title="DESCRIPTION" density="comfortable" color="transparent"></v-toolbar>
 
             <p class="pageDescription mbr-text mbr-fonts-style display-4" v-html="page?.content"></p>
         </div>
@@ -85,8 +85,9 @@
     import placePage from '~/components/pages/places.vue'
     import abilityPage from '~/components/pages/abilities.vue'
     import levelPage from '~/components/pages/levels.vue'
+    import kidsPage from '~/components/pages/kids.vue'
     import typePage from '~/components/pages/types.vue'
-    import story from '~/components/Related/story.vue'
+    import storyComponent from '~/components/Related/story.vue'
     import videoComponent from '~/components/Related/video.vue'
     import characterComponent from '~/components/Related/character.vue'
 

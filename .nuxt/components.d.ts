@@ -60,11 +60,11 @@ interface _GlobalComponents {
     'PagesAbilities': typeof import("../components/pages/abilities.vue")['default']
     'PagesDictionary': typeof import("../components/pages/dictionary.vue")['default']
     'PagesItems': typeof import("../components/pages/items.vue")['default']
+    'PagesKids': typeof import("../components/pages/kids.vue")['default']
     'PagesLevels': typeof import("../components/pages/levels.vue")['default']
     'PagesMonsters': typeof import("../components/pages/monsters/index.vue")['default']
     'PagesMythology': typeof import("../components/pages/mythology/index.vue")['default']
     'PagesPlaces': typeof import("../components/pages/places.vue")['default']
-    'PagesStories': typeof import("../components/pages/stories.vue")['default']
     'PagesTypes': typeof import("../components/pages/types.vue")['default']
     'PartialsAddtolist': typeof import("../components/partials/addtolist.vue")['default']
     'PartialsComments': typeof import("../components/partials/comments.vue")['default']
@@ -261,11 +261,11 @@ interface _GlobalComponents {
     'LazyPagesAbilities': LazyComponent<typeof import("../components/pages/abilities.vue")['default']>
     'LazyPagesDictionary': LazyComponent<typeof import("../components/pages/dictionary.vue")['default']>
     'LazyPagesItems': LazyComponent<typeof import("../components/pages/items.vue")['default']>
+    'LazyPagesKids': LazyComponent<typeof import("../components/pages/kids.vue")['default']>
     'LazyPagesLevels': LazyComponent<typeof import("../components/pages/levels.vue")['default']>
     'LazyPagesMonsters': LazyComponent<typeof import("../components/pages/monsters/index.vue")['default']>
     'LazyPagesMythology': LazyComponent<typeof import("../components/pages/mythology/index.vue")['default']>
     'LazyPagesPlaces': LazyComponent<typeof import("../components/pages/places.vue")['default']>
-    'LazyPagesStories': LazyComponent<typeof import("../components/pages/stories.vue")['default']>
     'LazyPagesTypes': LazyComponent<typeof import("../components/pages/types.vue")['default']>
     'LazyPartialsAddtolist': LazyComponent<typeof import("../components/partials/addtolist.vue")['default']>
     'LazyPartialsComments': LazyComponent<typeof import("../components/partials/comments.vue")['default']>
@@ -468,11 +468,11 @@ export const MediaVideoVideojs: typeof import("../components/media/video/videojs
 export const PagesAbilities: typeof import("../components/pages/abilities.vue")['default']
 export const PagesDictionary: typeof import("../components/pages/dictionary.vue")['default']
 export const PagesItems: typeof import("../components/pages/items.vue")['default']
+export const PagesKids: typeof import("../components/pages/kids.vue")['default']
 export const PagesLevels: typeof import("../components/pages/levels.vue")['default']
 export const PagesMonsters: typeof import("../components/pages/monsters/index.vue")['default']
 export const PagesMythology: typeof import("../components/pages/mythology/index.vue")['default']
 export const PagesPlaces: typeof import("../components/pages/places.vue")['default']
-export const PagesStories: typeof import("../components/pages/stories.vue")['default']
 export const PagesTypes: typeof import("../components/pages/types.vue")['default']
 export const PartialsAddtolist: typeof import("../components/partials/addtolist.vue")['default']
 export const PartialsComments: typeof import("../components/partials/comments.vue")['default']
@@ -669,11 +669,11 @@ export const LazyMediaVideoVideojs: LazyComponent<typeof import("../components/m
 export const LazyPagesAbilities: LazyComponent<typeof import("../components/pages/abilities.vue")['default']>
 export const LazyPagesDictionary: LazyComponent<typeof import("../components/pages/dictionary.vue")['default']>
 export const LazyPagesItems: LazyComponent<typeof import("../components/pages/items.vue")['default']>
+export const LazyPagesKids: LazyComponent<typeof import("../components/pages/kids.vue")['default']>
 export const LazyPagesLevels: LazyComponent<typeof import("../components/pages/levels.vue")['default']>
 export const LazyPagesMonsters: LazyComponent<typeof import("../components/pages/monsters/index.vue")['default']>
 export const LazyPagesMythology: LazyComponent<typeof import("../components/pages/mythology/index.vue")['default']>
 export const LazyPagesPlaces: LazyComponent<typeof import("../components/pages/places.vue")['default']>
-export const LazyPagesStories: LazyComponent<typeof import("../components/pages/stories.vue")['default']>
 export const LazyPagesTypes: LazyComponent<typeof import("../components/pages/types.vue")['default']>
 export const LazyPartialsAddtolist: LazyComponent<typeof import("../components/partials/addtolist.vue")['default']>
 export const LazyPartialsComments: LazyComponent<typeof import("../components/partials/comments.vue")['default']>

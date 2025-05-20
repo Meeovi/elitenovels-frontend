@@ -3,7 +3,7 @@
     <a :href="`/characters/${character?.id}`">
       <div class="card-wrap item-wrapper">
         <div class="image-wrap">
-          <NuxtImg v-if="char?.image?.filename_disk" :src="`${$directus.url}assets/${char?.image?.filename_disk}`"
+          <img v-if="char?.image?.filename_disk" :src="`${$directus.url}assets/${char?.image?.filename_disk}`"
             :alt="char?.name" />
         </div>
         <div class="content-wrap">

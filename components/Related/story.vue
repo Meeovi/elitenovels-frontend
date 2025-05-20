@@ -4,11 +4,11 @@
             <v-card color="white" :class="['ma-4', selectedClass]" height="550" width="300" @click="toggle">
                 <div v-if="story?.image?.filename_disk">
                     <img class="align-end text-white" height="400" :alt="story?.name"
-                        :src="`${$directus.url}/assets/${story?.image?.filename_disk}`" cover />
+                        :src="`${$directus.url}assets/${story?.image?.filename_disk}`" cover />
                 </div>
 
                 <div v-else>
-                    <img class="align-end text-white" height="300" src="~/assets/images/coming_soon.png" cover />
+                    <img class="align-end text-white" height="300" src="assets/images/coming_soon.png" cover />
                 </div>
 
                 <v-card-subtitle class="pt-4">

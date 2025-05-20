@@ -9,7 +9,7 @@
                 <strong>{{ character?.universe?.universe_id?.name }}</strong>
               </h4>
               <div class="image-wrapper">
-                <!--<NuxtImg src="assets/images/features8.jpg" :alt="character?.name" />-->
+                <!--<img src="assets/images/features8.jpg" :alt="character?.name" />-->
                 {{ character.name }}
               </div>
               <p class="mbr-text mbr-fonts-style align-center display-4" v-html="character?.description"></p>
@@ -20,7 +20,7 @@
           </div>
           <div class="col-12 col-lg-6">
             <div class="image-wrapper">
-              <NuxtImg
+              <img
                 :src="`${$directus.url}assets/${character?.image?.filename_disk} || '../../../assets/images/coming_soon.png'`"
                 :alt="character?.name" />
             </div>
