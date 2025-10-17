@@ -1,9 +1,9 @@
 {
-  "_hash": "QEGxq1JLIb2u8-mtsAMgw7yVyozh_MxzbYXt7Bi42f4",
+  "_hash": "hRZchWkc1NPj-hZkQrRBTprHxrstjz9JYgfCquvd2eo",
   "project": {
-    "rootDir": "C:/Users/Basti/OneDrive/Documents/My_Websites/Handmade_Sites/Javascript-Projects/Nuxt-Projects/AlternateCMS-Framework/TheMeeoviCompany-Sites/meeovi/apps/elitenovels"
+    "rootDir": "C:/Users/Basti/Documents/My_Websites/Handmade_Sites/Javascript-Projects/Nuxt-Projects/Meeovi_Framework/Ecosystem/elitenovels"
   },
   "versions": {
-    "nuxt": "3.17.3"
+    "nuxt": "4.1.3"
   }
 }
