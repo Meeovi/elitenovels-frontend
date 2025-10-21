@@ -1,11 +1,11 @@
 <template>
     <div>
       <v-col cols="12">
-        <v-toolbar title="OTHER ABILITIES" density="comfortable" color="transparent">
+        <v-toolbar title="OTHER PLACES" density="comfortable" color="transparent">
         </v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item v-for="facetItem in abilitiesOnly" :key="facetItem.id || facetItem.name"
+            <v-slide-group-item v-for="facetItem in placesOnly" :key="facetItem.id || facetItem.name"
               v-slot="{ isSelected, toggle, selectedClass }">
               <facetCard :facet="facetItem" :class="['ma-4', selectedClass]" @click="toggle" />
             </v-slide-group-item>
@@ -31,8 +31,8 @@
         return $directus.request($readItems('options'))
     })
 
-    // Client-side filter: only options whose `type` contains 'Abilities' (trim whitespace)
-    const abilitiesOnly = computed(() => {
+    // Client-side filter: only options whose `type` contains 'Places' (trim whitespace)
+    const placesOnly = computed(() => {
       // Support response shapes:
       // - facets.value.data.options -> GraphQL-like { data: { options: [...] } }
       // - facets.value.data -> REST-like { data: [...] }
@@ -46,8 +46,8 @@
       return list.filter(item => {
         const t = item?.type
         if (!t) return false
-        if (typeof t === 'string') return t.trim() === 'Abilities'
-        if (Array.isArray(t)) return t.some(x => (x || '').toString().trim() === 'Abilities')
+        if (typeof t === 'string') return t.trim() === 'Places'
+        if (Array.isArray(t)) return t.some(x => (x || '').toString().trim() === 'Places')
         return false
       })
     })

@@ -7,7 +7,7 @@
           <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
             <v-slide-group-item v-for="dictionary in definition" :key="dictionary"
               v-slot="{ isSelected, toggle, selectedClass }">
-              <dictionary :dictionary="dictionary" />
+              <dictionary :dictionary="dictionary" :class="['ma-4', selectedClass]" v-if="isSelected" @click="toggle" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>

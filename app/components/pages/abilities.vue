@@ -44,7 +44,7 @@
     ref
   } from 'vue'
   import characterbar from '~/components/menus/characterbar.vue'
-  import abilities from '~/components/related/ability.vue'
+  import abilities from '~/components/related/relateditems.vue'
   const model = ref(null);
 
   const {

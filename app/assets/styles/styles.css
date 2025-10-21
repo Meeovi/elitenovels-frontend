@@ -127,6 +127,16 @@ body {
     padding-right: 10px;
 }
 
+.affiliateList {
+    right: 720px;
+    position: relative;
+}
+
+.abilitiesList {
+    right: 109px;
+    position: relative;
+}
+
 /******************** Sidebar CSS *************/
 
 #sidebarNav {

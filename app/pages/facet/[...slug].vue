@@ -1,175 +1,251 @@
 <template>
   <div>
-    <v-row>
-      <v-col cols="12">
-        <v-toolbar dark prominent color="#6592e6">
-          <v-toolbar-title>{{ facet?.name }}</v-toolbar-title>
+    <!-- CHARACTER HEADER -->
+    <section data-bs-version="5.1" class="features7 stepm5 cid-uLEiKNmlwj" id="afeatures7-1r">
+      <div class="container-fluid">
+        <div class="row justify-content-start align-items-stretch">
+          <div class="card col-12 col-lg-6">
+            <div class="card-wrapper">
+              <h4 class="card-title mbr-fonts-style align-center display-5">
+                <strong>{{ facet?.universe?.universe_id?.name || 'Unknown Universe' }}</strong>
+              </h4>
 
-          <v-img>
-            <div v-if="facet?.image?.filename_disk">
-              <img class="align-end text-white" height="300"
-                :src="`${$directus.url}/assets/${facet?.image?.filename_disk} || '../../../assets/images/coming_soon.png'`"
-                cover />
-            </div>
-
-            <div v-else>
-              <img class="align-end text-white" height="300" src="~/assets/images/coming_soon.png" cover />
-            </div>
-          </v-img>
-        </v-toolbar>
-      </v-col>
-
-      <v-col cols="8">
-        <v-card class="mx-auto" :text="facet?.description" elevation="0"></v-card>
-      </v-col>
-
-      <v-col cols="4">
-        <v-row>
-          <v-col cols="12">
-            <v-card class="mx-auto" width="400">
-              <div v-if="facet?.image?.filename_disk">
-                <img class="align-end text-white" height="300"
-                  :src="`${$directus.url}/assets/${facet?.image?.filename_disk} || '../../../assets/images/coming_soon.png'`"
-                  cover />
+              <div class="image-wrapper">
+                <p class="mbr-fonts-style align-center display-5">
+                  {{ facet?.name }}
+                </p>
               </div>
 
-              <div v-else>
-                <img class="align-end text-white" height="300" src="~/assets/images/coming_soon.png" cover />
+              <p class="mbr-text mbr-fonts-style align-center display-4" v-html="facet?.description"></p>
+
+              <div class="mbr-section-btn align-center">
+                <p class="btn btn-white-outline display-7" v-if="facet?.type" v-html="facet?.type"></p>
               </div>
+            </div>
+          </div>
 
-              <v-card-subtitle class="pt-4">
-                <div>Categories:
-                  <div v-for="category in facet?.categories?.categories_id" :key="category">
-                    {{ category?.name }}
-                  </div>
-                </div>
-              </v-card-subtitle>
-
-              <v-card-text>
-                <div>Name: {{ facet?.name }}</div>
-                <v-spacer></v-spacer>
-
-                <div v-if="facet?.tags?.some(tag => tag.tags_id.name === 'Humans')">Age: {{ facet?.age }}</div>
-                <v-spacer></v-spacer>
-
-                <div>Alias: {{ facet?.alias }}</div>
-                <v-spacer></v-spacer>
-
-                <div style="display: flex; padding-right: 5px;">Abilities:&nbsp;
-                  <div v-for="abilities in facet?.abilities" :key="abilities">
-                    <a :href="`/characters/ability/${abilities?.abilities_id?.id}`">{{ abilities?.abilities_id?.name }}</a> &nbsp;
-                  </div>
-                </div>
-                <v-spacer></v-spacer>
-
-                <div style="display: flex; padding-right: 5px;">Affiliates:&nbsp;
-                  <div v-for="affiliates in facet?.characters" :key="affiliates">
-                    <a :href="`/characters/${affiliates?.characters_id?.id}`">{{ affiliates?.characters_id?.name }}</a> &nbsp;
-                  </div>
-                </div>
-
-                <div>Universe: {{ facet?.type }}</div>
-
-                <div style="display: flex; padding-right: 5px;">Species:&nbsp;
-                  <div v-for="species in facet?.tags" :key="species">
-                    <a :href="`/characters/category/${species?.tags_id?.id}`">{{ species?.tags_id?.name }}</a> &nbsp;
-                  </div>
-                </div>
-
-                <div v-if="facet?.tags?.some(tag => tag.tags_id.name === 'Monsters')" style="display: flex; padding-right: 5px;">Types:&nbsp;
-                  <div v-for="type in facet?.types" :key="types">
-                    <a :href="`/characters/type/${type?.types_id?.id}`">{{ type?.types_id?.name }}</a> &nbsp;
-                  </div>
-                </div>
-
-                <div v-if="facet?.tags?.some(tag => tag.tags_id.name === 'Monsters')" style="display: flex; padding-right: 5px;">Level:&nbsp;
-                  <div v-for="level in facet?.levels" :key="level">
-                    <a :href="`/characters/level/${level?.levels_id?.id}`">{{ level?.levels_id?.name }}</a> &nbsp;
-                  </div>
-                </div>
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-col>
-
-
-      <div class="characterLowerPage">
-        <v-row>
-          <v-col cols="12">
-            <h3>Items</h3>
-            <v-row>
-              <v-col cols="4" v-for="items in facet?.items" :key="items">
-                <item :item="items?.items_id" />
-              </v-col>
-            </v-row>
-          </v-col>
-
-          <v-col cols="12">
-            <h3>Places</h3>
-            <v-row>
-              <v-col cols="4" v-for="places in facet?.places" :key="places">
-                <item :item="places?.places_id" />
-              </v-col>
-            </v-row>
-          </v-col>
-
-          <v-col cols="12">
-            <h3>Stories</h3>
-            <v-row>
-              <v-col cols="4" v-for="stories in facet?.stories" :key="stories">
-                <story :story="stories?.stories_id" />
-              </v-col>
-            </v-row>
-          </v-col>
-
-          <v-col cols="12">
-            <h3>Videos</h3>
-            <v-row>
-              <v-col cols="4" v-for="videos in facet?.videos" :key="videos">
-                <videoComponent :video="videos?.videos_id" />
-              </v-col>
-            </v-row>
-          </v-col>
-        </v-row>
+          <div class="col-12 col-lg-6">
+            <div class="image-wrapper">
+              <img v-if="facet?.image?.filename_disk" :src="`${$directus.url}assets/${facet?.image?.filename_disk}`"
+                :alt="facet?.name" />
+              <img v-else src="/assets/images/coming_soon.png" :alt="facet?.name || 'Character image placeholder'" />
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <relatedcharacters />
-      <v-col cols="12">
-        <comments />
-      </v-col>
-    </v-row>
+    <!-- DETAILS -->
+    <section data-bs-version="5.1" class="features5 stepm5 cid-uLEh7eZjEW" id="afeatures5-1p">
+      <div class="container-fluid">
+        <div class="row justify-content-start align-items-stretch">
+          <div class="mbr-section-head">
+            <h4 class="mbr-section-title mbr-fonts-style mb-0 display-2">Details</h4>
+          </div>
+
+          <div class="card col-12">
+            <div class="card-wrapper">
+              <!-- BASIC INFO -->
+              <div class="item">
+                <p class="item-title mbr-fonts-style display-4">Name</p>
+                <p class="mbr-text mbr-fonts-style display-4">{{ facet?.name }}</p>
+              </div>
+
+              <div class="item" v-if="facet?.alias">
+                <p class="item-title mbr-fonts-style display-4">Alias</p>
+                <p class="mbr-text mbr-fonts-style display-4">{{ facet?.alias || 'None' }}</p>
+              </div>
+
+              <div class="item" v-if="facet?.location">
+                <p class="item-title mbr-fonts-style display-4">Location</p>
+                <p class="mbr-text mbr-fonts-style display-4">{{ facet?.location || 'None' }}</p>
+              </div>
+
+              <!-- TOPICS / TAGS (comma-separated) -->
+              <div class="item" v-if="tagsList.length">
+                <p class="item-title mbr-fonts-style display-4">Topics</p>
+                <p class="mbr-text mbr-fonts-style display-4">
+                  <span v-for="(t, idx) in tagsList" :key="t.id || t.slug || idx">
+                    <NuxtLink v-if="t.slug" :to="`/characters/category/${t.slug}`">{{ t.name }}</NuxtLink>
+                    <span v-else>{{ t.name }}</span>
+                    <span v-if="idx < tagsList.length - 1">, </span>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED CONTENT -->
+    <div class="characterLowerPage">
+      <v-row>
+
+        <!-- STORIES -->
+        <v-col cols="12" v-if="character?.stories?.length">
+          <h3>Stories</h3>
+          <v-row>
+            <v-col cols="4" v-for="(storyItem, i) in facet.stories" :key="i">
+              <story :story="storyItem?.stories_id" />
+            </v-col>
+          </v-row>
+        </v-col>
+
+        <!-- VIDEOS -->
+        <v-col cols="12" v-if="facet?.videos?.length">
+          <h3>Videos</h3>
+          <v-row>
+            <v-col cols="4" v-for="(video, i) in facet.videos" :key="i">
+              <videoComponent :video="video?.videos_id" />
+            </v-col>
+          </v-row>
+        </v-col>
+
+        <!-- RELATED CHARACTERS & COMMENTS -->
+        <v-col cols="12" v-if="isAbilities">
+          <RelatedAbilities />
+        </v-col>
+
+        <!-- RELATED TYPES & COMMENTS -->
+        <v-col cols="12" v-if="isTypes">
+          <RelatedTypes />
+        </v-col>
+
+        <!-- RELATED PLACES & COMMENTS -->
+        <v-col cols="12" v-if="isPlaces">
+          <RelatedPlaces />
+        </v-col>
+
+        <!-- RELATED PLACES & COMMENTS -->
+        <v-col cols="12" v-if="isItems">
+          <RelatedItems />
+        </v-col>
+
+        <!-- RELATED LEVELS & COMMENTS -->
+        <v-col cols="12" v-if="isLevels">
+          <RelatedLevels />
+        </v-col>
+
+        <v-col cols="12">
+          <comments />
+        </v-col>
+      </v-row>
+    </div>
   </div>
 </template>
 
 <script setup>
   import {
-    useRoute,
-    useRouter
+    useRoute
   } from 'vue-router'
+  import {
+    computed
+  } from 'vue'
+  import {
+    useHead
+  } from '#imports'
   import comments from '~/components/partials/comments.vue'
   import item from '~/components/related/facet.vue'
-  //import place from '~/components/related/place.vue'
-  import story from '~/components/related/story.vue'
-  import relatedcharacters from '~/components/related/relatedcharacters.vue'
+  import RelatedAbilities from '~/components/related/relatedabilities.vue'
+  import RelatedTypes from '~/components/related/relatedtypes.vue'
+  import RelatedPlaces from '~/components/related/relatedplaces.vue'
+  import RelatedItems from '~/components/related/relateditems.vue'
+  import RelatedLevels from '~/components/related/relatedlevels.vue'
   import videoComponent from '~/components/related/video.vue'
+  import story from '~/components/related/story.vue'
 
   const route = useRoute()
   const {
     $directus,
-    $readItem
+    $readItems
   } = useNuxtApp()
 
+  // Fetch character data by slug
   const {
-    data: facet
+    data
   } = await useAsyncData('facet', () => {
-    return $directus.request($readItem('options', {
-      filter: { slug: { _eq: `${route.params.slug}` } },
-      fields: ['*', '*.*.*'],
-    }))
+    return $directus.request(
+      $readItems('options', {
+        filter: {
+          slug: {
+            _eq: `${route.params.slug}`
+          }
+        },
+        fields: [
+          '*',
+          'tags.tags_id.*',
+          'character.characters_id.*',
+          'universe.universe_id.*',
+          'stories.stories_id.*',
+          'videos.videos_id.*',
+          'image.*'
+        ],
+      })
+    )
   })
 
+  // Handle Directus returning an array
+  const facet = computed(() => data.value?.[0] || null)
+
+  // Compute normalized tags list (name, slug, id)
+  const tagsList = computed(() => {
+    const c = facet?.value || {}
+    if (Array.isArray(c.tags) && c.tags.length) {
+      return c.tags
+        .map(t => t?.tags_id || t)
+        .map(x => ({
+          id: x?.id,
+          name: x?.name || x?.title || '',
+          slug: x?.slug
+        }))
+        .filter(x => x.name)
+    }
+    return []
+  })
+
+  // Is this facet an Abilities facet? tolerant to json/string/array and trims whitespace
+  const isAbilities = computed(() => {
+    const t = facet.value?.type
+    if (!t) return false
+    if (Array.isArray(t)) return t.some(x => (x || '').toString().trim() === 'Abilities')
+    return (t || '').toString().trim() === 'Abilities'
+  })
+
+  // Is this facet an Types facet? tolerant to json/string/array and trims whitespace
+  const isTypes = computed(() => {
+    const t = facet.value?.type
+    if (!t) return false
+    if (Array.isArray(t)) return t.some(x => (x || '').toString().trim() === 'Type')
+    return (t || '').toString().trim() === 'Type'
+  })
+
+  // Is this facet an Places facet? tolerant to json/string/array and trims whitespace
+  const isPlaces = computed(() => {
+    const t = facet.value?.type
+    if (!t) return false
+    if (Array.isArray(t)) return t.some(x => (x || '').toString().trim() === 'Places')
+    return (t || '').toString().trim() === 'Places'
+  })
+
+  // Is this facet an Items facet? tolerant to json/string/array and trims whitespace
+  const isItems = computed(() => {
+    const t = facet.value?.type
+    if (!t) return false
+    if (Array.isArray(t)) return t.some(x => (x || '').toString().trim() === 'Items')
+    return (t || '').toString().trim() === 'Items'
+  })
+
+  // Is this facet an Levels facet? tolerant to json/string/array and trims whitespace
+  const isLevels = computed(() => {
+    const t = facet.value?.type
+    if (!t) return false
+    if (Array.isArray(t)) return t.some(x => (x || '').toString().trim() === 'Level')
+    return (t || '').toString().trim() === 'Level'
+  })
+
+  // Dynamic page title
   useHead({
-    title: computed(() => facet?.value?.name || 'Facet Page')
+    title: computed(() => facet?.value?.name || 'Option Page')
   })
 </script>

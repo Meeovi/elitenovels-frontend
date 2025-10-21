@@ -50,7 +50,6 @@ export const PartialsFollowButton: typeof import("../app/components/partials/fol
 export const PartialsListBtn: typeof import("../app/components/partials/listBtn.vue")['default']
 export const PartialsShare: typeof import("../app/components/partials/share.vue")['default']
 export const PartialsShareDialog: typeof import("../app/components/partials/shareDialog.vue")['default']
-export const RelatedAbility: typeof import("../app/components/related/ability.vue")['default']
 export const RelatedCharacter: typeof import("../app/components/related/character.vue")['default']
 export const RelatedDictionary: typeof import("../app/components/related/dictionary.vue")['default']
 export const RelatedFacet: typeof import("../app/components/related/facet.vue")['default']
@@ -58,9 +57,13 @@ export const RelatedProductCard: typeof import("../app/components/related/produc
 export const RelatedRelatedabilities: typeof import("../app/components/related/relatedabilities.vue")['default']
 export const RelatedRelatedcharacters: typeof import("../app/components/related/relatedcharacters.vue")['default']
 export const RelatedRelateddictionaries: typeof import("../app/components/related/relateddictionaries.vue")['default']
+export const RelatedRelateditems: typeof import("../app/components/related/relateditems.vue")['default']
+export const RelatedRelatedlevels: typeof import("../app/components/related/relatedlevels.vue")['default']
+export const RelatedRelatedplaces: typeof import("../app/components/related/relatedplaces.vue")['default']
 export const RelatedRelatedposts: typeof import("../app/components/related/relatedposts.vue")['default']
 export const RelatedRelatedproducts: typeof import("../app/components/related/relatedproducts.vue")['default']
 export const RelatedRelatedstories: typeof import("../app/components/related/relatedstories.vue")['default']
+export const RelatedRelatedtypes: typeof import("../app/components/related/relatedtypes.vue")['default']
 export const RelatedStory: typeof import("../app/components/related/story.vue")['default']
 export const RelatedVideo: typeof import("../app/components/related/video.vue")['default']
 export const Search: typeof import("../app/components/search/search.vue")['default']
@@ -260,7 +263,6 @@ export const LazyPartialsFollowButton: LazyComponent<typeof import("../app/compo
 export const LazyPartialsListBtn: LazyComponent<typeof import("../app/components/partials/listBtn.vue")['default']>
 export const LazyPartialsShare: LazyComponent<typeof import("../app/components/partials/share.vue")['default']>
 export const LazyPartialsShareDialog: LazyComponent<typeof import("../app/components/partials/shareDialog.vue")['default']>
-export const LazyRelatedAbility: LazyComponent<typeof import("../app/components/related/ability.vue")['default']>
 export const LazyRelatedCharacter: LazyComponent<typeof import("../app/components/related/character.vue")['default']>
 export const LazyRelatedDictionary: LazyComponent<typeof import("../app/components/related/dictionary.vue")['default']>
 export const LazyRelatedFacet: LazyComponent<typeof import("../app/components/related/facet.vue")['default']>
@@ -268,9 +270,13 @@ export const LazyRelatedProductCard: LazyComponent<typeof import("../app/compone
 export const LazyRelatedRelatedabilities: LazyComponent<typeof import("../app/components/related/relatedabilities.vue")['default']>
 export const LazyRelatedRelatedcharacters: LazyComponent<typeof import("../app/components/related/relatedcharacters.vue")['default']>
 export const LazyRelatedRelateddictionaries: LazyComponent<typeof import("../app/components/related/relateddictionaries.vue")['default']>
+export const LazyRelatedRelateditems: LazyComponent<typeof import("../app/components/related/relateditems.vue")['default']>
+export const LazyRelatedRelatedlevels: LazyComponent<typeof import("../app/components/related/relatedlevels.vue")['default']>
+export const LazyRelatedRelatedplaces: LazyComponent<typeof import("../app/components/related/relatedplaces.vue")['default']>
 export const LazyRelatedRelatedposts: LazyComponent<typeof import("../app/components/related/relatedposts.vue")['default']>
 export const LazyRelatedRelatedproducts: LazyComponent<typeof import("../app/components/related/relatedproducts.vue")['default']>
 export const LazyRelatedRelatedstories: LazyComponent<typeof import("../app/components/related/relatedstories.vue")['default']>
+export const LazyRelatedRelatedtypes: LazyComponent<typeof import("../app/components/related/relatedtypes.vue")['default']>
 export const LazyRelatedStory: LazyComponent<typeof import("../app/components/related/story.vue")['default']>
 export const LazyRelatedVideo: LazyComponent<typeof import("../app/components/related/video.vue")['default']>
 export const LazySearch: LazyComponent<typeof import("../app/components/search/search.vue")['default']>

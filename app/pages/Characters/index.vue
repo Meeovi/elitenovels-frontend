@@ -1,7 +1,9 @@
 <template>
   <div class="categoryPage">
     <!--<characterbar />-->
-    <section data-bs-version="5.1" class="header01 emblemm5 cid-uLEdfj7dI6" :style="`background-image: url(${$directus.url}assets/${characterPage?.image?.filename_disk}) !important`" id="header01-1k">
+    <section data-bs-version="5.1" class="header01 emblemm5 cid-uLEdfj7dI6"
+      :style="`background-image: url(${$directus.url}assets/${characterPage?.image?.filename_disk}) !important`"
+      id="header01-1k">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12 col-lg-8">
@@ -39,7 +41,8 @@
                 </h4>
                 <p class="item-text mbr-fonts-style display-4" v-html="block?.description"></p>
                 <div class="mbr-section-btn item-footer">
-                  <NuxtLink v-if="block?.content && block?.content[0]?.subject" :to="block?.content[0]?.subject" class="btn item-btn btn-success display-4">
+                  <NuxtLink v-if="block?.content && block?.content[0]?.subject" :to="block?.content[0]?.subject"
+                    class="btn item-btn btn-success display-4">
                     View More
                   </NuxtLink>
                 </div>
@@ -63,7 +66,7 @@
           </div>
           <div class="col-12 cards-container">
             <div class="col-sm-4 col-card item features-image" v-for="char in character" :key="char.id">
-              <characterComponent :character="char?.id" />
+              <characterComponent :character="char" class="characterCard" />
             </div>
           </div>
         </div>
@@ -91,17 +94,7 @@
   const {
     data: character
   } = await useAsyncData('character', () => {
-    return $directus.request($readItems('characters', {
-      fields: ['*',
-        'abilities.abilities_id.*',
-        'tags.tags_id.*',
-        'options.options_id.*',
-        'videos.videos_id.*',
-        'universe.universe_id.*',
-        'stories.stories_id.*',
-        'image.*',
-      ],
-    }))
+    return $directus.request($readItems('characters'))
   })
 
   const {
@@ -111,7 +104,7 @@
       fields: ['*', 'image.*'],
     }))
   })
-  
+
   const {
     data: characterBlocks
   } = await useAsyncData('characterBlocks', () => {
