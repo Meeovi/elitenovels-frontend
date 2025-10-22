@@ -8,7 +8,8 @@
             <v-slide-group-item v-for="(characters, index) in popularCharacters" :key="index"
               v-slot="{ isSelected, toggle, selectedClass }">
               <v-col cols="3">
-                <charactersCard :character="characters" />
+                <charactersCard :character="characters" class="characterCard" @click="toggle"
+                  :class="['ma-4', selectedClass]" />
               </v-col>
             </v-slide-group-item>
           </v-slide-group>
@@ -21,7 +22,8 @@
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="monsters in monsters" :key="monsters" v-slot="{ isSelected, toggle }">
               <v-col cols="3">
-                <charactersCard :character="monsters" />
+                <charactersCard :character="monsters" class="characterCard" @click="toggle"
+                  :class="['ma-4', selectedClass]" />
               </v-col>
             </v-slide-group-item>
           </v-slide-group>
@@ -34,7 +36,8 @@
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="mythology in mythology" :key="mythology" v-slot="{ isSelected, toggle }">
               <v-col cols="3">
-                <charactersCard :character="mythology" />
+                <charactersCard :character="mythology" class="characterCard" @click="toggle"
+                  :class="['ma-4', selectedClass]" />
               </v-col>
             </v-slide-group-item>
           </v-slide-group>
@@ -74,12 +77,8 @@
         '*': ['*']
       }],
       filter: {
-        tags: {
-          tags_id: {
-            name: {
-              _eq: "Monsters"
-            }
-          }
+        type: {
+          _eq: "Monster"
         }
       }
     }))
@@ -93,12 +92,8 @@
         '*': ['*']
       }],
       filter: {
-        tags: {
-          tags_id: {
-            name: {
-              _eq: "Gods and Goddesses"
-            }
-          }
+        type: {
+          _eq: "Mythology"
         }
       }
     }))

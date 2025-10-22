@@ -6,8 +6,8 @@
         <div class="row justify-content-start align-items-stretch">
           <div class="card col-12 col-lg-6">
             <div class="card-wrapper">
-              <h4 class="card-title mbr-fonts-style align-center display-5">
-                <strong>{{ character?.universe?.universe_id?.name || 'Unknown Universe' }}</strong>
+              <h4 class="card-title mbr-fonts-style align-center display-5" v-if="character">
+                <strong>{{ universeName }}</strong>
               </h4>
 
               <div class="image-wrapper">
@@ -18,8 +18,12 @@
 
               <p class="mbr-text mbr-fonts-style align-center display-4" v-html="character?.description"></p>
 
-              <div class="mbr-section-btn align-center">
-                <p class="btn btn-white-outline display-7" v-if="character?.type">{{ character.type }}</p>
+              <!-- Type Chips -->
+              <div class="mbr-section-btn align-center" v-if="isMonster && typeNames.length">
+                <v-chip v-for="(t, i) in typeNames" :key="i" class="ma-1" color="deep-purple accent-4"
+                  text-color="white" label link :to="`/facet/${t.toLowerCase()}`">
+                  {{ t }}
+                </v-chip>
               </div>
             </div>
           </div>
@@ -52,7 +56,7 @@
                 <p class="mbr-text mbr-fonts-style display-4">{{ character?.name }}</p>
               </div>
 
-              <div class="item">
+              <div class="item" v-if="character?.type === 'Individual'">
                 <p class="item-title mbr-fonts-style display-4">Age</p>
                 <p class="mbr-text mbr-fonts-style display-4">{{ character?.age || 'Unknown' }}</p>
               </div>
@@ -62,7 +66,29 @@
                 <p class="mbr-text mbr-fonts-style display-4">{{ character?.alias || 'None' }}</p>
               </div>
 
-              <!-- AFFILIATES (comma-separated) -->
+              <!-- TYPE (Monster Only) -->
+              <div class="item" v-if="isMonster && typeNames.length">
+                <p class="item-title mbr-fonts-style display-4">Type</p>
+                <div class="mbr-text mbr-fonts-style display-4">
+                  <v-chip v-for="(t, i) in typeNames" :key="i" class="ma-1" color="indigo" text-color="white" label link
+                    :to="`/facet/${t.toLowerCase()}`">
+                    {{ t }}
+                  </v-chip>
+                </div>
+              </div>
+
+              <!-- LEVEL (Monster Only) -->
+              <div class="item" v-if="isMonster && levelNames.length">
+                <p class="item-title mbr-fonts-style display-4">Level</p>
+                <div class="mbr-text mbr-fonts-style display-4">
+                  <v-chip v-for="(lvl, i) in levelNames" :key="i" class="ma-1" color="blue-grey" text-color="white"
+                    label link :to="`/facet/${lvl.toLowerCase()}`">
+                    {{ lvl }}
+                  </v-chip>
+                </div>
+              </div>
+
+              <!-- AFFILIATES -->
               <div class="item" v-if="affiliatesList.length">
                 <p class="item-title mbr-fonts-style display-4">Affiliates</p>
                 <p class="mbr-text mbr-fonts-style display-4">
@@ -74,34 +100,27 @@
                 </p>
               </div>
 
-              <!-- ABILITIES (filtered and comma-separated) -->
+              <!-- ABILITIES -->
               <div class="item" v-if="abilitiesList.length">
-                <p class="item-title mbr-fonts-style display-4">
-                  Abilities
-                </p>
-                <p class="abilitiesList">
-                  <span v-for="(abilities, index) in abilitiesList" :key="abilities.slug || abilities.name || index">
-                    <NuxtLink class="mbr-text mbr-fonts-style display-4" v-if="abilities.slug"
-                      :to="`/facet/${abilities.slug}`">{{ abilities.name }}</NuxtLink>
-                    <span v-else>{{ abilities.name }}</span>
-                    <span v-if="index < abilitiesList.length - 1">, </span>
-                  </span>
-                </p>
-                <div class="icon-wrap">
-                  <span class="mbr-iconfont mobi-mbri mobi-mbri-growing-chart"></span>
+                <p class="item-title mbr-fonts-style display-4">Abilities</p>
+                <div class="mbr-text mbr-fonts-style display-4">
+                  <v-chip v-for="(ability, index) in abilitiesList" :key="ability.slug || ability.name || index"
+                    class="ma-1" color="teal" text-color="white" label link
+                    :to="`/facet/${ability.slug || ability.name.toLowerCase()}`">
+                    {{ ability.name }}
+                  </v-chip>
                 </div>
               </div>
 
-              <!-- TOPICS / TAGS (comma-separated) -->
+              <!-- TOPICS / TAGS -->
               <div class="item" v-if="tagsList.length">
                 <p class="item-title mbr-fonts-style display-4">Topics</p>
-                <p class="mbr-text mbr-fonts-style display-4">
-                  <span v-for="(t, idx) in tagsList" :key="t.id || t.slug || idx">
-                    <NuxtLink v-if="t.slug" :to="`/characters/category/${t.slug}`">{{ t.name }}</NuxtLink>
-                    <span v-else>{{ t.name }}</span>
-                    <span v-if="idx < tagsList.length - 1">, </span>
-                  </span>
-                </p>
+                <div class="mbr-text mbr-fonts-style display-4">
+                  <v-chip v-for="(t, idx) in tagsList" :key="t.id || t.slug || idx" class="ma-1" color="deep-orange"
+                    text-color="white" label link :to="`/characters/category/${t.slug || t.name.toLowerCase()}`">
+                    {{ t.name }}
+                  </v-chip>
+                </div>
               </div>
             </div>
           </div>
@@ -112,49 +131,6 @@
     <!-- RELATED CONTENT -->
     <div class="characterLowerPage">
       <v-row>
-        <!-- ITEMS -->
-        <v-col cols="12" v-if="character?.character_options?.some(opt => opt.options_id?.type === 'Items')">
-          <h3>Items</h3>
-          <v-row>
-            <v-col cols="4" v-for="(opt, i) in character.character_options" :key="i"
-              v-if="opt.options_id?.type === 'Items'">
-              <item :item="opt.options_id" />
-            </v-col>
-          </v-row>
-        </v-col>
-
-        <!-- PLACES -->
-        <v-col cols="12" v-if="character?.character_options?.some(opt => opt.options_id?.type === 'Places')">
-          <h3>Places</h3>
-          <v-row>
-            <v-col cols="4" v-for="(opt, i) in character.character_options" :key="i"
-              v-if="opt.options_id?.type === 'Places'">
-              <item :place="opt.options_id" />
-            </v-col>
-          </v-row>
-        </v-col>
-
-        <!-- STORIES -->
-        <v-col cols="12" v-if="character?.stories?.length">
-          <h3>Stories</h3>
-          <v-row>
-            <v-col cols="4" v-for="(storyItem, i) in character.stories" :key="i">
-              <story :story="storyItem?.stories_id" />
-            </v-col>
-          </v-row>
-        </v-col>
-
-        <!-- VIDEOS -->
-        <v-col cols="12" v-if="character?.videos?.length">
-          <h3>Videos</h3>
-          <v-row>
-            <v-col cols="4" v-for="(video, i) in character.videos" :key="i">
-              <videoComponent :video="video?.videos_id" />
-            </v-col>
-          </v-row>
-        </v-col>
-
-        <!-- RELATED CHARACTERS & COMMENTS -->
         <v-col cols="12">
           <relatedcharacters />
         </v-col>
@@ -178,10 +154,7 @@
     useHead
   } from '#imports'
   import comments from '~/components/partials/comments.vue'
-  import item from '~/components/related/facet.vue'
   import relatedcharacters from '~/components/related/relatedcharacters.vue'
-  import videoComponent from '~/components/related/video.vue'
-  import story from '~/components/related/story.vue'
 
   const route = useRoute()
   const {
@@ -215,69 +188,88 @@
     )
   })
 
-  // Handle Directus returning an array
   const character = computed(() => data.value?.[0] || null)
 
-  // Compute normalized abilities list (name, slug)
+  function normalizeType(value) {
+    if (!value) return []
+    if (Array.isArray(value)) return value.map(v => v.trim().toLowerCase())
+    return [value.toString().trim().toLowerCase()]
+  }
+
   const abilitiesList = computed(() => {
     const c = character.value || {}
-    // Direct array of abilities (e.g. abilities: [{ abilities_id: {...} }])
-    if (Array.isArray(c.abilities) && c.abilities.length) {
-      return c.abilities
-        .map(a => a?.abilities_id || a)
-        .map(x => ({
-          name: x?.name || x?.title || '',
-          slug: x?.slug
-        }))
-        .filter(x => x.name)
-    }
-
-    // Fallback: character_options where options_id.type === 'Abilities'
-    if (Array.isArray(c.character_options) && c.character_options.length) {
-      return c.character_options
-        .map(opt => opt?.options_id || opt?.characters_id || {})
-        .filter(o => o && (o.type === 'Abilities' || o.type === 'Ability' || o.type === 'abilities'))
-        .map(o => ({
-          name: o?.name || o?.title || '',
-          slug: o?.slug
-        }))
-        .filter(x => x.name)
-    }
-
-    return []
+    if (!Array.isArray(c.character_options)) return []
+    return c.character_options
+      .filter(o => normalizeType(o?.options_id?.type).includes('abilities'))
+      .map(o => ({
+        name: o.options_id?.name || '',
+        slug: o.options_id?.slug || null
+      }))
   })
 
-  // Compute normalized affiliates list (name, slug, id)
   const affiliatesList = computed(() => {
     const c = character.value || {}
-    if (Array.isArray(c.affiliates) && c.affiliates.length) {
-      return c.affiliates
-        .map(a => a?.characters_id || a)
-        .map(x => ({ id: x?.id, name: x?.name || x?.title || '', slug: x?.slug }))
-        .filter(x => x.name)
-    }
-    return []
+    if (!Array.isArray(c.affiliates)) return []
+    return c.affiliates
+      .map(a => a?.characters_id || a)
+      .filter(a => a?.name)
+      .map(a => ({
+        id: a.id,
+        name: a.name,
+        slug: a.slug
+      }))
   })
 
-  // Compute normalized tags list (name, slug, id)
   const tagsList = computed(() => {
     const c = character.value || {}
-    if (Array.isArray(c.tags) && c.tags.length) {
-      return c.tags
-        .map(t => t?.tags_id || t)
-        .map(x => ({ id: x?.id, name: x?.name || x?.title || '', slug: x?.slug }))
-        .filter(x => x.name)
-    }
-    return []
+    if (!Array.isArray(c.tags)) return []
+    return c.tags
+      .map(t => t?.tags_id || t)
+      .filter(t => t?.name)
+      .map(t => ({
+        id: t.id,
+        name: t.name,
+        slug: t.slug
+      }))
   })
 
-  // Dynamic page title
+  const universeName = computed(() => {
+    const u = character.value?.universe
+    if (!u) return 'Unknown Universe'
+    const candidate = Array.isArray(u) ? (u[0] || {}) : u
+    const nested = candidate.universe_id || candidate
+    return nested?.name || 'Unknown Universe'
+  })
+
+  const isMonster = computed(() => {
+    const c = character.value || {}
+    if (typeof c.type === 'string') return c.type.trim().toLowerCase() === 'monster'
+    if (Array.isArray(c.type)) return c.type.map(t => t.trim().toLowerCase()).includes('monster')
+    if (Array.isArray(c.character_options)) {
+      return c.character_options.some(o => normalizeType(o?.options_id?.type).includes('monster'))
+    }
+    return false
+  })
+
+  const typeNames = computed(() => {
+    const c = character.value || {}
+    if (!Array.isArray(c.character_options)) return []
+    return c.character_options
+      .filter(o => normalizeType(o?.options_id?.type).includes('type'))
+      .map(o => o.options_id?.name)
+      .filter(Boolean)
+  })
+
+  const levelNames = computed(() => {
+    const c = character.value || {}
+    if (!Array.isArray(c.character_options)) return []
+    return c.character_options
+      .filter(o => normalizeType(o?.options_id?.type).includes('level'))
+      .map(o => o.options_id?.name)
+      .filter(Boolean)
+  })
+
   useHead({
     title: computed(() => character.value?.name || 'Character Page')
-  })
-
-  // Dynamic page title
-  useHead({
-    title: computed(() => character.value?.name || 'Character Page'),
   })
 </script>

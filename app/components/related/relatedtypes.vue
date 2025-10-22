@@ -46,8 +46,8 @@
       return list.filter(item => {
         const t = item?.type
         if (!t) return false
-        if (typeof t === 'string') return t.trim() === 'Types'
-        if (Array.isArray(t)) return t.some(x => (x || '').toString().trim() === 'Types')
+        if (typeof t === 'string') return t.trim() === 'Type'
+        if (Array.isArray(t)) return t.some(x => (x || '').toString().trim() === 'Type')
         return false
       })
     })

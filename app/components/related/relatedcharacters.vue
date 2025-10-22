@@ -1,33 +1,28 @@
 <template>
-    <div>
-      <v-col cols="12">
-        <v-toolbar title="CHARACTERS WITHIN THE ELITEVERSE" density="comfortable" color="transparent">
-        </v-toolbar>
-        <v-sheet class="mx-auto">
-          <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item v-for="characters in characters" :key="characters"
-              v-slot="{ isSelected, toggle, selectedClass }">
-              <character :character="characters" class="characterCard" :class="['ma-4', selectedClass]" v-if="isSelected" @click="toggle" />
-            </v-slide-group-item>
-          </v-slide-group>
-        </v-sheet>
-      </v-col>
-    </div>
-  </template>
+  <div>
+    <v-col cols="12">
+      <v-toolbar title="CHARACTERS WITHIN THE ELITEVERSE" density="comfortable" color="transparent" />
+      <v-sheet class="mx-auto">
+        <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
+          <v-slide-group-item v-for="(char, index) in characters" :key="char?.id || index" v-slot="{ isSelected, toggle, selectedClass }">
+            <div>
+              <character :character="char" class="characterCard" @click="toggle" :class="['ma-4', selectedClass]" />
+            </div>
+          </v-slide-group-item>
+        </v-slide-group>
+      </v-sheet>
+    </v-col>
+  </div>
+</template>
 
-  <script setup>
-  import { ref } from 'vue'
-  import character from '~/components/related/character.vue'
+<script setup>
+import { ref } from 'vue'
+import character from '~/components/related/character.vue'
 
-  const model = ref(null)
-  const {
-        $directus,
-        $readItems
-    } = useNuxtApp()
+const model = ref(null)
+const { $directus, $readItems } = useNuxtApp()
 
-    const {
-        data: characters
-    } = await useAsyncData('characters', () => {
-        return $directus.request($readItems('characters'))
-    })
+const { data: characters } = await useAsyncData('characters', () => {
+  return $directus.request($readItems('characters'))
+})
 </script>

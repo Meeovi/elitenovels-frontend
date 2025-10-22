@@ -79,8 +79,8 @@
     import {
         ref
     } from 'vue'
-    import mythologyPage from '~/components/pages/mythology/index.vue'
-    import monsterPage from '~/components/pages/monsters/index.vue'
+    import mythologyPage from '~/components/pages/mythology.vue'
+    import monsterPage from '~/components/pages/monsters.vue'
     import itemPage from '~/components/pages/items.vue'
     import placePage from '~/components/pages/places.vue'
     import abilityPage from '~/components/pages/abilities.vue'

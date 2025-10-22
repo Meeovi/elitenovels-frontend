@@ -39,8 +39,8 @@ export const PagesDictionary: typeof import("../app/components/pages/dictionary.
 export const PagesItems: typeof import("../app/components/pages/items.vue")['default']
 export const PagesKids: typeof import("../app/components/pages/kids.vue")['default']
 export const PagesLevels: typeof import("../app/components/pages/levels.vue")['default']
-export const PagesMonsters: typeof import("../app/components/pages/monsters/index.vue")['default']
-export const PagesMythology: typeof import("../app/components/pages/mythology/index.vue")['default']
+export const PagesMonsters: typeof import("../app/components/pages/monsters.vue")['default']
+export const PagesMythology: typeof import("../app/components/pages/mythology.vue")['default']
 export const PagesPlaces: typeof import("../app/components/pages/places.vue")['default']
 export const PagesTypes: typeof import("../app/components/pages/types.vue")['default']
 export const PartialsAddtolist: typeof import("../app/components/partials/addtolist.vue")['default']
@@ -252,8 +252,8 @@ export const LazyPagesDictionary: LazyComponent<typeof import("../app/components
 export const LazyPagesItems: LazyComponent<typeof import("../app/components/pages/items.vue")['default']>
 export const LazyPagesKids: LazyComponent<typeof import("../app/components/pages/kids.vue")['default']>
 export const LazyPagesLevels: LazyComponent<typeof import("../app/components/pages/levels.vue")['default']>
-export const LazyPagesMonsters: LazyComponent<typeof import("../app/components/pages/monsters/index.vue")['default']>
-export const LazyPagesMythology: LazyComponent<typeof import("../app/components/pages/mythology/index.vue")['default']>
+export const LazyPagesMonsters: LazyComponent<typeof import("../app/components/pages/monsters.vue")['default']>
+export const LazyPagesMythology: LazyComponent<typeof import("../app/components/pages/mythology.vue")['default']>
 export const LazyPagesPlaces: LazyComponent<typeof import("../app/components/pages/places.vue")['default']>
 export const LazyPagesTypes: LazyComponent<typeof import("../app/components/pages/types.vue")['default']>
 export const LazyPartialsAddtolist: LazyComponent<typeof import("../app/components/partials/addtolist.vue")['default']>

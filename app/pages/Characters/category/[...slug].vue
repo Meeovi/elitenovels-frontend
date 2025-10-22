@@ -1,49 +1,48 @@
 <template>
-    <v-card elevation="0">
-        <div v-if="tag?.name === 'Gods and Goddesses'">
-            <mythologybar />
-        </div>
-        <div v-else-if="tag?.name === 'Angels'">
-            <mythologybar />
-        </div>
-        <div v-else-if="tag?.name === 'Demons'">
-            <mythologybar />
-        </div>
-        <div v-else-if="tag?.name === 'Mythical Creatures'">
-            <mythologybar />
-        </div>
-        <div v-else-if="tag?.name === 'Other Myths'">
-            <mythologybar />
-        </div>
-        <div v-else-if="tag?.name === 'Magical'">
-            <mythologybar />
-        </div>
-        <div v-else-if="tag?.name === 'Monsters'">
-            <monsterbar />
-        </div>
-        <div v-else>
-            <characterbar />
-        </div>
-        <v-toolbar style="background-color: powderblue;">
+    <div>
+        <v-toolbar :style="`background-color: ${tag?.color};`">
             <v-toolbar-title v-if="tag">{{ tag?.name }}</v-toolbar-title>
         </v-toolbar>
-        <v-tabs v-model="tab" style="background-color: powderblue;">
-            <v-tab value="one">All</v-tab>
-        </v-tabs>
+        <v-card elevation="0">
+            <div v-if="tag?.name === 'Gods and Goddesses'">
+                <mythologybar />
+            </div>
+            <div v-else-if="tag?.name === 'Monsters'">
+                <monsterbar />
+            </div>
+            <div v-else>
+                <v-tabs v-model="tab" style="background-color: cadetblue; color: white;" center-active>
+                    <v-tab value="one">All</v-tab>
+                </v-tabs>
+            </div>
+            <v-card-text>
+                <v-tabs-window v-model="tab">
+                    <v-tabs-window-item value="one">
+                        <v-row>
+                            <!-- Update v-for to correctly access nested character data -->
+                            <div v-if="tag?.characters?.length">
+                                <v-col cols="3" v-for="char in tag?.characters" :key="char.characters_id.id">
+                                    <characters :character="char?.characters_id" />
+                                </v-col>
+                            </div>
 
-        <v-card-text>
-            <v-tabs-window v-model="tab">
-                <v-tabs-window-item value="one">
-                    <v-row>
-                        <!-- Update v-for to correctly access nested character data -->
-                        <v-col cols="3" v-for="char in tag?.characters" :key="char.characters_id.id">
-                            <characters :character="char?.characters_id" />
-                        </v-col>
-                    </v-row>
-                </v-tabs-window-item>
-            </v-tabs-window>
-        </v-card-text>
-    </v-card>
+                            <div v-else-if="tag?.options?.length">
+                                <v-col cols="3" v-for="facet in tag?.options" :key="facet.options_id.id">
+                                    <facet :facet="facet?.options_id" />
+                                </v-col>
+                            </div>                            
+
+                            <div v-else>
+                                <v-col cols="12">
+                                    <p>No characters or items found for this tag.</p>
+                                </v-col>
+                            </div>
+                        </v-row>
+                    </v-tabs-window-item>
+                </v-tabs-window>
+            </v-card-text>
+        </v-card>
+    </div>
 </template>
 
 <script setup>
@@ -57,6 +56,7 @@
     import characterbar from '~/components/menus/characterbar.vue'
     import mythologybar from '~/components/menus/mythologybar.vue'
     import monsterbar from '~/components/menus/monsterbar.vue'
+    import facet from '~/components/related/facet.vue'
 
     const tab = ref(null)
     const route = useRoute()
@@ -70,7 +70,11 @@
         data: tagData
     } = await useAsyncData('tagData', () => {
         return $directus.request($readItems('tags', {
-            fields: ['*', 'characters.characters_id.*'],
+            fields: [
+                '*', 
+                'characters.characters_id.*',
+                'options.options_id.*'
+            ],
             filter: {
                 slug: {
                     _eq: `${route.params.slug}`

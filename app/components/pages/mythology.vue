@@ -6,7 +6,8 @@
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="mythology in mythology" :key="mythology" v-slot="{ isSelected, toggle }">
-              <characters :character="mythology" />
+              <characters :character="mythology" class="characterCard" @click="toggle"
+                :class="['ma-4', selectedClass]" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -20,7 +21,8 @@
           <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
             <v-slide-group-item v-for="royalcirca in royalcirca" :key="royalcirca"
               v-slot="{ isSelected, toggle, selectedClass }">
-              <characters :character="royalcirca" />
+              <characters :character="royalcirca" class="characterCard" @click="toggle"
+                :class="['ma-4', selectedClass]" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -30,7 +32,7 @@
         <v-toolbar title="BROWSE ELITEVERSE MYTHOLOGY" density="comfortable" color="transparent"></v-toolbar>
       </v-col>
       <v-col cols="3" v-for="mythology in mythology" :key="mythology">
-        <characters :character="mythology" />
+        <characters :character="mythology" class="characterCard" @click="toggle" :class="['ma-4', selectedClass]" />
       </v-col>
       <relatedstories />
     </v-row>
@@ -59,12 +61,8 @@
         '*': ['*']
       }],
       filter: {
-        tags: {
-          tags_id: {
-            name: {
-              _eq: "Gods and Goddesses"
-            }
-          }
+        type: {
+          _eq: "Mythology"
         }
       }
     }))
@@ -78,7 +76,7 @@
         tags: {
           tags_id: {
             name: {
-              _eq: "Aurelian Characters"
+              _eq: "Royal Circa"
             }
           }
         }
