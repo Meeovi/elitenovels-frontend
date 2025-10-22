@@ -32,9 +32,15 @@
                                 </v-col>
                             </div>                            
 
+                            <div v-else-if="tag?.stories?.length">
+                                <v-col cols="3" v-for="story in tag?.stories" :key="story.stories_id.id">
+                                    <storyCard :story="story?.stories_id" />
+                                </v-col>
+                            </div> 
+
                             <div v-else>
                                 <v-col cols="12">
-                                    <p>No characters or items found for this tag.</p>
+                                    <p>{{ pageBlock?.description }}</p>
                                 </v-col>
                             </div>
                         </v-row>
@@ -57,12 +63,14 @@
     import mythologybar from '~/components/menus/mythologybar.vue'
     import monsterbar from '~/components/menus/monsterbar.vue'
     import facet from '~/components/related/facet.vue'
+    import storyCard from '~/components/related/story.vue'
 
     const tab = ref(null)
     const route = useRoute()
     const {
         $directus,
-        $readItems
+        $readItems,
+        $readItem
     } = useNuxtApp()
 
     // Get the specific tag and its characters
@@ -73,13 +81,24 @@
             fields: [
                 '*', 
                 'characters.characters_id.*',
-                'options.options_id.*'
+                'options.options_id.*',
+                'stories.stories_id.*'
             ],
             filter: {
                 slug: {
                     _eq: `${route.params.slug}`
                 }
             },
+        }))
+    })
+
+        const {
+        data: pageBlock
+    } = await useAsyncData('pageBlock', () => {
+        return $directus.request($readItem('blocks', '9', {
+            fields: ['*', {
+                '*': ['*']
+            }],
         }))
     })
 

@@ -119,6 +119,12 @@ body {
     font-size: 25px;
 }
 
+.storyDesc {
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
 .pageDescription {
     padding: 20px;
 }

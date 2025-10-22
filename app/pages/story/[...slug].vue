@@ -5,16 +5,11 @@
         <!-- Section: Design Block -->
         <section class="mb-10">
           <div v-if="story?.image?.filename_disk">
-            <img class="img-fluid shadow-1-strong rounded-5 mb-4" height="400" :alt="story?.name"
-              :src="`${$directus.url}/assets/${story?.image?.filename_disk}`" cover />
+            <img class="img-fluid shadow-1-strong rounded-5 mb-4" height="250" width="250" :alt="story?.name"
+              :src="`${$directus.url}assets/${story?.image?.filename_disk}`" cover />
           </div>
 
           <div v-else><img src="assets/images/coming_soon.png" :alt="story?.name"></div>
-
-          <div v-else>
-            <img class="img-fluid shadow-1-strong rounded-5 mb-4" height="300" src="~/assets/images/coming_soon.png"
-              cover />
-          </div>
 
           <div class="row align-items-center mb-4">
             <div class="col-lg-7">
@@ -26,9 +21,7 @@
             {{ story?.name }}
           </h1>
 
-          <p>
-            {{ story?.description }}
-          </p>
+          <p class="storyDesc" v-html="story?.description"></p>
         </section>
       </div>
 
@@ -36,8 +29,8 @@
         <v-row>
           <v-toolbar title="Characters in this Story" density="comfortable" color="transparent">
           </v-toolbar>
-          <v-col cols="3" v-for="characters in story?.characters" :key="characters">
-            <characters :character="characters?.characters_id" />
+          <v-col cols="3" v-for="(charItem, idx) in story?.characters" :key="charItem?.characters_id?.id || charItem?.id || idx">
+            <characters :character="charItem?.characters_id || charItem" />
           </v-col>
         </v-row>
       </div>
@@ -57,31 +50,36 @@
   import comments from '~/components/partials/comments.vue'
   import characters from '~/components/related/character.vue'
   import relatedstories from '~/components/related/relatedstories.vue'
-  import { readItem } from '@directus/sdk';
+  import { computed } from 'vue'
 
   const route = useRoute()
   const {
     $directus,
-    $readItem
+    $readItems
   } = useNuxtApp()
 
-  const {
-    data: story
-  } = await useAsyncData('story', () => {
-    return $directus.request(readItem('stories' , {
-      filter: { slug: { _eq: `${route.params.slug}` } },
+  const { data } = await useAsyncData('story', () => {
+    return $directus.request($readItems('stories', {
+      filter: {
+        slug: {
+          _eq: `${route.params.slug}`
+        }
+      },
       fields: [
         '*',
         'image.*',
         'characters.characters_id.*',
-        'characters.characters_id.character_options.characters_id.*',
-        'characters.characters_id.stories.stories_id.*',
-        'characters.characters_id.videos.videos_id.*'
+        'options.options_id.*',
+        'universe.universe_id.*',
+        'tags.tags_id.*'
       ]
     }))
   })
 
+  // Directus returns an array for readItems; normalize to a single story
+  const story = computed(() => (Array.isArray(data.value) ? data.value[0] : data.value))
+
   useHead({
-    title: computed(() => story?.value?.name || 'Story Page')
+    title: computed(() => story.value?.name || 'Story Page')
   })
 </script>

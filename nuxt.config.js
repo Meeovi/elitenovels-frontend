@@ -96,6 +96,12 @@ export default defineNuxtConfig({
         }
       },
 
+      disqus: {
+        shortname: process.env.NUXT_PUBLIC_DISQUS_SHORTNAME || 'meeovi',
+        devShortname: 'meeovi-dev', // fallback (can be fake if you just want placeholder)
+        devBaseUrl: 'http://localhost:3000' // used for URL in dev
+      },
+
       meeDirectusUrl: process.env.MEE_DIRECTUS_URL || 'http://localhost:8055',
       meeNuxtBaseUrl: process.env.MEE_NUXTUS_DIRECTUS_STATIC_TOKEN || 'http://localhost:3011',
       meeToken: process.env.MEE_NUXTUS_DIRECTUS_ADMIN_EMAIL || '',
