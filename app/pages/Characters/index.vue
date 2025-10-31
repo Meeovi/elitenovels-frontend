@@ -2,7 +2,7 @@
   <div class="categoryPage">
     <!--<characterbar />-->
     <section data-bs-version="5.1" class="header01 emblemm5 cid-uLEdfj7dI6"
-      :style="`background-image: url(${$directus.url}assets/${characterPage?.image?.filename_disk}) !important`"
+      :style="`background-image: url(/images/thelazaronbanner-900x357.png) !important`"
       id="header01-1k">
       <div class="container-fluid">
         <div class="row">
@@ -33,7 +33,9 @@
           <div class="item features-image col-12 col-lg-4" v-for="block in characterBlocks" :key="block?.id">
             <div class="item-wrapper card_1">
               <div class="item-img">
-                <img :src="`${$directus.url}assets/${block?.image?.filename_disk}`" :alt="block?.name" />
+                <img v-if="block?.images?.length" :src="`${$directus.url}assets/${block?.image?.filename_disk}`" :alt="block?.name" />
+
+                <img v-else src="/images/mbr-1920x1080.jpg" alt="Elite Novels" />
               </div>
               <div class="card-box">
                 <h4 class="item-title mbr-fonts-style display-5">
