@@ -58,7 +58,7 @@
   import {
     useRoute
   } from 'vue-router';
-  import FilterComponent from '~/components/Search/filters.vue';
+  //import FilterComponent from '~/components/Search/filters.vue';
   import productCard from '~/components/related/productCard.vue';
 
   import {
