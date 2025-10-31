@@ -1,5 +1,5 @@
 <template>
-  <div class="contentSection">
+  <div class="contentSection" v-if="result">
     <v-toolbar :title="shopBlock?.name" density="comfortable" color="transparent">
       <NuxtLink :to="shopBlock?.content?.[0]?.subject">{{ shopBlock?.content?.[0]?.name }}</NuxtLink>
     </v-toolbar>

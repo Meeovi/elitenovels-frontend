@@ -8,7 +8,7 @@
             <v-slide-group-item v-for="characters in popularCharacters" :key="characters"
               v-slot="{ isSelected, toggle, selectedClass }">
               <v-col cols="3">
-                <charactersCard :character="characters" class="characterCard" @click="toggle"
+                <charactersCard :character="characters" class="characterCard popCard" @click="toggle"
                   :class="['ma-4', selectedClass]" />
               </v-col>
             </v-slide-group-item>
@@ -20,7 +20,8 @@
         <v-toolbar title="SPELL CREATURES" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="monsters in monsters" :key="monsters" v-slot="{ isSelected, toggle, selectedClass }">
+            <v-slide-group-item v-for="monsters in monsters" :key="monsters"
+              v-slot="{ isSelected, toggle, selectedClass }">
               <v-col cols="3">
                 <charactersCard :character="monsters" class="characterCard" @click="toggle"
                   :class="['ma-4', selectedClass]" />
@@ -34,9 +35,38 @@
         <v-toolbar title="CHARACTERS FROM MYTHOLOGY" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="mythology in mythology" :key="mythology" v-slot="{ isSelected, toggle, selectedClass }">
+            <v-slide-group-item v-for="mythology in mythology" :key="mythology"
+              v-slot="{ isSelected, toggle, selectedClass }">
               <v-col cols="3">
                 <charactersCard :character="mythology" class="characterCard" @click="toggle"
+                  :class="['ma-4', selectedClass]" />
+              </v-col>
+            </v-slide-group-item>
+          </v-slide-group>
+        </v-sheet>
+      </v-col>
+
+      <v-col cols="12">
+        <v-toolbar title="FROM ACROSS THE ELITEVERSE" density="comfortable" color="transparent"></v-toolbar>
+        <v-sheet class="mx-auto">
+          <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
+            <v-slide-group-item v-for="aliens in aliens" :key="aliens" v-slot="{ isSelected, toggle, selectedClass }">
+              <v-col cols="3">
+                <charactersCard :character="aliens" class="characterCard" @click="toggle"
+                  :class="['ma-4', selectedClass]" />
+              </v-col>
+            </v-slide-group-item>
+          </v-slide-group>
+        </v-sheet>
+      </v-col>
+
+      <v-col cols="12">
+        <v-toolbar title="ELITE KIDS" density="comfortable" color="transparent"></v-toolbar>
+        <v-sheet class="mx-auto">
+          <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
+            <v-slide-group-item v-for="kids in kids" :key="kids" v-slot="{ isSelected, toggle, selectedClass }">
+              <v-col cols="3">
+                <charactersCard :character="kids" class="characterCard" @click="toggle"
                   :class="['ma-4', selectedClass]" />
               </v-col>
             </v-slide-group-item>
@@ -65,7 +95,19 @@
     return $directus.request($readItems('characters', {
       fields: ['*', {
         '*': ['*']
-      }]
+      }],
+      filter: {
+        type: {
+          _eq: "Individual"
+        },
+        universe: {
+          universe_id: {
+            name: {
+              _eq: "Main Universe"
+            }
+          }
+        }
+      }
     }))
   })
 
@@ -94,6 +136,43 @@
       filter: {
         type: {
           _eq: "Mythology"
+        }
+      }
+    }))
+  })
+
+  const {
+    data: aliens
+  } = await useAsyncData('aliens', () => {
+    return $directus.request($readItems('characters', {
+      fields: ['*', {
+        '*': ['*']
+      }],
+      filter: {
+        type: {
+          _eq: "Alien"
+        }
+      }
+    }))
+  })
+
+  const {
+    data: kids
+  } = await useAsyncData('kids', () => {
+    return $directus.request($readItems('characters', {
+      fields: ['*', {
+        '*': ['*']
+      }],
+      filter: {
+        type: {
+          _eq: "Individual"
+        },
+        universe: {
+          universe_id: {
+            name: {
+              _eq: "Kids"
+            }
+          }
         }
       }
     }))

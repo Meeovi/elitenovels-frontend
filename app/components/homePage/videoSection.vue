@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-col cols="12">
+    <v-col cols="12" v-if="videos?.length">
       <v-toolbar title="LATEST VIDEOS FROM ELITE NOVELS" density="comfortable" color="transparent"></v-toolbar>
       <v-sheet class="mx-auto">
         <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>

@@ -1,8 +1,27 @@
 <template>
     <div class="contentPage">
         <section data-bs-version="5.1" class="header01 emblemm5 cid-uLEdfj7dI6" id="header01-1k">
+            <div v-if="page?.image?.length" class="mbr-fallback-image" :style="`background-image: url(${$directus.url}assets/${page?.image?.filename_disk}) !important`"></div>      
 
-            <div class="mbr-fallback-image" :style="`background-image: url(${$directus.url}assets/${page?.image?.filename_disk}) !important`"></div>
+            <div v-else-if="page?.name === 'Mythology'" class="mbr-fallback-image" style="background-image: url(_nuxt/assets/images/mbr-1920x1920.jpg) !important"></div>
+
+            <div v-else-if="page?.name === 'Monsters'" class="mbr-fallback-image" style="background-image: url(_nuxt/assets/images/mbr-1080x763.jpg) !important"></div>
+
+            <div v-else-if="page?.name === 'Items'" class="mbr-fallback-image" style="background-image: url(_nuxt/assets/images/mbr-1920x1368.jpg) !important"></div>
+
+            <div v-else-if="page?.name === 'Places'" class="mbr-fallback-image" style="background-image: url(_nuxt/assets/images/mbr-510x383.jpg) !important"></div>
+
+            <div v-else-if="page?.name === 'Abilities'" class="mbr-fallback-image" style="background-image: url(_nuxt/assets/images/mbr-700x514.jpg) !important"></div>
+
+            <div v-else-if="page?.name === 'Levels'" class="mbr-fallback-image" style="background-image: url(_nuxt/assets/images/mbr-1-510x340.jpg) !important"></div>
+
+            <div v-else-if="page?.name === 'Types'" class="mbr-fallback-image" style="background-image: url(_nuxt/assets/images/mbr-1460x973.jpg) !important"></div>
+
+            <div v-else-if="page?.name === 'Kids'" class="mbr-fallback-image" style="background-image: url(_nuxt/assets/images/mbr-1-676x676.jpg) !important"></div>
+
+            <div v-else-if="page?.name === 'Stories'" class="mbr-fallback-image" style="background-image: url(_nuxt/assets/images/mbr-1-700x467.jpg) !important"></div>
+
+            <div v-else-if="page?.name === 'Videos'" class="mbr-fallback-image" style="background-image: url(_nuxt/assets/images/mbr-3-510x340.jpg) !important"></div>
 
             <div class="container-fluid">
                 <div class="row">

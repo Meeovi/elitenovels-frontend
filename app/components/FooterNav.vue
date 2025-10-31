@@ -3,8 +3,15 @@
         <section data-bs-version="5.1" class="footer1 growthm5 cid-uLE9Kol17N" once="footers" id="afooter1-1j">
             <div class="container">
                 <div class="row">
-                    <div><v-avatar class="circle-bg" size="480">
-                            <img :src="`${$directus.url}assets/${footerBlock?.image?.filename_disk}`" /></v-avatar></div>
+                    <div>
+                        <v-avatar v-if="footerBlock?.image?.length" class="circle-bg" size="480">
+                            <img :src="`${$directus.url}assets/${footerBlock?.image?.filename_disk}`" />
+                        </v-avatar>
+
+                        <v-avatar v-else class="circle-bg" size="480">
+                            <img src="../assets/images/enovelslogo.png" />
+                        </v-avatar>
+                    </div>
                     <div class="footer-top-container">
                         <div class="col-link">
                             <ul class="list mbr-fonts-style display-7"
