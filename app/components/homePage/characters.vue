@@ -4,8 +4,8 @@
       <v-col cols="12">
         <v-toolbar title="POPULAR CHARACTERS" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
-          <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item v-for="(characters, index) in popularCharacters" :key="index"
+          <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
+            <v-slide-group-item v-for="characters in popularCharacters" :key="characters"
               v-slot="{ isSelected, toggle, selectedClass }">
               <v-col cols="3">
                 <charactersCard :character="characters" class="characterCard" @click="toggle"
@@ -20,7 +20,7 @@
         <v-toolbar title="SPELL CREATURES" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="monsters in monsters" :key="monsters" v-slot="{ isSelected, toggle }">
+            <v-slide-group-item v-for="monsters in monsters" :key="monsters" v-slot="{ isSelected, toggle, selectedClass }">
               <v-col cols="3">
                 <charactersCard :character="monsters" class="characterCard" @click="toggle"
                   :class="['ma-4', selectedClass]" />
@@ -34,7 +34,7 @@
         <v-toolbar title="CHARACTERS FROM MYTHOLOGY" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="mythology in mythology" :key="mythology" v-slot="{ isSelected, toggle }">
+            <v-slide-group-item v-for="mythology in mythology" :key="mythology" v-slot="{ isSelected, toggle, selectedClass }">
               <v-col cols="3">
                 <charactersCard :character="mythology" class="characterCard" @click="toggle"
                   :class="['ma-4', selectedClass]" />
