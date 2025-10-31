@@ -1,7 +1,9 @@
 <template>
     <div class="contentPage">
         <section data-bs-version="5.1" class="header01 emblemm5 cid-uLEdfj7dI6" id="header01-1k">
-            <div v-if="page?.image?.length" class="mbr-fallback-image" :style="`background-image: url(${$directus.url}assets/${page?.image?.filename_disk}) !important`"></div>      
+            <div v-if="page?.image?.length" class="mbr-fallback-image" :style="`background-image: url(${$directus.url}assets/${page?.image?.filename_disk}) !important`"></div> 
+            
+            <div v-else-if="page?.name === 'Characters'" class="mbr-fallback-image" style="background-image: url(/images/thelazaronbanner-900x357.png) !important"></div>
 
             <div v-else-if="page?.name === 'Mythology'" class="mbr-fallback-image" style="background-image: url(/images/mbr-1920x1920.jpg) !important"></div>
 
@@ -19,9 +21,11 @@
 
             <div v-else-if="page?.name === 'Kids'" class="mbr-fallback-image" style="background-image: url(/images/mbr-1-676x676.jpg) !important"></div>
 
-            <div v-else-if="page?.name === 'Stories'" class="mbr-fallback-image" style="background-image: url(/images/mbr-1-700x467.jpg) !important"></div>
+            <div v-else-if="page?.name === 'Stories'" class="mbr-fallback-image" style="background-image: url(/images/mbr-1460x821.jpg) !important"></div>
 
             <div v-else-if="page?.name === 'Videos'" class="mbr-fallback-image" style="background-image: url(/images/mbr-3-510x340.jpg) !important"></div>
+
+            <div v-else-if="page?.name === 'Games'" class="mbr-fallback-image" style="background-image: url(/images/mbr-1920x1400.jpg) !important"></div>
 
             <div class="container-fluid">
                 <div class="row">
