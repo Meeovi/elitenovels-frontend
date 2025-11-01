@@ -130,7 +130,7 @@ body {
 }
 
 .characterCard {
-    padding-right: 10px;
+    padding: 10px;
 }
 
 .affiliateList {
@@ -141,6 +141,10 @@ body {
 .abilitiesList {
     right: 109px;
     position: relative;
+}
+
+.cid-uLEeT3ZF2k {
+    background-color: transparent !important;
 }
 
 /******************** Sidebar CSS *************/

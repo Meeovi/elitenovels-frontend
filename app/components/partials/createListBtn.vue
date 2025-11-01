@@ -71,6 +71,7 @@
 
   const $toast = useToast()
   const loading = ref(false)
+  const isDev = process.env.NODE_ENV !== 'production'
 
   // Add product_sku to props
   const props = defineProps({
@@ -101,7 +102,7 @@
   })
 
   const checkListProducts = async (listId) => {
-    console.log('Checking current list contents...');
+    if (isDev) console.log('Checking current list contents...');
     await checkListProducts(listId);
 
     try {
@@ -113,7 +114,7 @@
           }
         }
       }));
-      console.log(`Products in list ${listId}:`, products);
+  if (isDev) console.log(`Products in list ${listId}:`, products);
       return products;
     } catch (error) {
       console.error('Error checking list products:', error);
@@ -125,7 +126,7 @@
   loading.value = true;
 
   try {
-    console.log('Input values:', { listId, product_sku: props.product_sku });
+  if (isDev) console.log('Input values:', { listId, product_sku: props.product_sku });
 
     // Check if the product already exists in the list
     const existingProducts = await $directus.request(
@@ -137,7 +138,7 @@
       })
     )?.data || [];
 
-    console.log('Existing products query result:', existingProducts);
+  if (isDev) console.log('Existing products query result:', existingProducts);
 
     if (existingProducts.length > 0) {
       $toast.error('Product already exists in this list', {
@@ -155,10 +156,10 @@
       lists: [listId], // Pass listId directly
     };
 
-    console.log('Attempting to save product data:', productData);
+  if (isDev) console.log('Attempting to save product data:', productData);
 
     const savedProduct = await $directus.request($createItem('list_products', productData));
-    console.log('Save response:', savedProduct);
+  if (isDev) console.log('Save response:', savedProduct);
 
     if (savedProduct) {
       $toast.success('Product added to list successfully', {

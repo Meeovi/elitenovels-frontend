@@ -16,7 +16,8 @@
    "scripts": {
       "elite-commit": "git add . && git commit -m \"ready for update\"",
       "elite-update": "git pull \"https://github.com/Meeovi/elitenovels-frontend\"",
-      "build": "nuxt build",
+   "build": "nuxt build",
+   "prebuild": "node ./scripts/copy-images.js",
       "dev": "nuxt dev --port 3010",
       "ts-node": "ts-node -r tsconfig-paths/register --compiler-options '{\"module\":\"CommonJS\"}'",
       "generate": "nuxt generate",
