@@ -8,7 +8,7 @@
           <img v-else src="assets/images/coming_soon.png" :alt="character?.name">
         </div>
         <div class="content-wrap">
-          <h5 class="mbr-section-title card-title mbr-fonts-style mb-0 display-5" style="color: brown;">
+          <h5 class="mbr-section-title card-title mbr-fonts-style mb-0 display-5">
             <strong>{{ character?.name }}</strong>
           </h5>
           <h6 class="mbr-role mbr-fonts-style mb-0 display-4">

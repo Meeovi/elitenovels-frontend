@@ -7,7 +7,7 @@
         <v-sheet class="mx-auto categorySheet">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="abilities in ability" :key="abilities" v-slot="{ isSelected, toggle }">
-              <abilities :ability="abilities" />
+              <Ability :facet="abilities" :class="['ma-4', selectedClass]" @click="toggle" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -21,7 +21,7 @@
           <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
             <v-slide-group-item v-for="abilities in characterAbility" :key="abilities"
               v-slot="{ isSelected, toggle, selectedClass }">
-              <abilities :ability="abilities" />
+              <Ability :facet="abilities" :class="['ma-4', selectedClass]" @click="toggle" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -31,7 +31,7 @@
         <v-toolbar title="MONSTER ABILITIES" density="comfortable" color="transparent"></v-toolbar>
       </v-col>
       <v-col cols="3" v-for="abilities in monsterAbility" :key="abilities">
-        <abilities :ability="abilities" />
+        <Ability :facet="abilities" />
       </v-col>
       <relatedstories />
     </v-row>
@@ -44,7 +44,7 @@
     ref
   } from 'vue'
   import characterbar from '~/components/menus/characterbar.vue'
-  import abilities from '~/components/related/relateditems.vue'
+  import Ability from '~/components/related/relateditems.vue'
   const model = ref(null);
 
   const {
@@ -63,15 +63,19 @@
   const {
     data: characterAbility
   } = await useAsyncData('characterAbility', () => {
-    return $directus.request($readItems('abilities', {
-      fields: ['*', { '*': ['*'] }],
-      filter: {
-        type: {
-          _eq: "Character Ability"
-        }
-      }
-    }))
-  })
+        return $directus.request($readItems('options', {
+            fields: ['*', { '*': ['*'] }],
+            filter: {
+              category: {
+                categories_id: {
+                  name: {
+                    _eq: 'Abilities'
+                  }
+                }
+              }
+            }
+        }))
+    })
 
   const {
     data: monsterAbility

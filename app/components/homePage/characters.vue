@@ -7,10 +7,8 @@
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="characters in popularCharacters" :key="characters"
               v-slot="{ isSelected, toggle, selectedClass }">
-              <v-col cols="3">
-                <charactersCard :character="characters" class="characterCard popCard" @click="toggle"
-                  :class="['ma-4', selectedClass]" />
-              </v-col>
+              <charactersCard :character="characters" class="characterCard popCard" @click="toggle"
+                :class="['ma-4', selectedClass]" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -22,10 +20,8 @@
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="monsters in monsters" :key="monsters"
               v-slot="{ isSelected, toggle, selectedClass }">
-              <v-col cols="3">
-                <charactersCard :character="monsters" class="characterCard" @click="toggle"
-                  :class="['ma-4', selectedClass]" />
-              </v-col>
+              <charactersCard :character="monsters" class="characterCard" @click="toggle"
+                :class="['ma-4', selectedClass]" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -37,10 +33,8 @@
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="mythology in mythology" :key="mythology"
               v-slot="{ isSelected, toggle, selectedClass }">
-              <v-col cols="3">
-                <charactersCard :character="mythology" class="characterCard" @click="toggle"
-                  :class="['ma-4', selectedClass]" />
-              </v-col>
+              <charactersCard :character="mythology" class="characterCard" @click="toggle"
+                :class="['ma-4', selectedClass]" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -51,10 +45,8 @@
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="aliens in aliens" :key="aliens" v-slot="{ isSelected, toggle, selectedClass }">
-              <v-col cols="3">
-                <charactersCard :character="aliens" class="characterCard" @click="toggle"
-                  :class="['ma-4', selectedClass]" />
-              </v-col>
+              <charactersCard :character="aliens" class="characterCard" @click="toggle"
+                :class="['ma-4', selectedClass]" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -65,10 +57,8 @@
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="kids in kids" :key="kids" v-slot="{ isSelected, toggle, selectedClass }">
-              <v-col cols="3">
-                <charactersCard :character="kids" class="characterCard" @click="toggle"
-                  :class="['ma-4', selectedClass]" />
-              </v-col>
+              <charactersCard :character="kids" class="characterCard" @click="toggle"
+                :class="['ma-4', selectedClass]" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -119,8 +109,12 @@
         '*': ['*']
       }],
       filter: {
-        type: {
-          _eq: "Monster"
+        categories: {
+          categories_id: {
+            name: {
+              _eq: "Monsters"
+            }
+          }
         }
       }
     }))
@@ -134,8 +128,12 @@
         '*': ['*']
       }],
       filter: {
-        type: {
-          _eq: "Mythology"
+        categories: {
+          categories_id: {
+            name: {
+              _eq: "Mythology"
+            }
+          }
         }
       }
     }))
@@ -149,8 +147,12 @@
         '*': ['*']
       }],
       filter: {
-        type: {
-          _eq: "Alien"
+        categories: {
+          categories_id: {
+            name: {
+              _eq: "Aliens"
+            }
+          }
         }
       }
     }))

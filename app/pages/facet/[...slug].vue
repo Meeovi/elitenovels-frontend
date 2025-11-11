@@ -166,7 +166,7 @@
     data
   } = await useAsyncData('facet', () => {
     return $directus.request(
-      $readItems('options', {
+      $readItems('categories', {
         filter: {
           slug: {
             _eq: `${route.params.slug}`

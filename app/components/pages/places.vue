@@ -6,9 +6,9 @@
         <h4 style="color: black;">Popular Places</h4>
         <v-sheet class="mx-auto categorySheet">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="places in characterPlaces" :key="places"
-              v-slot="{ isSelected, toggle }">
-              <places :item="places" />
+            <v-slide-group-item v-for="places in characterPlaces" :key="places?.id"
+              v-slot="{ isSelected, toggle, selectedClass }">
+              <Places :facet="places" :class="['ma-4', selectedClass]" @click="toggle" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -16,14 +16,8 @@
     </v-row>
 
     <v-row>
-      <v-col cols="12">
-        <v-sheet class="mx-auto">
-          <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item v-for="places in characterPlaces" :key="places" v-slot="{ isSelected, toggle, selectedClass }">
-              <places :item="places" />
-            </v-slide-group-item>
-          </v-slide-group>
-        </v-sheet>
+      <v-col v-for="places in characterPlaces" :key="places.id">
+        <Places :facet="places" />
       </v-col>
 
       <relatedstories />
@@ -33,29 +27,28 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
-  import places from '~/components/related/facet.vue'
-  const model = ref(null);
+import { ref } from 'vue'
+import Places from '~/components/related/facet.vue'
 
-  const {
-        $directus,
-        $readItems
-    } = useNuxtApp()
+const model = ref(null)
+const { $directus, $readItems } = useNuxtApp()
 
-    const {
-        data: characterPlaces
-    } = await useAsyncData('characterPlaces', () => {
-        return $directus.request($readItems('options', {
-            fields: ['*', { '*': ['*'] }],
-            filter: {
-              type: {
-                _eq: 'Places'
-              }
-            }
-        }))
+const { data: characterPlaces } = await useAsyncData('characterPlaces', async () => {
+  return await $directus.request(
+    $readItems('options', {
+      fields: ['*', 'category.categories_id.*'],
+      filter: {
+        category: {
+          categories_id: {
+            name: { _eq: 'Places' },
+          },
+        },
+      },
     })
+  )
+})
 
-  useHead({
-    title: 'Places',
-  })
+useHead({
+  title: 'Places',
+})
 </script>

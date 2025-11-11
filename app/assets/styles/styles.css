@@ -4,6 +4,15 @@ html {
 }
 body {
     margin: 0;
+    background-color: rgb(var(--v-theme-background)) !important;
+}
+
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6, h1, h2, h3, h4, h5, h6, p {
+    color: rgb(var(--v-theme-on-background)) !important;
+}
+
+.color-title {
+    color: white !important;
 }
 
 #topnav {

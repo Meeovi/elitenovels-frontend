@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="footer-text-wrap">
-                        <h5 class="mbr-section-subtitle mbr-fonts-style display-1">
+                        <h5 class="mbr-section-subtitle mbr-fonts-style display-1 color-title">
                             Step into the Eliteverse</h5>
                     </div>
 
@@ -47,7 +47,7 @@
 
                     <div class="footer-bottom-container">
                         <div class="col-copyright">
-                            <p class="mbr-text mb-0 mbr-fonts-style copyright align-center display-7">
+                            <p class="mbr-text mb-0 mbr-fonts-style copyright align-center display-7 color-title">
                                 {{ copyrightNav?.name }} {{ new Date().getFullYear() }} — <strong>
                                     <NuxtLink :to="copyrightNav?.url">{{ copyrightNav?.description }}</NuxtLink>
                                 </strong>

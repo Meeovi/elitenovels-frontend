@@ -6,8 +6,11 @@
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
     "types": [
-      "@types/node",
-      "@nuxtjs/apollo",
+      "@types/node"
+    ],
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
     ]
   }
 }

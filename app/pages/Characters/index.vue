@@ -23,7 +23,7 @@
         <div class="row">
           <div class="col-12">
             <div class="title-wrapper">
-              <h2 class="mbr-section-title mbr-fonts-style display-2">
+              <h2 class="mbr-section-title mbr-fonts-style display-2 color-title">
                 Explore the Eliteverse
               </h2>
             </div>
@@ -38,10 +38,10 @@
                 <img v-else src="/images/mbr-1920x1080.jpg" alt="Elite Novels" />
               </div>
               <div class="card-box">
-                <h4 class="item-title mbr-fonts-style display-5">
+                <h4 class="item-title mbr-fonts-style display-5 color-title">
                   {{ block?.name }}
                 </h4>
-                <p class="item-text mbr-fonts-style display-4" v-html="block?.description"></p>
+                <p class="item-text mbr-fonts-style display-4 color-title" v-html="block?.description"></p>
                 <div class="mbr-section-btn item-footer">
                   <NuxtLink v-if="block?.content && block?.content[0]?.subject" :to="block?.content[0]?.subject"
                     class="btn item-btn btn-success display-4">

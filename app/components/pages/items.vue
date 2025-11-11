@@ -1,14 +1,14 @@
 <template>
   <div class="categoryPage">
-    <v-toolbar title="Items" style="background-color: orange;"></v-toolbar>
-    <v-row style="background-color: orange;">
+    <v-toolbar title="Items" style="background-color: khaki;"></v-toolbar>
+    <v-row style="background-color: khaki;">
       <v-col cols="12">
-        <h4 style="color: white;">Popular Items</h4>
+        <h4 style="color: black;">Popular Items</h4>
         <v-sheet class="mx-auto categorySheet">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="items in characterItems" :key="items"
-              v-slot="{ isSelected, toggle }">
-              <items :item="items" />
+            <v-slide-group-item v-for="items in characterItems" :key="items?.id"
+              v-slot="{ isSelected, toggle, selectedClass }">
+              <Items :facet="items" :class="['ma-4', selectedClass]" @click="toggle" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -16,14 +16,8 @@
     </v-row>
 
     <v-row>
-      <v-col cols="12">
-        <v-sheet class="mx-auto">
-          <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item v-for="items in characterItems" :key="items" v-slot="{ isSelected, toggle, selectedClass }">
-              <items :item="items" />
-            </v-slide-group-item>
-          </v-slide-group>
-        </v-sheet>
+      <v-col v-for="items in characterItems" :key="items.id">
+        <Items :facet="items" />
       </v-col>
 
       <relatedstories />
@@ -33,29 +27,28 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
-  import items from '~/components/related/facet.vue'
-  const model = ref(null);
+import { ref } from 'vue'
+import Items from '~/components/related/facet.vue'
 
-  const {
-        $directus,
-        $readItems
-    } = useNuxtApp()
+const model = ref(null)
+const { $directus, $readItems } = useNuxtApp()
 
-    const {
-        data: characterItems
-    } = await useAsyncData('characterItems', () => {
-        return $directus.request($readItems('options', {
-            fields: ['*', { '*': ['*'] }],
-            filter: {
-              type: {
-                _eq: 'item'
-              }
-            }
-        }))
+const { data: characterItems } = await useAsyncData('characterItems', async () => {
+  return await $directus.request(
+    $readItems('options', {
+      fields: ['*', 'category.categories_id.*'],
+      filter: {
+        category: {
+          categories_id: {
+            name: { _eq: 'Items' },
+          },
+        },
+      },
     })
+  )
+})
 
-  useHead({
-    title: 'Items',
-  })
+useHead({
+  title: 'Items',
+})
 </script>

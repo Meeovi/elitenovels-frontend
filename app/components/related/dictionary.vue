@@ -1,11 +1,11 @@
 <template>
-  <v-card class="mx-auto" max-width="344">
+  <v-card class="mx-auto">
       <v-card-text>
           <div>{{ dictionary?.name }}</div>
 
           <p class="text-h4 font-weight-black">{{ dictionary?.pronunction }}</p>
 
-          <p>{{ dictionary?.type }}</p>
+          <p v-html="dictionary?.type"></p>
 
           <div class="text-medium-emphasis">
               "{{ dictionary?.excerpt }}"

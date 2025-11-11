@@ -48,8 +48,12 @@
         return $directus.request($readItems('options', {
             fields: ['*', { '*': ['*'] }],
             filter: {
-              type: {
-                _eq: 'Level'
+              category: {
+                categories_id: {
+                  name: {
+                    _eq: 'Level'
+                  }
+                }
               }
             }
         }))
