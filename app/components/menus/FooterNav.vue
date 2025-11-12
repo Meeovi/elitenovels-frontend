@@ -9,7 +9,7 @@
                         </v-avatar>
 
                         <v-avatar v-else class="circle-bg" size="480">
-                            <img src="../assets/images/enovelslogo.png" />
+                            <img src="../../assets/images/enovelslogo.png" />
                         </v-avatar>
                     </div>
                     <div class="footer-top-container">
