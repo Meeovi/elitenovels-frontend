@@ -1,7 +1,7 @@
 <template>
   <div>
     <NuxtLink :to="`/characters/${character?.slug}`">
-      <v-card :color="isSelected ? 'primary' : 'white'" class="ma-4" height="480" width="250" @click="toggle">
+      <v-card class="ma-4" height="480" width="250">
         <div v-if="character?.image?.filename_disk">
           <img class="align-end text-white" height="250" :src="`${$directus.url}assets/${character?.image?.filename_disk}`" :alt="character?.name"
             cover />
@@ -14,7 +14,7 @@
         <v-card-subtitle v-if="character?.type === 'Individual'">{{ character?.alias }}</v-card-subtitle>
         <div class="d-flex fill-height align-center justify-center">
           <v-scale-transition>
-            <v-icon v-if="isSelected" color="white" size="48" icon="mdi-close-circle-outline"></v-icon>
+            <v-icon color="white" size="48" icon="mdi-close-circle-outline"></v-icon>
           </v-scale-transition>
         </div>
       </v-card>

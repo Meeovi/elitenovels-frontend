@@ -1,7 +1,7 @@
 <template>
   <div>
     <NuxtLink :to="`/facet/${facet?.slug}`">
-      <v-card :color="isSelected ? 'primary' : 'white'" class="ma-4" height="450" width="250" @click="toggle">
+      <v-card class="ma-4" height="450" width="250">
         <div v-if="facet?.image?.filename_disk">
           <img class="align-end text-white" height="250" :src="`${$directus.url}assets/${facet?.image?.filename_disk}`" :alt="facet?.name"
             cover />
@@ -13,7 +13,7 @@
         <v-card-title class="pt-4">{{ facet?.name }}</v-card-title>
         <div class="d-flex fill-height align-center justify-center">
           <v-scale-transition>
-            <v-icon v-if="isSelected" color="white" size="48" icon="mdi-close-circle-outline"></v-icon>
+            <v-icon color="white" size="48" icon="mdi-close-circle-outline"></v-icon>
           </v-scale-transition>
         </div>
       </v-card>
