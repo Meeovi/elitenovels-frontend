@@ -2,7 +2,7 @@
   <div class="categoryPage">
     <v-toolbar title="Dictionary" style="background-color: lightcoral"></v-toolbar>
 
-    <v-row>
+    <v-row style="padding: 10px;">
       <v-col v-for="definition in dictionaryData" :key="definition.id">
         <Dictionary :dictionary="definition" />
       </v-col>

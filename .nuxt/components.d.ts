@@ -14,7 +14,6 @@ type HydrationStrategies = {
 type LazyComponent<T> = DefineComponent<HydrationStrategies, {}, {}, {}, {}, {}, {}, { hydrated: () => void }> & T
 
 
-export const FooterNav: typeof import("../app/components/FooterNav.vue")['default']
 export const AuthenticationLogout: typeof import("../app/components/authentication/logout.vue")['default']
 export const BlocksLogo: typeof import("../app/components/blocks/logo.vue")['default']
 export const HomePageCharacters: typeof import("../app/components/homePage/characters.vue")['default']
@@ -25,10 +24,11 @@ export const HomePageVideoSection: typeof import("../app/components/homePage/vid
 export const MediaAudioPlayer: typeof import("../app/components/media/audio/audioPlayer.vue")['default']
 export const MediaLivePlayer: typeof import("../app/components/media/live/livePlayer.vue")['default']
 export const MediaVideoVideojs: typeof import("../app/components/media/video/videojs.vue")['default']
+export const MenusBottomFooter: typeof import("../app/components/menus/BottomFooter.vue")['default']
+export const MenusFooterNav: typeof import("../app/components/menus/FooterNav.vue")['default']
 export const MenusLayoutNotifications: typeof import("../app/components/menus/LayoutNotifications.vue")['default']
 export const MenusCharacterbar: typeof import("../app/components/menus/characterbar.vue")['default']
 export const MenusEcosystemmenu: typeof import("../app/components/menus/ecosystemmenu.vue")['default']
-export const MenusGamebar: typeof import("../app/components/menus/gamebar.vue")['default']
 export const MenusLowerbar: typeof import("../app/components/menus/lowerbar.vue")['default']
 export const MenusMonsterbar: typeof import("../app/components/menus/monsterbar.vue")['default']
 export const MenusMythologybar: typeof import("../app/components/menus/mythologybar.vue")['default']
@@ -227,7 +227,6 @@ export const Head: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
-export const LazyFooterNav: LazyComponent<typeof import("../app/components/FooterNav.vue")['default']>
 export const LazyAuthenticationLogout: LazyComponent<typeof import("../app/components/authentication/logout.vue")['default']>
 export const LazyBlocksLogo: LazyComponent<typeof import("../app/components/blocks/logo.vue")['default']>
 export const LazyHomePageCharacters: LazyComponent<typeof import("../app/components/homePage/characters.vue")['default']>
@@ -238,10 +237,11 @@ export const LazyHomePageVideoSection: LazyComponent<typeof import("../app/compo
 export const LazyMediaAudioPlayer: LazyComponent<typeof import("../app/components/media/audio/audioPlayer.vue")['default']>
 export const LazyMediaLivePlayer: LazyComponent<typeof import("../app/components/media/live/livePlayer.vue")['default']>
 export const LazyMediaVideoVideojs: LazyComponent<typeof import("../app/components/media/video/videojs.vue")['default']>
+export const LazyMenusBottomFooter: LazyComponent<typeof import("../app/components/menus/BottomFooter.vue")['default']>
+export const LazyMenusFooterNav: LazyComponent<typeof import("../app/components/menus/FooterNav.vue")['default']>
 export const LazyMenusLayoutNotifications: LazyComponent<typeof import("../app/components/menus/LayoutNotifications.vue")['default']>
 export const LazyMenusCharacterbar: LazyComponent<typeof import("../app/components/menus/characterbar.vue")['default']>
 export const LazyMenusEcosystemmenu: LazyComponent<typeof import("../app/components/menus/ecosystemmenu.vue")['default']>
-export const LazyMenusGamebar: LazyComponent<typeof import("../app/components/menus/gamebar.vue")['default']>
 export const LazyMenusLowerbar: LazyComponent<typeof import("../app/components/menus/lowerbar.vue")['default']>
 export const LazyMenusMonsterbar: LazyComponent<typeof import("../app/components/menus/monsterbar.vue")['default']>
 export const LazyMenusMythologybar: LazyComponent<typeof import("../app/components/menus/mythologybar.vue")['default']>

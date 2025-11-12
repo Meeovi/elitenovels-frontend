@@ -64,6 +64,8 @@
           </main>
         </v-layout>
       </v-card>
+
+      <BottomFooter />
       <FooterNav />
     </v-main>
   </v-app>
@@ -84,6 +86,8 @@
   import sidebar from '~/components/menus/sidebar.vue'
   import search from '~/components/search/search.vue'
   import lowerbar from '~/components/menus/lowerbar.vue'
+  import FooterNav from '~/components/menus/FooterNav.vue'
+  import BottomFooter from '~/components/menus/BottomFooter.vue'
   import relatedproducts from '~/components/related/relatedproducts.vue'
   import logo from '~/components/blocks/logo.vue'
 

@@ -31,9 +31,7 @@
       <v-col cols="3" v-for="monster in monsters" :key="monster.id || monster.slug || monster.name">
         <characterCard :character="monster" />
       </v-col>
-      <relatedstories />
     </v-row>
-    <latestproducts />
   </div>
 </template>
 
@@ -41,8 +39,8 @@
   import {
     ref
   } from 'vue'
-  //import monsterbar from '~/components/menus/monsterbar.vue'
   import characterCard from '~/components/related/character.vue'
+
   const model = ref(null);
 
   const {

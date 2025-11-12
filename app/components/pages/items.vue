@@ -16,39 +16,47 @@
     </v-row>
 
     <v-row>
-      <v-col v-for="items in characterItems" :key="items.id">
-        <Items :facet="items" />
+      <v-col cols="12">
+        <v-col v-for="items in characterItems" :key="items.id">
+          <Items :facet="items" />
+        </v-col>
       </v-col>
-
-      <relatedstories />
     </v-row>
-    <latestproducts />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import Items from '~/components/related/facet.vue'
+  import {
+    ref
+  } from 'vue'
+  import Items from '~/components/related/facet.vue'
 
-const model = ref(null)
-const { $directus, $readItems } = useNuxtApp()
+  const model = ref(null)
+  const {
+    $directus,
+    $readItems
+  } = useNuxtApp()
 
-const { data: characterItems } = await useAsyncData('characterItems', async () => {
-  return await $directus.request(
-    $readItems('options', {
-      fields: ['*', 'category.categories_id.*'],
-      filter: {
-        category: {
-          categories_id: {
-            name: { _eq: 'Items' },
+  const {
+    data: characterItems
+  } = await useAsyncData('characterItems', async () => {
+    return await $directus.request(
+      $readItems('options', {
+        fields: ['*', 'category.categories_id.*'],
+        filter: {
+          category: {
+            categories_id: {
+              name: {
+                _eq: 'Items'
+              },
+            },
           },
         },
-      },
-    })
-  )
-})
+      })
+    )
+  })
 
-useHead({
-  title: 'Items',
-})
+  useHead({
+    title: 'Items',
+  })
 </script>

@@ -2,12 +2,12 @@
   <div class="categoryPage">
     <v-row style="background-color: khaki;">
       <v-col cols="12">
-        <h4 style="color: black;">Popular Kids Characters</h4>
+        <h4 style="color: black !important;">Popular Kids Characters</h4>
         <v-sheet class="mx-auto categorySheet">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="char in kidsCharacter" :key="char.id"
               v-slot="{ isSelected, toggle }">
-              <characterComponent :character="char?.id" />
+              <characterComponent :character="char" :class="['ma-4', selectedClass]" @click="toggle" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -15,24 +15,17 @@
     </v-row>
 
     <v-row>
-      <v-col cols="12">
-        <v-sheet class="mx-auto">
-          <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item v-for="char in kidsCharacter" :key="char.id" v-slot="{ isSelected, toggle, selectedClass }">
-              <characterComponent :character="char?.id" />
-            </v-slide-group-item>
-          </v-slide-group>
-        </v-sheet>
+      <v-col cols="3" v-for="kids in kidsCharacter" :key="kids">
+        <characterComponent :character="kids" />
       </v-col>
-
-      <relatedstories />
     </v-row>
-    <latestproducts />
   </div>
 </template>
 
 <script setup>
   import { ref } from 'vue'
+  import characterComponent from '~/components/related/character.vue'
+
   const model = ref(null);
 
   const {
@@ -55,7 +48,7 @@
       ],
       filter: {
         universe: {
-          univers_id: {
+          universe_id: {
             name: {
               _eq: 'Kids'
             }

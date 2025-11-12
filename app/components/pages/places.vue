@@ -19,10 +19,7 @@
       <v-col v-for="places in characterPlaces" :key="places.id">
         <Places :facet="places" />
       </v-col>
-
-      <relatedstories />
     </v-row>
-    <latestproducts />
   </div>
 </template>
 

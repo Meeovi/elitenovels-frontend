@@ -34,9 +34,7 @@
       <v-col cols="3" v-for="mythology in mythology" :key="mythology">
         <characters :character="mythology" class="characterCard" @click="toggle" :class="['ma-4', selectedClass]" />
       </v-col>
-      <relatedstories />
     </v-row>
-    <latestproducts />
   </div>
 </template>
 
@@ -44,8 +42,8 @@
   import {
     ref
   } from 'vue'
-  import mythologybar from '~/components/menus/mythologybar.vue'
   import characters from '~/components/related/character.vue'
+
   const model = ref(null);
 
   const {

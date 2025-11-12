@@ -1,9 +1,9 @@
 <template>
   <div class="categoryPage">
-    <v-toolbar title="Abilities" style="background-color: blue;"></v-toolbar>
+    <v-toolbar title="Abilities" style="background-color: blue; color: white !important;"></v-toolbar>
     <v-row style="background-color: blue;">
       <v-col cols="12">
-        <h4 style="color: white;">Popular Abilities</h4>
+        <h4 style="color: white !important;">Popular Abilities</h4>
         <v-sheet class="mx-auto categorySheet">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="abilities in ability" :key="abilities" v-slot="{ isSelected, toggle }">
@@ -15,27 +15,10 @@
     </v-row>
 
     <v-row>
-      <v-col cols="12">
-        <v-toolbar title="CHARACTER ABILITIES" density="comfortable" color="transparent"></v-toolbar>
-        <v-sheet class="mx-auto">
-          <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item v-for="abilities in characterAbility" :key="abilities"
-              v-slot="{ isSelected, toggle, selectedClass }">
-              <Ability :facet="abilities" :class="['ma-4', selectedClass]" @click="toggle" />
-            </v-slide-group-item>
-          </v-slide-group>
-        </v-sheet>
+      <v-col v-for="abilities in characterAbility" :key="abilities">
+        <Ability :facet="abilities" :class="['ma-4', selectedClass]" @click="toggle" />
       </v-col>
-
-      <v-col cols="12">
-        <v-toolbar title="MONSTER ABILITIES" density="comfortable" color="transparent"></v-toolbar>
-      </v-col>
-      <v-col cols="3" v-for="abilities in monsterAbility" :key="abilities">
-        <Ability :facet="abilities" />
-      </v-col>
-      <relatedstories />
     </v-row>
-    <latestproducts />
   </div>
 </template>
 
@@ -43,8 +26,8 @@
   import {
     ref
   } from 'vue'
-  import characterbar from '~/components/menus/characterbar.vue'
-  import Ability from '~/components/related/relateditems.vue'
+  import Ability from '~/components/related/facet.vue'
+
   const model = ref(null);
 
   const {
@@ -56,35 +39,26 @@
     data: ability
   } = await useAsyncData('ability', () => {
     return $directus.request($readItems('abilities', {
-            fields: ['*', { '*': ['*'] }]
-        }))
+      fields: ['*', {
+        '*': ['*']
+      }]
+    }))
   })
 
   const {
     data: characterAbility
   } = await useAsyncData('characterAbility', () => {
-        return $directus.request($readItems('options', {
-            fields: ['*', { '*': ['*'] }],
-            filter: {
-              category: {
-                categories_id: {
-                  name: {
-                    _eq: 'Abilities'
-                  }
-                }
-              }
-            }
-        }))
-    })
-
-  const {
-    data: monsterAbility
-  } = await useAsyncData('monsterAbility', () => {
-    return $directus.request($readItems('abilities', {
-      fields: ['*', { '*': ['*'] }],
+    return $directus.request($readItems('options', {
+      fields: ['*', {
+        '*': ['*']
+      }],
       filter: {
-        type: {
-          _eq: "Monster Ability"
+        category: {
+          categories_id: {
+            name: {
+              _eq: 'Abilities'
+            }
+          }
         }
       }
     }))

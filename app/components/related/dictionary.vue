@@ -1,43 +1,39 @@
 <template>
-  <v-card class="mx-auto">
-      <v-card-text>
-          <div>{{ dictionary?.name }}</div>
+  <div>
+    <v-dialog max-width="500">
+      <template v-slot:activator="{ props: activatorProps }">
+        <v-btn v-bind="activatorProps" color="surface-variant" :text="dictionary?.name" variant="flat"
+          title="Click to open"></v-btn>
+      </template>
 
-          <p class="text-h4 font-weight-black">{{ dictionary?.pronunction }}</p>
+      <template v-slot:default="{ isActive }">
+        <v-card :title="dictionary?.name">
+          <v-card-text>
+            <p class="text-h4 font-weight-black">{{ dictionary?.pronunction }}</p>
 
-          <p v-html="dictionary?.type"></p>
+            <div>Type: <p v-html="dictionary?.type"></p></div>
 
-          <div class="text-medium-emphasis">
-              "{{ dictionary?.excerpt }}"
-          </div>
-      </v-card-text>
+            <div>Status: <p class="text-h6">{{ dictionary?.status }}</p></div>
 
-      <v-card-actions>
-          <v-btn color="teal-accent-4" text="Learn More" variant="text" @click="reveal = true"></v-btn>
-      </v-card-actions>
+            <div>Definition: <p v-html="dictionary?.description"></p></div>
+          </v-card-text>
 
-      <v-expand-transition>
-          <v-card v-if="reveal" class="position-absolute w-100" height="100%" style="bottom: 0;">
-              <v-card-text class="pb-0">
-                  <p class="text-h4">{{ dictionary?.status }}</p>
+          <v-card-actions>
+            <v-spacer></v-spacer>
 
-                  <p class="text-medium-emphasis" v-html="dictionary?.description"></p>
-              </v-card-text>
-
-              <v-card-actions class="pt-0">
-                  <v-btn color="teal-accent-4" text="Close" variant="text" @click="reveal = false"></v-btn>
-              </v-card-actions>
-          </v-card>
-      </v-expand-transition>
-  </v-card>
+            <v-btn text="Close Definition" @click="isActive.value = false"></v-btn>
+          </v-card-actions>
+        </v-card>
+      </template>
+    </v-dialog>
+  </div>
 </template>
 
 <script setup>
   import {
-      ref
+    ref
   } from 'vue'
 
-  const reveal = ref(false);
   const props = defineProps({
     dictionary: {
       type: Object,

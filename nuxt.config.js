@@ -1,11 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: {
-    enabled: false
-  },
 
-  ssr: false,
+  experimental: {
+    watcher: 'parcel'
+  },
 
   app: {
     head: {
@@ -18,7 +17,7 @@ export default defineNuxtConfig({
       },
       meta: [{
         name: 'description',
-        content: 'Starter template for the M Framework'
+        content: 'Over 7,000 characters and stories within the Eliteverse.'
       }, ],
       link: [{
           rel: 'icon',

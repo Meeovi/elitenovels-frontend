@@ -6,8 +6,7 @@
         <h4 style="color: white;">Popular Levels</h4>
         <v-sheet class="mx-auto categorySheet">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="levels in monsterLevels" :key="levels"
-              v-slot="{ isSelected, toggle }">
+            <v-slide-group-item v-for="levels in monsterLevels" :key="levels" v-slot="{ isSelected, toggle }">
               <levels :item="levels" />
             </v-slide-group-item>
           </v-slide-group>
@@ -16,48 +15,45 @@
     </v-row>
 
     <v-row>
-      <v-col cols="12">
-        <v-sheet class="mx-auto">
-          <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item v-for="levels in monsterLevels" :key="levels" v-slot="{ isSelected, toggle, selectedClass }">
-              <levels :item="levels" />
-            </v-slide-group-item>
-          </v-slide-group>
-        </v-sheet>
+      <v-col cols="3" v-for="levels in monsterLevels" :key="levels">
+        <levels :item="levels" />
       </v-col>
-
-      <relatedstories />
     </v-row>
-    <latestproducts />
   </div>
 </template>
 
 <script setup>
-  import { ref } from 'vue'
+  import {
+    ref
+  } from 'vue'
   import levels from '~/components/related/facet.vue'
+  import relatedstories from '~/components/related/relatedstories.vue'
+
   const model = ref(null);
 
   const {
-        $directus,
-        $readItems
-    } = useNuxtApp()
+    $directus,
+    $readItems
+  } = useNuxtApp()
 
-    const {
-        data: monsterLevels
-    } = await useAsyncData('monsterLevels', () => {
-        return $directus.request($readItems('options', {
-            fields: ['*', { '*': ['*'] }],
-            filter: {
-              category: {
-                categories_id: {
-                  name: {
-                    _eq: 'Level'
-                  }
-                }
-              }
+  const {
+    data: monsterLevels
+  } = await useAsyncData('monsterLevels', () => {
+    return $directus.request($readItems('options', {
+      fields: ['*', {
+        '*': ['*']
+      }],
+      filter: {
+        category: {
+          categories_id: {
+            name: {
+              _eq: 'Level'
             }
-        }))
-    })
+          }
+        }
+      }
+    }))
+  })
 
   useHead({
     title: 'Levels',

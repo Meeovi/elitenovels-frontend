@@ -1,21 +1,23 @@
 <template>
   <div>
     <NuxtLink :to="`/characters/${character?.slug}`">
-      <div class="card-wrap item-wrapper">
-        <div class="image-wrap">
-          <img v-if="character?.image?.filename_disk" :src="`${$directus.url}assets/${character?.image?.filename_disk}`"
-            :alt="character?.name" />
-          <img v-else src="assets/images/coming_soon.png" :alt="character?.name">
+      <v-card :color="isSelected ? 'primary' : 'white'" class="ma-4" height="480" width="250" @click="toggle">
+        <div v-if="character?.image?.filename_disk">
+          <img class="align-end text-white" height="250" :src="`${$directus.url}assets/${character?.image?.filename_disk}`" :alt="character?.name"
+            cover />
         </div>
-        <div class="content-wrap">
-          <h5 class="mbr-section-title card-title mbr-fonts-style mb-0 display-5">
-            <strong>{{ character?.name }}</strong>
-          </h5>
-          <h6 class="mbr-role mbr-fonts-style mb-0 display-4">
-            {{ character?.alias }}
-          </h6>
+
+        <div v-else>
+          <img class="align-end text-white" height="300" src="~/assets/images/coming_soon.png" cover />
         </div>
-      </div>
+        <v-card-title class="pt-4">{{ character?.name }}</v-card-title>
+        <v-card-subtitle v-if="character?.type === 'Individual'">{{ character?.alias }}</v-card-subtitle>
+        <div class="d-flex fill-height align-center justify-center">
+          <v-scale-transition>
+            <v-icon v-if="isSelected" color="white" size="48" icon="mdi-close-circle-outline"></v-icon>
+          </v-scale-transition>
+        </div>
+      </v-card>
     </NuxtLink>
   </div>
 </template>

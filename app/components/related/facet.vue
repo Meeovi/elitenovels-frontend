@@ -1,7 +1,7 @@
 <template>
   <div>
     <NuxtLink :to="`/facet/${facet?.slug}`">
-      <v-card :color="isSelected ? 'primary' : 'white'" class="ma-4" height="350" width="200" @click="toggle">
+      <v-card :color="isSelected ? 'primary' : 'white'" class="ma-4" height="450" width="250" @click="toggle">
         <div v-if="facet?.image?.filename_disk">
           <img class="align-end text-white" height="250" :src="`${$directus.url}assets/${facet?.image?.filename_disk}`" :alt="facet?.name"
             cover />

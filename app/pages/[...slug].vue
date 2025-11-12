@@ -111,7 +111,7 @@
         </div>
 
         <div v-else>
-            <v-toolbar v-if="page?.name !== 'About' && page?.name !== 'Videos' && page?.name !== 'Games'"
+            <v-toolbar v-if="page?.description"
                 title="DESCRIPTION" density="comfortable" color="transparent"></v-toolbar>
 
             <p class="pageDescription mbr-text mbr-fonts-style display-4" v-html="page?.content"></p>
