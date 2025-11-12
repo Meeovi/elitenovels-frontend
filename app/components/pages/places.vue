@@ -7,7 +7,7 @@
         <v-sheet class="mx-auto categorySheet">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="places in characterPlaces" :key="places?.id"
-              v-slot="{ isSelected, toggle, selectedClass }">
+              v-slot="{ toggle, selectedClass }">
               <Places :facet="places" :class="['ma-4', selectedClass]" @click="toggle" />
             </v-slide-group-item>
           </v-slide-group>

@@ -5,7 +5,7 @@
     </v-toolbar>
     <v-sheet class="mx-auto">
       <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-        <v-slide-group-item v-slot="{ isSelected, toggle, selectedClass }"
+        <v-slide-group-item v-slot="{ toggle, selectedClass }"
           v-for="(products, index) in result?.products?.items" :key="index">
           <productCard :product="products" :class="['ma-4', selectedClass]" @click="toggle" />
 

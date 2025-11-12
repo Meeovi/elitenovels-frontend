@@ -5,7 +5,7 @@
         <v-toolbar title="Popular Monsters" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="monster in monsters" :key="monster.id || monster.slug || monster.name" v-slot="{ isSelected, toggle, selectedClass }">
+            <v-slide-group-item v-for="monster in monsters" :key="monster.id || monster.slug || monster.name" v-slot="{ toggle, selectedClass }">
               <characterCard :character="monster" class="characterCard" @click="toggle" :class="['ma-4', selectedClass]" />
             </v-slide-group-item>
           </v-slide-group>
@@ -18,7 +18,7 @@
         <v-toolbar title="Aurelian Characters" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item v-for="item in aurelian" :key="item.id || item.slug || item.name" v-slot="{ isSelected, toggle, selectedClass }">
+            <v-slide-group-item v-for="item in aurelian" :key="item.id || item.slug || item.name" v-slot="{ toggle, selectedClass }">
               <characterCard :character="item" class="characterCard" @click="toggle" :class="['ma-4', selectedClass]"  />
             </v-slide-group-item>
           </v-slide-group>

@@ -5,7 +5,7 @@
         <v-toolbar title="Popular Myths" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="mythology in mythology" :key="mythology" v-slot="{ isSelected, toggle }">
+            <v-slide-group-item v-for="mythology in mythology" :key="mythology" v-slot="{ toggle }">
               <characters :character="mythology" class="characterCard" @click="toggle"
                 :class="['ma-4', selectedClass]" />
             </v-slide-group-item>
@@ -20,7 +20,7 @@
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
             <v-slide-group-item v-for="royalcirca in royalcirca" :key="royalcirca"
-              v-slot="{ isSelected, toggle, selectedClass }">
+              v-slot="{ toggle, selectedClass }">
               <characters :character="royalcirca" class="characterCard" @click="toggle"
                 :class="['ma-4', selectedClass]" />
             </v-slide-group-item>

@@ -6,7 +6,7 @@
         <h4 style="color: white !important;">Popular Abilities</h4>
         <v-sheet class="mx-auto categorySheet">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="abilities in ability" :key="abilities" v-slot="{ isSelected, toggle }">
+            <v-slide-group-item v-for="abilities in ability" :key="abilities" v-slot="{ toggle }">
               <Ability :facet="abilities" :class="['ma-4', selectedClass]" @click="toggle" />
             </v-slide-group-item>
           </v-slide-group>

@@ -6,7 +6,7 @@
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
             <v-slide-group-item v-for="facetItem in itemsOnly" :key="facetItem.id || facetItem.name"
-              v-slot="{ isSelected, toggle, selectedClass }">
+              v-slot="{ toggle, selectedClass }">
               <facetCard :facet="facetItem" :class="['ma-4', selectedClass]" @click="toggle" />
             </v-slide-group-item>
           </v-slide-group>

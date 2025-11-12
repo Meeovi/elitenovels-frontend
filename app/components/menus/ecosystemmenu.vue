@@ -16,13 +16,13 @@
                     </v-card-title>
                 </v-toolbar>
                 <v-row style="padding: 10px;">
-                    <v-col cols="3" v-for="menu in activeMenus" :key="menu?.id">
-                        <NuxtLink :to="menu?.slug">
+                    <v-col v-for="menu in activeMenus" :key="menu.id" cols="3">
+                        <NuxtLink :to="menu.slug">
                             <v-card class="mx-auto" max-width="300">
                                 <div class="ecoAvatar">
-                                    <v-avatar :icon="`fas:fa fa-${menu?.icon}`" size="180"></v-avatar>
+                                    <v-avatar :icon="`fas:fa fa-${menu.icon}`" size="180"></v-avatar>
                                 </div>
-                                <v-card-title class="ecoTitle">{{ menu?.name }}</v-card-title>
+                                <v-card-title class="ecoTitle">{{ menu.name }}</v-card-title>
                             </v-card>
                         </NuxtLink>
                     </v-col>
@@ -33,18 +33,24 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { createDirectus, rest, readItems } from '@directus/sdk';
+    import {
+        ref
+    } from 'vue'
+    import {
+        createDirectus,
+        rest,
+        readItem
+    } from '@directus/sdk';
 
-const config = useRuntimeConfig()
-const dialog = ref(false);
-const client = createDirectus(`${config.public.meeDirectusUrl}`).with(rest());
+    const config = useRuntimeConfig()
+    const dialog = ref(false);
+    const client = createDirectus(`${config.public.meeDirectusUrl}`).with(rest());
 
-const eco = await client.request(readItems('navigation', {
-    filter: {
-        name: {
-            _eq: 'The Meeovi Company'
-        }
-    }
-}));
+    const {
+        data: eco
+    } = await useAsyncData('eco', () => {
+        return client.request(readItem('navigation', '12'))
+    })
+
+    const activeMenus = computed(() => eco.value?.menus?.filter(m => m?.active === 'Active') || [])
 </script>

@@ -6,7 +6,7 @@
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="characters in popularCharacters" :key="characters"
-              v-slot="{ isSelected, toggle, selectedClass }">
+              v-slot="{ toggle, selectedClass }">
               <charactersCard :character="characters" class="characterCard popCard" @click="toggle"
                 :class="['ma-4', selectedClass]" />
             </v-slide-group-item>
@@ -19,7 +19,7 @@
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="monsters in monsters" :key="monsters"
-              v-slot="{ isSelected, toggle, selectedClass }">
+              v-slot="{ toggle, selectedClass }">
               <charactersCard :character="monsters" class="characterCard" @click="toggle"
                 :class="['ma-4', selectedClass]" />
             </v-slide-group-item>
@@ -32,7 +32,7 @@
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
             <v-slide-group-item v-for="mythology in mythology" :key="mythology"
-              v-slot="{ isSelected, toggle, selectedClass }">
+              v-slot="{ toggle, selectedClass }">
               <charactersCard :character="mythology" class="characterCard" @click="toggle"
                 :class="['ma-4', selectedClass]" />
             </v-slide-group-item>
@@ -44,7 +44,7 @@
         <v-toolbar title="FROM ACROSS THE ELITEVERSE" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="aliens in aliens" :key="aliens" v-slot="{ isSelected, toggle, selectedClass }">
+            <v-slide-group-item v-for="aliens in aliens" :key="aliens" v-slot="{ toggle, selectedClass }">
               <charactersCard :character="aliens" class="characterCard" @click="toggle"
                 :class="['ma-4', selectedClass]" />
             </v-slide-group-item>
@@ -56,7 +56,7 @@
         <v-toolbar title="ELITE KIDS" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="kids in kids" :key="kids" v-slot="{ isSelected, toggle, selectedClass }">
+            <v-slide-group-item v-for="kids in kids" :key="kids" v-slot="{ toggle, selectedClass }">
               <charactersCard :character="kids" class="characterCard" @click="toggle"
                 :class="['ma-4', selectedClass]" />
             </v-slide-group-item>

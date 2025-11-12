@@ -4,7 +4,7 @@
       <v-toolbar title="LATEST VIDEOS FROM ELITE NOVELS" density="comfortable" color="transparent"></v-toolbar>
       <v-sheet class="mx-auto">
         <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-          <v-slide-group-item v-for="videos in videos" :key="videos" v-slot="{ isSelected, toggle, selectedClass }">
+          <v-slide-group-item v-for="videos in videos" :key="videos" v-slot="{ toggle, selectedClass }">
             <video :video="videos" />
           </v-slide-group-item>
         </v-slide-group>

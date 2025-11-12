@@ -7,12 +7,12 @@
           <div class="card col-12 col-lg-6">
             <div class="card-wrapper">
               <h4 class="card-title mbr-fonts-style align-center display-5" v-if="character">
-                <strong>{{ universeName }}</strong>
+                <strong> {{ character?.name }}</strong>
               </h4>
 
               <div class="image-wrapper">
                 <p class="mbr-fonts-style align-center display-5">
-                  {{ character?.name }}
+                  {{ universeName }}
                 </p>
               </div>
 
@@ -148,7 +148,9 @@
     useRoute
   } from 'vue-router'
   import {
-    computed
+    computed,
+    ref,
+    watch
   } from 'vue'
   import {
     useHead
@@ -162,31 +164,43 @@
     $readItems
   } = useNuxtApp()
 
-  // Fetch character data by slug
+  // normalize slug
+  const slug = computed(() => Array.isArray(route.params.slug) ? route.params.slug.join('/') : route.params.slug)
+
+  // 👇 Key is reactive, based on slug
   const {
-    data
-  } = await useAsyncData('character', () => {
-    return $directus.request(
-      $readItems('characters', {
-        filter: {
-          slug: {
-            _eq: `${route.params.slug}`
-          }
-        },
-        fields: [
-          '*',
-          'tags.tags_id.*',
-          'character_options.options_id.*',
-          'videos.videos_id.*',
-          'universe.universe_id.*',
-          'stories.stories_id.*',
-          'image.*',
-          'affiliates.characters_id.*',
-          'abilities.abilities_id.*'
-        ],
-      })
-    )
-  })
+    data,
+    pending,
+    error
+  } = await useAsyncData(
+    `character-${slug.value}`,
+    async () => {
+      return await $directus.request(
+        $readItems('characters', {
+          filter: {
+            slug: {
+              _eq: slug.value
+            }
+          },
+          fields: [
+            '*',
+            'tags.tags_id.*',
+            'character_options.options_id.*',
+            'videos.videos_id.*',
+            'universe.universe_id.*',
+            'stories.stories_id.*',
+            'image.*',
+            'affiliates.characters_id.*',
+            'abilities.abilities_id.*'
+          ]
+        })
+      )
+    }, {
+      // 👇 force refetch whenever slug changes
+      watch: [slug]
+    }
+  )
+
 
   const character = computed(() => data.value?.[0] || null)
 
