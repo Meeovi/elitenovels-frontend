@@ -11,7 +11,7 @@
 
           <div class="d-flex fill-height align-center justify-center">
             <v-scale-transition>
-              <v-icon color="white" icon="mdi-close-circle-outline" size="48"></v-icon>
+              <v-icon color="white" icon="fas fa-x" size="48"></v-icon>
             </v-scale-transition>
           </div>
         </v-slide-group-item>

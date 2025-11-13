@@ -24,4 +24,8 @@
     .legalFooter.v-col {
         min-width: 100%;
     }
+
+    .contentSection .v-toolbar-title {
+        display: none;
+    }
 }
