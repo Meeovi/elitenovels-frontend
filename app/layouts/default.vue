@@ -59,7 +59,7 @@
             <!--<lowerbar />-->
             <slot />
 
-            <relatedproducts />
+            <!--<relatedproducts />-->
           </main>
         </v-layout>
       </v-card>
@@ -84,10 +84,10 @@
   import ecosystemmenu from '~/components/menus/ecosystemmenu.vue'
   import sidebar from '~/components/menus/sidebar.vue'
   import search from '~/components/search/search.vue'
-  import lowerbar from '~/components/menus/lowerbar.vue'
+  //import lowerbar from '~/components/menus/lowerbar.vue'
   import FooterNav from '~/components/menus/FooterNav.vue'
   import BottomFooter from '~/components/menus/BottomFooter.vue'
-  import relatedproducts from '~/components/related/relatedproducts.vue'
+  //import relatedproducts from '~/components/related/relatedproducts.vue'
   import logo from '~/components/blocks/logo.vue'
 
   const drawer = ref(null);
@@ -98,7 +98,7 @@
 
   // Sync Vuetify theme with dark mode
   watch(isDark, (dark) => {
-    theme.global.name.value = dark ? 'dark' : 'light'
+    theme.name.value = dark ? 'dark' : 'light'
   }, {
     immediate: true
   })

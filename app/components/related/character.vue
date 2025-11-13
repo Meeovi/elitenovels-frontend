@@ -14,7 +14,7 @@
         <v-card-subtitle v-if="character?.type === 'Individual'">{{ character?.alias }}</v-card-subtitle>
         <div class="d-flex fill-height align-center justify-center">
           <v-scale-transition>
-            <v-icon color="white" size="48" icon="mdi-close-circle-outline"></v-icon>
+            <v-icon color="white" size="48" icon="fas fa-circle-xmark"></v-icon>
           </v-scale-transition>
         </div>
       </v-card>
