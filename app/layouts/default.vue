@@ -98,7 +98,7 @@
 
   // Sync Vuetify theme with dark mode
   watch(isDark, (dark) => {
-    theme.name.value = dark ? 'dark' : 'light'
+    theme.value = dark ? 'dark' : 'light'
   }, {
     immediate: true
   })
