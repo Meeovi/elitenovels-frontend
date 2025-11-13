@@ -47,24 +47,27 @@
             <div class="card-wrapper">
               <!-- BASIC INFO -->
               <div class="item">
-                <p class="item-title mbr-fonts-style display-4">Name</p>
-                <p class="mbr-text mbr-fonts-style display-4">{{ facet?.name }}</p>
+                <p class="item-title mbr-fonts-style display-4 character-text">Name</p>
+                <p class="mbr-text mbr-fonts-style display-4 character-text">{{ facet?.name }}</p>
               </div>
 
               <div class="item" v-if="facet?.alias">
-                <p class="item-title mbr-fonts-style display-4">Alias</p>
-                <p class="mbr-text mbr-fonts-style display-4">{{ facet?.alias || 'None' }}</p>
+                <p class="item-title mbr-fonts-style display-4 character-text">Alias</p>
+                <p class="mbr-text mbr-fonts-style display-4 character-text">{{ facet?.alias || 'None' }}</p>
               </div>
 
               <div class="item" v-if="facet?.location">
-                <p class="item-title mbr-fonts-style display-4">Location</p>
-                <p class="mbr-text mbr-fonts-style display-4">{{ facet?.location || 'None' }}</p>
+                <p class="item-title mbr-fonts-style display-4 character-text">Location</p>
+                <p class="mbr-text mbr-fonts-style display-4 character-text">
+                  <NuxtLink v-if="locationSlug" :to="`/facet/${locationSlug}`">{{ facet?.location || 'None' }}</NuxtLink>
+                  <span v-else>{{ facet?.location || 'None' }}</span>
+                </p>
               </div>
 
               <!-- TOPICS / TAGS (comma-separated) -->
               <div class="item" v-if="tagsList.length">
-                <p class="item-title mbr-fonts-style display-4">Topics</p>
-                <p class="mbr-text mbr-fonts-style display-4">
+                <p class="item-title mbr-fonts-style display-4 character-text">Topics</p>
+                <p class="mbr-text mbr-fonts-style display-4 character-text">
                   <span v-for="(t, idx) in tagsList" :key="t.id || t.slug || idx">
                     <NuxtLink v-if="t.slug" :to="`/characters/category/${t.slug}`">{{ t.name }}</NuxtLink>
                     <span v-else>{{ t.name }}</span>
@@ -142,6 +145,7 @@
   import {
     computed
   } from 'vue'
+    import { ref, watch } from 'vue'
   import {
     useHead
   } from '#imports'
@@ -162,28 +166,40 @@
   } = useNuxtApp()
 
   // Fetch character data by slug
-  const {
-    data
-  } = await useAsyncData('facet', () => {
-    return $directus.request(
-      $readItems('categories', {
-        filter: {
-          slug: {
-            _eq: `${route.params.slug}`
-          }
-        },
-        fields: [
-          '*',
-          'tags.tags_id.*',
-          'character.characters_id.*',
-          'universe.universe_id.*',
-          'stories.stories_id.*',
-          'videos.videos_id.*',
-          'image.*'
-        ],
-      })
-    )
-  })
+    // Normalize slug (catch-all route may give array)
+    const slug = computed(() => {
+      const s = route.params.slug
+      if (Array.isArray(s)) return s.join('/')
+      return s
+    })
+
+    // Fetch facet data by slug. Use a reactive key so the request
+    // re-runs when `slug` changes (client-side navigation).
+    const { data, pending, error, refresh } = await useAsyncData(() => `facet-${slug.value}`, () => {
+      return $directus.request(
+        $readItems('options', {
+          filter: {
+            slug: {
+              _eq: slug.value
+            }
+          },
+          fields: [
+            '*',
+            'tags.tags_id.*',
+            'character.characters_id.*',
+            'universe.universe_id.*',
+            'stories.stories_id.*',
+            'videos.videos_id.*',
+            'image.*'
+          ],
+        })
+      )
+    })
+
+    // Ensure the page refetches when the route slug changes (client navigation)
+    watch(slug, () => {
+      if (typeof refresh === 'function') refresh()
+    })
 
   // Handle Directus returning an array
   const facet = computed(() => data.value?.[0] || null)
@@ -202,6 +218,28 @@
         .filter(x => x.name)
     }
     return []
+  })
+
+  // Create a slug from the facet.location string so we can link to `/facet/:slug`
+  function slugify(text) {
+    if (!text) return null
+    return text.toString().trim().toLowerCase()
+      .normalize('NFKD') // separate accents from letters
+      .replace(/\p{Diacritic}/gu, '') // remove diacritics
+      .replace(/[^\w\s-]/g, '') // remove non-word chars
+      .replace(/\s+/g, '-') // replace whitespace with -
+      .replace(/-+/g, '-') // collapse dashes
+      .replace(/^-|-$/g, '') // trim leading/trailing dashes
+  }
+
+  const locationSlug = computed(() => {
+    const loc = facet?.value?.location
+    // If location is already a slug-like string (contains dash or slug property exists somewhere), prefer that
+    if (!loc) return null
+    // If facet has a nested object with slug, try to use it
+    if (typeof loc === 'object' && loc.slug) return loc.slug
+    if (typeof loc === 'string') return slugify(loc)
+    return null
   })
 
   // Is this facet an Abilities facet? tolerant to json/string/array and trims whitespace
