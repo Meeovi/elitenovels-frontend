@@ -111,4 +111,14 @@ export default defineNuxtConfig({
 
   // Build configuration
   build: {},
+  nitro: {
+    preset: 'netlify', // ⬅ Use the Netlify preset
+    externals: {
+      inline: [
+        'vue',
+        'vuetify',
+        '@vueuse/core'
+      ] // ⬅ Bundle these inside the serverless function
+    }
+  }
 })
