@@ -1,13 +1,13 @@
 <template>
     <div>
-        <v-toolbar :style="`background-color: ${tag?.color};`">
-            <v-toolbar-title v-if="tag">{{ tag?.name }}</v-toolbar-title>
+        <v-toolbar :style="`background-color: ${category?.color};`">
+            <v-toolbar-title v-if="category">{{ category?.name }}</v-toolbar-title>
         </v-toolbar>
         <v-card elevation="0">
-            <div v-if="tag?.name === 'Gods and Goddesses'">
+            <div v-if="category?.name === 'Gods and Goddesses'">
                 <mythologybar />
             </div>
-            <div v-else-if="tag?.name === 'Monsters'">
+            <div v-else-if="category?.name === 'Monsters'">
                 <monsterbar />
             </div>
             <div v-else>
@@ -18,24 +18,24 @@
             <v-card-text>
                 <v-tabs-window v-model="tab">
                     <v-tabs-window-item value="one">
-                        <div v-if="tag?.characters?.length">
+                        <div v-if="category?.characters?.length">
                             <v-row>
-                                <v-col cols="3" v-for="char in tag?.characters" :key="char.characters_id.id">
+                                <v-col cols="3" v-for="char in category?.characters" :key="char.characters_id.id">
                                     <characters :character="char?.characters_id" />
                                 </v-col>
                             </v-row>
                         </div>
 
-                        <div v-else-if="tag?.options?.length">
+                        <div v-else-if="category?.options?.length">
                             <v-row>
-                                <v-col cols="3" v-for="facet in tag?.options" :key="facet.options_id.id">
+                                <v-col cols="3" v-for="facet in category?.options" :key="facet.options_id.id">
                                     <facet :facet="facet?.options_id" />
                                 </v-col>
                             </v-row>
                         </div>
 
-                        <div v-else-if="tag?.stories?.length">
-                            <v-col cols="3" v-for="story in tag?.stories" :key="story.stories_id.id">
+                        <div v-else-if="category?.stories?.length">
+                            <v-col cols="3" v-for="story in category?.stories" :key="story.stories_id.id">
                                 <storyCard :story="story?.stories_id" />
                             </v-col>
                         </div>
@@ -43,7 +43,7 @@
                         <div v-else>
                             <v-row>
                                 <v-col cols="12">
-                                    <p>{{ pageBlock?.description }}</p>
+                                    <p v-html="pageBlock?.description"></p>
                                 </v-col>
                             </v-row>
                         </div>
@@ -76,11 +76,11 @@
         $readItem
     } = useNuxtApp()
 
-    // Get the specific tag and its characters
+    // Get the specific category and its characters
     const {
-        data: tagData
-    } = await useAsyncData('tagData', () => {
-        return $directus.request($readItems('tags', {
+        data: catData
+    } = await useAsyncData('catData', () => {
+        return $directus.request($readItems('categories', {
             fields: [
                 '*',
                 'characters.characters_id.*',
@@ -105,10 +105,10 @@
         }))
     })
 
-    // Get the first (and should be only) tag from the result
-    const tag = computed(() => tagData.value?.[0])
+    // Get the first (and should be only) category from the result
+    const category = computed(() => catData.value?.[0])
 
     useHead({
-        title: computed(() => tag.value?.name || 'Tag Page')
+        title: computed(() => category.value?.name || 'Tag Page')
     })
 </script>
