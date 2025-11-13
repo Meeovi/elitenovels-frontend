@@ -52,24 +52,24 @@
             <div class="card-wrapper">
               <!-- BASIC INFO -->
               <div class="item">
-                <p class="item-title mbr-fonts-style display-4">Name</p>
-                <p class="mbr-text mbr-fonts-style display-4">{{ character?.name }}</p>
+                <p class="item-title mbr-fonts-style display-4 character-text">Name</p>
+                <p class="mbr-text mbr-fonts-style display-4 character-text">{{ character?.name }}</p>
               </div>
 
               <div class="item" v-if="character?.type === 'Individual'">
-                <p class="item-title mbr-fonts-style display-4">Age</p>
-                <p class="mbr-text mbr-fonts-style display-4">{{ character?.age || 'Unknown' }}</p>
+                <p class="item-title mbr-fonts-style display-4 character-text">Age</p>
+                <p class="mbr-text mbr-fonts-style display-4 character-text">{{ character?.age || 'Unknown' }}</p>
               </div>
 
               <div class="item">
-                <p class="item-title mbr-fonts-style display-4">Alias</p>
-                <p class="mbr-text mbr-fonts-style display-4">{{ character?.alias || 'None' }}</p>
+                <p class="item-title mbr-fonts-style display-4 character-text">Alias</p>
+                <p class="mbr-text mbr-fonts-style display-4 character-text">{{ character?.alias || 'None' }}</p>
               </div>
 
               <!-- TYPE (Monster Only) -->
               <div class="item" v-if="isMonster && typeNames.length">
-                <p class="item-title mbr-fonts-style display-4">Type</p>
-                <div class="mbr-text mbr-fonts-style display-4">
+                <p class="item-title mbr-fonts-style display-4 character-text">Type</p>
+                <div class="mbr-text mbr-fonts-style display-4 character-text">
                   <v-chip v-for="(t, i) in typeNames" :key="i" class="ma-1" color="indigo" text-color="white" label link
                     :to="`/facet/${t.toLowerCase()}`">
                     {{ t }}
@@ -79,8 +79,8 @@
 
               <!-- LEVEL (Monster Only) -->
               <div class="item" v-if="isMonster && levelNames.length">
-                <p class="item-title mbr-fonts-style display-4">Level</p>
-                <div class="mbr-text mbr-fonts-style display-4">
+                <p class="item-title mbr-fonts-style display-4 character-text">Level</p>
+                <div class="mbr-text mbr-fonts-style display-4 character-text">
                   <v-chip v-for="(lvl, i) in levelNames" :key="i" class="ma-1" color="blue-grey" text-color="white"
                     label link :to="`/facet/${lvl.toLowerCase()}`">
                     {{ lvl }}
@@ -90,8 +90,8 @@
 
               <!-- AFFILIATES -->
               <div class="item" v-if="affiliatesList.length">
-                <p class="item-title mbr-fonts-style display-4">Affiliates</p>
-                <p class="mbr-text mbr-fonts-style display-4">
+                <p class="item-title mbr-fonts-style display-4 character-text">Affiliates</p>
+                <p class="mbr-text mbr-fonts-style display-4 character-text">
                   <span v-for="(af, idx) in affiliatesList" :key="af.id || af.slug || idx">
                     <NuxtLink v-if="af.slug" :to="`/characters/${af.slug}`">{{ af.name }}</NuxtLink>
                     <span v-else>{{ af.name }}</span>
@@ -102,8 +102,8 @@
 
               <!-- ABILITIES -->
               <div class="item" v-if="abilitiesList.length">
-                <p class="item-title mbr-fonts-style display-4">Abilities</p>
-                <div class="mbr-text mbr-fonts-style display-4">
+                <p class="item-title mbr-fonts-style display-4 character-text">Abilities</p>
+                <div class="mbr-text mbr-fonts-style display-4 character-text">
                   <v-chip v-for="(ability, index) in abilitiesList" :key="ability.slug || ability.name || index"
                     class="ma-1" color="teal" text-color="white" label link
                     :to="`/facet/${ability.slug || ability.name.toLowerCase()}`">
@@ -114,8 +114,8 @@
 
               <!-- TOPICS / TAGS -->
               <div class="item" v-if="tagsList.length">
-                <p class="item-title mbr-fonts-style display-4">Topics</p>
-                <div class="mbr-text mbr-fonts-style display-4">
+                <p class="item-title mbr-fonts-style display-4 character-text">Topics</p>
+                <div class="mbr-text mbr-fonts-style display-4 character-text">
                   <v-chip v-for="(t, idx) in tagsList" :key="t.id || t.slug || idx" class="ma-1" color="deep-orange"
                     text-color="white" label link :to="`/characters/category/${t.slug || t.name.toLowerCase()}`">
                     {{ t.name }}
