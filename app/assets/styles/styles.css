@@ -2,6 +2,13 @@
 html {
     overflow-y: scroll;
 }
+
+:root,
+body,
+#app {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 body {
     margin: 0;
     background-color: rgb(var(--v-theme-background)) !important;

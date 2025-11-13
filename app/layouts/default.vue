@@ -1,73 +1,77 @@
 <template>
-  <v-app :theme="theme.global.name.value">
-    <v-app-bar id="topnav" density="compact">
-      <template v-slot:prepend>
-        <v-btn variant="flat" @click="drawer = !drawer">
-          <v-icon start icon="fas fa-bars"></v-icon><div class="menutext"> Browse the Eliteverse</div>
-        </v-btn>
-      </template>
+  <v-responsive>
+    <v-app :theme="theme.value">
+      <v-app-bar id="topnav" density="compact">
+        <template v-slot:prepend>
+          <v-btn variant="flat" @click="drawer = !drawer">
+            <v-icon start icon="fas fa-bars"></v-icon>
+            <div class="menutext"> Browse the Eliteverse</div>
+          </v-btn>
+        </template>
 
-      <!--<v-app-bar-title><a class="logobrand" href="https://kids.elitenovels.com">Elite Kids</a></v-app-bar-title>-->
-      <v-divider class="border-opacity-100" inset vertical color="success"></v-divider>
-      
-      <v-spacer></v-spacer>
+        <!--<v-app-bar-title><a class="logobrand" href="https://kids.elitenovels.com">Elite Kids</a></v-app-bar-title>-->
+        <v-divider class="border-opacity-100" inset vertical color="success"></v-divider>
 
-      <logo />
-      <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
 
-      <div class="d-flex align-center flex-column flex-sm-row fill-height rightNav">
-        <ecosystemmenu />
-        <v-divider class="border-opacity-100" inset vertical color="primary"></v-divider>
-        <v-col>
-          <search />
-        </v-col>
-      </div>
-    </v-app-bar>
+        <logo />
+        <v-spacer></v-spacer>
 
-    <v-main>
-      <v-card>
-        <v-layout>
-          <v-navigation-drawer class="sidebarSection" v-model="drawer" temporary>
-            <div class="drawer-content">
-              <v-list nav>
+        <div class="d-flex align-center flex-column flex-sm-row fill-height rightNav">
+          <ecosystemmenu />
+          <v-divider class="border-opacity-100" inset vertical color="primary"></v-divider>
+          <v-col>
+            <search />
+          </v-col>
+        </div>
+      </v-app-bar>
 
-                <!---->
-                <sidebar />
-                <v-divider></v-divider>
-                <v-row>
-                  <v-col cols="3">
-                    <v-btn variant="text" stacked title="Help Center" prepend-icon="fas fa-question-circle" size="medium"
-                      href="https://help.meeovi.com"></v-btn>
-                  </v-col>
-                  <v-col cols="3">
-                    <v-btn @click="toggleDark()" variant="text" size="medium">
-                      <v-icon>
-                        {{ isDark ? 'fas fa-moon' : 'fas fa-sun' }}
-                      </v-icon>
-                    </v-btn>
-                  </v-col>
-                  <v-col cols="3">
-                    <!--<logout />-->
-                  </v-col>
-                </v-row>
-              </v-list>
-            </div>
-          </v-navigation-drawer>
+      <v-main>
+        <v-card>
+          <v-layout>
+            <v-navigation-drawer class="sidebarSection" v-model="drawer" temporary>
+              <div class="drawer-content">
+                <v-list nav>
 
-          <v-main id="sidebarNav"></v-main>
-          <main id="mainSection">
-            <!--<lowerbar />-->
-            <slot />
+                  <!---->
+                  <sidebar />
+                  <v-divider></v-divider>
+                  <v-row>
+                    <v-col cols="3">
+                      <v-btn variant="text" stacked title="Help Center" prepend-icon="fas fa-question-circle"
+                        size="medium" href="https://help.meeovi.com"></v-btn>
+                    </v-col>
+                    <v-col cols="3">
+                      <v-btn @click="toggleDark" variant="text" size="medium">
+                        <v-icon>
+                          {{ theme.global.current.value.dark ? 'fas fa-sun' : 'fas fa-moon' }}
+                        </v-icon>
+                      </v-btn>
 
-            <!--<relatedproducts />-->
-          </main>
-        </v-layout>
-      </v-card>
+                    </v-col>
+                    <v-col cols="3">
+                      <!--<logout />-->
+                    </v-col>
+                  </v-row>
+                </v-list>
+              </div>
+            </v-navigation-drawer>
 
-      <BottomFooter />
-      <FooterNav />
-    </v-main>
-  </v-app>
+            <v-main id="sidebarNav"></v-main>
+            <main id="mainSection">
+              <!--<lowerbar />-->
+              <slot />
+
+              <!--<relatedproducts />-->
+            </main>
+          </v-layout>
+        </v-card>
+
+        <BottomFooter />
+        <FooterNav />
+      </v-main>
+    </v-app>
+  </v-responsive>
 </template>
 
 <script setup>
@@ -93,18 +97,35 @@
   const drawer = ref(null);
 
   const theme = useTheme()
-  const isDark = useDark()
-  const toggleDark = useToggle(isDark)
 
-  // Sync Vuetify theme with dark mode
-  watch(isDark, (dark) => {
-    theme.value = dark ? 'dark' : 'light'
-  }, {
-    immediate: true
+  // Local storage key
+  const STORAGE_KEY = 'elite-theme'
+
+  // Determine initial mode
+  onMounted(() => {
+    const stored = localStorage.getItem(STORAGE_KEY)
+
+    if (stored) {
+      // Use saved preference
+      theme.global.name.value = stored
+    } else {
+      // No preference — follow system
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      theme.global.name.value = prefersDark ? 'dark' : 'light'
+    }
   })
 
+  // Toggle between themes
+  const toggleDark = () => {
+    theme.global.name.value =
+      theme.global.current.value.dark ? 'light' : 'dark'
+  }
 
-  function onClick() {
-    theme.value = theme.value === 'light' ? 'dark' : 'light'
-  };
+  // Save preference whenever theme changes
+  watch(
+    () => theme.global.name.value,
+    (val) => {
+      localStorage.setItem(STORAGE_KEY, val)
+    }
+  )
 </script>
