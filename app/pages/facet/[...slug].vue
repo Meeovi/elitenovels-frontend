@@ -83,7 +83,7 @@
       <v-row>
 
         <!-- STORIES -->
-        <v-col cols="12" v-if="character?.stories?.length">
+        <v-col cols="12" v-if="facet?.stories?.length">
           <h3>Stories</h3>
           <v-row>
             <v-col cols="4" v-for="(storyItem, i) in facet.stories" :key="i">

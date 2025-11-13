@@ -28,7 +28,6 @@
       <v-card>
         <v-layout>
           <v-navigation-drawer class="sidebarSection" v-model="drawer" temporary>
-            <sidebartop />
             <div class="drawer-content">
               <v-list nav>
 

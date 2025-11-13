@@ -6,7 +6,7 @@
     <v-sheet class="mx-auto">
       <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
         <v-slide-group-item v-slot="{ toggle, selectedClass }"
-          v-for="(products, index) in result?.products?.items" :key="index">
+          v-for="(products, index) in result" :key="index">
           <productCard :product="products" :class="['ma-4', selectedClass]" @click="toggle" />
 
           <div class="d-flex fill-height align-center justify-center">
@@ -25,14 +25,30 @@
   import {
     ref
   } from 'vue'
-  /*import {
-    useQuery
-  } from '@vue/apollo-composable'
- import products from '~/graphql/queries/products'
+    import {
+        createDirectus,
+        rest,
+        readItems
+    } from '@directus/sdk';
 
-  const {
-    result
-  } = useQuery(products)*/
+    const config = useRuntimeConfig()
+    const client = createDirectus(`${config.public.meeDirectusUrl}`).with(rest());
+
+    const {
+        data: result
+    } = await useAsyncData('result', () => {
+        return client.request(readItems('products', {
+          filter: {
+            departments: {
+              departments_id: {
+                name: {
+                  _eq: "Elite Novels"
+                }
+              }
+            }
+          }
+        }))
+    })
 
   const model = ref(null);
       const {

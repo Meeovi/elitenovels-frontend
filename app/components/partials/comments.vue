@@ -13,15 +13,15 @@ import { onMounted, watch, ref, onBeforeUnmount, nextTick } from 'vue'
 const props = defineProps({
   shortname: {
     type: String,
-    required: true
+    optional: true
   },
   identifier: {
     type: String,
-    required: true
+    optional: true
   },
   url: {
     type: String,
-    required: true
+    optional: true
   },
   title: {
     type: String,

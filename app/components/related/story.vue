@@ -1,7 +1,7 @@
 <template>
     <div>
         <a :href="`/story/${story?.slug}`">
-            <v-card color="white" :class="['ma-4', selectedClass]" height="550" width="300" @click="toggle">
+            <v-card color="white" height="550" width="300">
                 <div v-if="story?.image?.filename_disk">
                     <img class="align-end text-white" height="400" :alt="story?.name"
                         :src="`${$directus.url}assets/${story?.image?.filename_disk}`" cover />
