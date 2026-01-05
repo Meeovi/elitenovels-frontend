@@ -6,8 +6,10 @@
         <h4 style="color: white;">Popular Levels</h4>
         <v-sheet class="mx-auto categorySheet">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="levels in monsterLevels" :key="levels" v-slot="{ toggle }">
-              <levels :item="levels" />
+            <v-slide-group-item v-for="levels in monsterLevels" :key="levels">
+              <template #default="{ toggle }">
+                <levels :item="levels" />
+              </template>
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>

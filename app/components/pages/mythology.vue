@@ -5,9 +5,11 @@
         <v-toolbar title="Popular Myths" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="mythology in mythology" :key="mythology" v-slot="{ toggle }">
-              <characters :character="mythology" class="characterCard" @click="toggle"
-                :class="['ma-4', selectedClass]" />
+            <v-slide-group-item v-for="popular in popularMyths" :key="popular">
+              <template #default="{ toggle }">
+                <characters :character="popular" class="characterCard" @click="toggle"
+                  :class="['ma-4', selectedClass]" />
+              </template>
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -18,13 +20,14 @@
       <v-col cols="12">
         <v-toolbar title="Royal Circa" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
-          <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item v-for="royalcirca in royalcirca" :key="royalcirca"
-              v-slot="{ toggle, selectedClass }">
-              <characters :character="royalcirca" class="characterCard" @click="toggle"
-                :class="['ma-4', selectedClass]" />
-            </v-slide-group-item>
-          </v-slide-group>
+            <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
+              <v-slide-group-item v-for="royal in royalcirca" :key="royal">
+                <template #default="{ toggle, selectedClass }">
+                  <characters :character="royal" class="characterCard" @click="toggle"
+                    :class="['ma-4', selectedClass]" />
+                </template>
+              </v-slide-group-item>
+            </v-slide-group>
         </v-sheet>
       </v-col>
 
@@ -32,7 +35,7 @@
         <v-toolbar title="BROWSE ELITEVERSE MYTHOLOGY" density="comfortable" color="transparent"></v-toolbar>
       </v-col>
       <v-col cols="3" v-for="mythology in mythology" :key="mythology">
-        <characters :character="mythology" class="characterCard" @click="toggle" :class="['ma-4', selectedClass]" />
+        <characters :character="mythology" class="characterCard" />
       </v-col>
     </v-row>
   </div>
@@ -48,12 +51,13 @@
 
   const {
     $directus,
-    $readItems
+    $readItems,
+    $readItem
   } = useNuxtApp()
 
   const {
-    data: mythology
-  } = await useAsyncData('mythology', () => {
+    data: popularMyths
+  } = await useAsyncData('popularMyths', () => {
     return $directus.request($readItems('characters', {
       fields: ['*', {
         '*': ['*']
@@ -83,10 +87,21 @@
   })
 
   const {
-    data: characterPage
-  } = await useAsyncData('characterPage', () => {
-    return $directus.request($readItem('pages', '3', {
-      fields: ['*', 'image.*'],
+    data: mythology
+  } = await useAsyncData('mythology', () => {
+    return $directus.request($readItems('characters', {
+      fields: ['*', {
+        '*': ['*']
+      }],
+      filter: {
+        categories: {
+          categories_id: {
+            name: {
+              _eq: "Mythology"
+            }
+          }
+        }
+      }
     }))
   })
 

@@ -4,7 +4,7 @@
     <div class="homePage">
       <!-- <contentSection /> -->
       <characters />
-      <relatedstories />
+      <!--<relatedstories />-->
       <videoSection />
     </div>
     <multiversebanner />

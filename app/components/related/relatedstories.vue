@@ -5,11 +5,12 @@
         </v-toolbar>
         <v-sheet class="mx-auto">
           <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
-            <v-slide-group-item v-for="(item, index) in stories" :key="item?.id || item?.slug || index"
-              v-slot="{ toggle, selectedClass }">
-              <div @click="toggle" :class="['ma-4', selectedClass]">
-                <story :story="item" />
-              </div>
+            <v-slide-group-item v-for="(item, index) in stories" :key="item?.id || item?.slug || index">
+              <template #default="{ toggle, selectedClass }">
+                <div @click="toggle" :class="['ma-4', selectedClass]">
+                  <story :story="item" />
+                </div>
+              </template>
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>

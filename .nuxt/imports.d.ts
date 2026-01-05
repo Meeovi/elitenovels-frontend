@@ -34,3 +34,4 @@ export { defineLazyHydrationComponent } from '#app/composables/lazy-hydration';
 export { isLoggedIn, getUser } from '../app/utils/auth';
 export { useImage } from '../node_modules/@nuxt/image/dist/runtime/composables';
 export { useDate, useLocale, useDefaults, useDisplay, useLayout, useRtl, useTheme, useGoTo } from 'vuetify';
+export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';

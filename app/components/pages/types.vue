@@ -6,8 +6,10 @@
         <h4 style="color: white;">Popular Types</h4>
         <v-sheet class="mx-auto categorySheet">
           <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
-            <v-slide-group-item v-for="types in monsterTypes" :key="types" v-slot="{ toggle }">
-              <types :item="types" />
+            <v-slide-group-item v-for="types in monsterTypes" :key="types">
+              <template #default="{ toggle }">
+                <types :item="types" />
+              </template>
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
