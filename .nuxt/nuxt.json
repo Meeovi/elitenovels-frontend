@@ -1,9 +1,9 @@
 {
-  "_hash": "LhhYHI4vzIU-ad_yJGObUG3Qqf4vxmss9NlsyY8a8Ms",
+  "_hash": "wv8bLgPavTNv4QWvQ6xCbbWeekqtoegYOmqxOUhGsB4",
   "project": {
-    "rootDir": "/home/meebuzo/github/elitenovels-frontend"
+    "rootDir": "C:/Users/Basti/Documents/My_Websites/Handmade_Sites/Javascript-Projects/Nuxt-Projects/Meeovi_Framework/Ecosystem/elitenovels"
   },
   "versions": {
-    "nuxt": "4.1.3"
+    "nuxt": "4.4.2"
   }
 }

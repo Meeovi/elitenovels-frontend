@@ -2,10 +2,6 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
 
-  experimental: {
-    watcher: 'parcel'
-  },
-
   app: {
     head: {
       viewport: 'minimum-scale=1, initial-scale=1, width=device-width',
