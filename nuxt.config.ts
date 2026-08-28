@@ -108,7 +108,7 @@ export default defineNuxtConfig({
   // Build configuration
   build: {},
   nitro: {
-    preset: 'netlify', // ⬅ Use the Netlify preset
+    preset: 'vercel',
     externals: {
       inline: [
         'vue',
