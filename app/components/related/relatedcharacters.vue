@@ -24,7 +24,7 @@ import character from '~/components/related/character.vue'
 const model = ref(null)
 const { $directus, $readItems } = useNuxtApp()
 
-const { data: characters } = await useAsyncData('characters', () => {
+const { data: characters } = useLazyAsyncData('characters', () => {
   return $directus.request($readItems('characters'))
 })
 </script>

@@ -39,7 +39,7 @@
 
   const {
     data: characterItems
-  } = await useAsyncData('characterItems', async () => {
+  } = useLazyAsyncData('characterItems', async () => {
     return await $directus.request(
       $readItems('options', {
         fields: ['*', 'category.categories_id.*'],

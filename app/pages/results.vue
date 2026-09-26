@@ -137,7 +137,7 @@
 
   const {
     data: searchbar
-  } = await useAsyncData('searchbar', () => {
+  } = useLazyAsyncData('searchbar', () => {
     return $directus.request($readItem('navigation', '27'))
   })
 

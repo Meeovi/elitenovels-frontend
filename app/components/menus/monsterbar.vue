@@ -18,7 +18,7 @@
 const { $directus, $readItem } = useNuxtApp()
 const route = useRoute()
 
-const { data: characterbar } = await useAsyncData('characterbar', () => {
+const { data: characterbar } = useLazyAsyncData('monsterbar', () => {
     return $directus.request($readItem('categories', '3', {
         fields: ['*', 'tags.tags_id.*'] // Include all tags fields
     }))

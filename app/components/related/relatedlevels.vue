@@ -27,7 +27,7 @@
 
     const {
         data: facets
-    } = await useAsyncData('facets', () => {
+    } = useLazyAsyncData('facets', () => {
         return $directus.request($readItems('options'))
     })
 

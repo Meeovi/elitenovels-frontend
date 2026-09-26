@@ -19,7 +19,7 @@
 
     const {
         data: topNavigation
-    } = await useAsyncData('topNavigation', () => {
+    } = useLazyAsyncData('topNavigation', () => {
         return $directus.request($readItem('navigation', '1'))
     })
 </script>

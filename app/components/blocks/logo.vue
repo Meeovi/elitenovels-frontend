@@ -24,7 +24,7 @@
 
     const {
         data: blocksSiteoverview
-    } = await useAsyncData('blocksSiteoverview', () => {
+    } = useLazyAsyncData('blocksSiteoverview', () => {
         return $directus.request($readItem('blocks', '2', {
             fields: ['*', {
                 '*': ['*']

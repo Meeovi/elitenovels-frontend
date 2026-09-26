@@ -57,7 +57,7 @@
 
   const {
     data: popularMyths
-  } = await useAsyncData('popularMyths', () => {
+  } = useLazyAsyncData('popularMyths', () => {
     return $directus.request($readItems('characters', {
       fields: ['*', {
         '*': ['*']
@@ -72,7 +72,7 @@
 
   const {
     data: royalcirca
-  } = await useAsyncData('royalcirca', () => {
+  } = useLazyAsyncData('royalcirca', () => {
     return $directus.request($readItems('characters', {
       filter: {
         tags: {
@@ -88,7 +88,7 @@
 
   const {
     data: mythology
-  } = await useAsyncData('mythology', () => {
+  } = useLazyAsyncData('mythology', () => {
     return $directus.request($readItems('characters', {
       fields: ['*', {
         '*': ['*']

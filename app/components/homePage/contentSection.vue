@@ -33,7 +33,7 @@ const {
 
   const {
       data: categories
-  } = await useAsyncData('categories', () => {
+  } = useLazyAsyncData('categories', () => {
       return $directus.request($readItems('categories', {
             fields: ['*', { '*': ['*'] }]
         }))

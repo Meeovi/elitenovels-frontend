@@ -1,5 +1,7 @@
 <template>
-    <div class="contentPage">
+    <div>
+      <PageLoader v-if="loading" />
+      <div v-else class="contentPage">
         <section data-bs-version="5.1" class="header01 emblemm5 cid-uLEdfj7dI6" id="header01-1k">
             <div v-if="page?.image?.length" class="mbr-fallback-image"
                 :style="`background-image: url(${$directus.url}assets/${page?.image?.filename_disk}) !important`"></div>
@@ -117,9 +119,11 @@
             <p class="pageDescription mbr-text mbr-fonts-style display-4" v-html="page?.content"></p>
         </div>
     </div>
+    </div>
 </template>
 
 <script setup>
+    import PageLoader from '~/components/partials/PageLoader.vue'
     import {
         ref
     } from 'vue'
@@ -142,58 +146,63 @@
         $readItems
     } = useNuxtApp()
 
+    const slug = computed(() => Array.isArray(route.params.slug) ? route.params.slug.join('/') : route.params.slug)
+
+    // One request chain per page: fetch the page, then only the extra collection
+    // that this particular page renders (Stories / Videos / Kids).
     const {
-        data: page
-    } = await useAsyncData('page', () => {
-        return $directus.request($readItems('pages', {
+        data,
+        status
+    } = useLazyAsyncData(() => `page-${slug.value}`, async () => {
+        const page = (await $directus.request($readItems('pages', {
             fields: ['*', 'image.*'],
             filter: {
                 slug: {
-                    _eq: `${route.params.slug}`
+                    _eq: slug.value
                 }
             },
             limit: 1
-        })).then(response => response?.[0]) // Get first item from response
-    })
+        })))?.[0] || null
 
-    const {
-        data: stories
-    } = await useAsyncData('stories', () => {
-        return $directus.request($readItems('stories', {
-            fields: ['*', {
-                '*': ['*']
-            }]
-        }))
-    })
+        const result = { page, stories: [], videos: [], kidCharacters: [] }
 
-    const {
-        data: videos
-    } = await useAsyncData('videos', () => {
-        return $directus.request($readItems('videos', {
-            fields: ['*', {
-                'videos': ['*']
-            }]
-        }))
-    })
-
-    const {
-        data: kidCharacters
-    } = await useAsyncData('kidCharacters', () => {
-        return $directus.request($readItems('characters', {
-            fields: ['*', {
-                '*': ['*']
-            }],
-            filter: {
-                universe: {
-                    universe_id: {
-                        name: {
-                            _eq: 'Kids'
+        if (page?.name === 'Stories') {
+            result.stories = await $directus.request($readItems('stories', {
+                fields: ['*', {
+                    '*': ['*']
+                }]
+            }))
+        } else if (page?.name === 'Videos') {
+            result.videos = await $directus.request($readItems('videos', {
+                fields: ['*', {
+                    'videos': ['*']
+                }]
+            }))
+        } else if (page?.name === 'Kids') {
+            result.kidCharacters = await $directus.request($readItems('characters', {
+                fields: ['*', {
+                    '*': ['*']
+                }],
+                filter: {
+                    universe: {
+                        universe_id: {
+                            name: {
+                                _eq: 'Kids'
+                            }
                         }
                     }
                 }
-            }
-        }))
+            }))
+        }
+
+        return result
     })
+
+    const page = computed(() => data.value?.page)
+    const loading = computed(() => status.value === 'pending' && !page.value)
+    const stories = computed(() => data.value?.stories || [])
+    const videos = computed(() => data.value?.videos || [])
+    const kidCharacters = computed(() => data.value?.kidCharacters || [])
 
     useHead({
         title: computed(() => page?.value?.name || 'Page Name')

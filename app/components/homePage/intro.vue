@@ -45,7 +45,7 @@
 
     const {
         data: blocksSlider
-    } = await useAsyncData('blocksSlider', () => {
+    } = useLazyAsyncData('blocksSlider', () => {
         return $directus.request($readItem('blocks', '8', {
             fields: ['*', 'media.*.*'],
         }))

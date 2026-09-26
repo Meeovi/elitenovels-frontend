@@ -1,5 +1,7 @@
 <template>
   <div>
+    <PageLoader v-if="loading" />
+    <div v-else>
     <div v-if="story">
       <div class="container my-5 py-5">
         <!-- Section: Design Block -->
@@ -44,9 +46,11 @@
     <v-divider></v-divider>
     <comments />
   </div>
+  </div>
 </template>
 
 <script setup>
+  import PageLoader from '~/components/partials/PageLoader.vue'
   import comments from '~/components/partials/comments.vue'
   import characters from '~/components/related/character.vue'
   import relatedstories from '~/components/related/relatedstories.vue'
@@ -58,7 +62,7 @@
     $readItems
   } = useNuxtApp()
 
-  const { data } = await useAsyncData('story', () => {
+  const { data, status } = useLazyAsyncData(() => `story-${route.params.slug}`, () => {
     return $directus.request($readItems('stories', {
       filter: {
         slug: {
@@ -78,6 +82,7 @@
 
   // Directus returns an array for readItems; normalize to a single story
   const story = computed(() => (Array.isArray(data.value) ? data.value[0] : data.value))
+  const loading = computed(() => status.value === 'pending' && !story.value)
 
   useHead({
     title: computed(() => story.value?.name || 'Story Page')

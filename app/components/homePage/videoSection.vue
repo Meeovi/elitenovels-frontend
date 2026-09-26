@@ -26,7 +26,7 @@ const {
 
   const {
       data: videos
-  } = await useAsyncData('videos', () => {
+  } = useLazyAsyncData('videos', () => {
       return $directus.request($readItems('videos', {
             fields: ['*', { '*': ['*'] }]
         }))

@@ -23,7 +23,7 @@
 
     const {
         data: dictionaryData
-    } = await useAsyncData('dictionary', () => {
+    } = useLazyAsyncData('dictionary', () => {
         return $directus.request($readItems('options', {
             fields: ['*', { '*': ['*'] }],
             filter: {

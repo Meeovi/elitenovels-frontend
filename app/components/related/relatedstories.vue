@@ -30,7 +30,7 @@
 
     const {
         data: stories
-    } = await useAsyncData('stories', () => {
+    } = useLazyAsyncData('stories', () => {
         return $directus.request($readItems('stories'))
     })
 </script>

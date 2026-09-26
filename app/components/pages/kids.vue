@@ -35,7 +35,7 @@
 
   const {
     data: kidsCharacter
-  } = await useAsyncData('kidsCharacter', () => {
+  } = useLazyAsyncData('kidsCharacter', () => {
     return $directus.request($readItems('characters', {
       fields: ['*',
         'abilities.abilities_id.*',

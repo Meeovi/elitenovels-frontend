@@ -20,7 +20,7 @@
 
     const {
         data: storybar
-    } = await useAsyncData('storybar', () => {
+    } = useLazyAsyncData('storybar', () => {
         return $directus.request($readItem('navigation', '2'))
     })
 </script>

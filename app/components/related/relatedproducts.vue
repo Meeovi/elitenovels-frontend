@@ -45,7 +45,7 @@
 
   const {
     data: result
-  } = await useAsyncData('result', () => {
+  } = useLazyAsyncData('result', () => {
     return client.request(
       readItems('products', {
         filter: {
@@ -70,7 +70,7 @@
 
   const {
     data: shopBlock
-  } = await useAsyncData('shopBlock', () => {
+  } = useLazyAsyncData('shopBlock', () => {
     return $directus.request(
       $readItem('blocks', '7', {
         fields: ['*', {

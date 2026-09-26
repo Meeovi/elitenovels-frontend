@@ -1,5 +1,7 @@
 <template>
     <div>
+      <PageLoader v-if="loading" />
+      <div v-else>
         <v-toolbar :style="`background-color: ${category?.color};`">
             <v-toolbar-title v-if="category">{{ category?.name }}</v-toolbar-title>
         </v-toolbar>
@@ -52,9 +54,11 @@
             </v-card-text>
         </v-card>
     </div>
+    </div>
 </template>
 
 <script setup>
+    import PageLoader from '~/components/partials/PageLoader.vue'
     import {
         ref
     } from 'vue'
@@ -78,8 +82,9 @@
 
     // Get the specific category and its characters
     const {
-        data: catData
-    } = await useAsyncData('catData', () => {
+        data: catData,
+        status
+    } = useLazyAsyncData(() => `catData-${route.params.slug}`, () => {
         return $directus.request($readItems('categories', {
             fields: [
                 '*',
@@ -97,7 +102,7 @@
 
     const {
         data: pageBlock
-    } = await useAsyncData('pageBlock', () => {
+    } = useLazyAsyncData('pageBlock', () => {
         return $directus.request($readItem('blocks', '9', {
             fields: ['*', {
                 '*': ['*']
@@ -107,6 +112,7 @@
 
     // Get the first (and should be only) category from the result
     const category = computed(() => catData.value?.[0])
+    const loading = computed(() => status.value === 'pending' && !category.value)
 
     useHead({
         title: computed(() => category.value?.name || 'Tag Page')

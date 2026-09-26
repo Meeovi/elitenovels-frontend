@@ -91,7 +91,7 @@
 
   const {
     data: lists
-  } = await useAsyncData('lists', () => {
+  } = useLazyAsyncData('lists', () => {
     return $directus.request($readItems('lists', {
       filter: {
         status: {

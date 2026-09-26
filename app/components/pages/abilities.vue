@@ -39,7 +39,7 @@
 
   const {
     data: ability
-  } = await useAsyncData('ability', () => {
+  } = useLazyAsyncData('ability', () => {
     return $directus.request($readItems('abilities', {
       fields: ['*', {
         '*': ['*']
@@ -49,7 +49,7 @@
 
   const {
     data: characterAbility
-  } = await useAsyncData('characterAbility', () => {
+  } = useLazyAsyncData('characterAbility', () => {
     return $directus.request($readItems('options', {
       fields: ['*', {
         '*': ['*']

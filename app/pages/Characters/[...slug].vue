@@ -1,5 +1,7 @@
 <template>
   <div>
+    <PageLoader v-if="loading" />
+    <div v-else>
     <!-- CHARACTER HEADER -->
     <section data-bs-version="5.1" class="features7 stepm5 cid-uLEiKNmlwj" id="afeatures7-1r">
       <div class="container-fluid">
@@ -141,9 +143,11 @@
       </v-row>
     </div>
   </div>
+  </div>
 </template>
 
 <script setup>
+  import PageLoader from '~/components/partials/PageLoader.vue'
   import {
     useRoute
   } from 'vue-router'
@@ -167,13 +171,13 @@
   // normalize slug
   const slug = computed(() => Array.isArray(route.params.slug) ? route.params.slug.join('/') : route.params.slug)
 
-  // 👇 Key is reactive, based on slug
+  // Reactive key: refetches whenever the slug changes
   const {
     data,
-    pending,
+    status,
     error
-  } = await useAsyncData(
-    `character-${slug.value}`,
+  } = useLazyAsyncData(
+    () => `character-${slug.value}`,
     async () => {
       return await $directus.request(
         $readItems('characters', {
@@ -195,14 +199,12 @@
           ]
         })
       )
-    }, {
-      // 👇 force refetch whenever slug changes
-      watch: [slug]
     }
   )
 
 
   const character = computed(() => data.value?.[0] || null)
+  const loading = computed(() => status.value === 'pending' && !character.value)
 
   function normalizeType(value) {
     if (!value) return []

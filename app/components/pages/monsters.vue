@@ -54,7 +54,7 @@
 
   const {
     data: monsters
-  } = await useAsyncData('monsters', () => {
+  } = useLazyAsyncData('monsters', () => {
     return $directus.request($readItems('characters', {
       fields: ['*', {
         '*': ['*']
@@ -69,7 +69,7 @@
 
   const {
     data: aurelian
-  } = await useAsyncData('aurelian', () => {
+  } = useLazyAsyncData('aurelian', () => {
     return $directus.request($readItems('characters', {
       fields: ['*', {
         '*': ['*']

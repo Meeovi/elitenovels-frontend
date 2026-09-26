@@ -95,13 +95,13 @@
 
   const {
     data: character
-  } = await useAsyncData('character', () => {
+  } = useLazyAsyncData('character', () => {
     return $directus.request($readItems('characters'))
   })
 
   const {
     data: characterPage
-  } = await useAsyncData('characterPage', () => {
+  } = useLazyAsyncData('characterPage', () => {
     return $directus.request($readItem('pages', '2', {
       fields: ['*', 'image.*'],
     }))
@@ -109,7 +109,7 @@
 
   const {
     data: characterBlocks
-  } = await useAsyncData('characterBlocks', () => {
+  } = useLazyAsyncData('characterBlocks', () => {
     return $directus.request($readItems('blocks', {
       fields: ['*', 'image.*'],
       filter: {

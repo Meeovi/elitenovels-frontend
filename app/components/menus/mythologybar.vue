@@ -22,7 +22,7 @@
 
     const {
         data: characterbar
-    } = await useAsyncData('characterbar', () => {
+    } = useLazyAsyncData('characterbar', () => {
         return $directus.request($readItem('navigation', '6'))
     })
 </script>

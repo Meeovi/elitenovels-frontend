@@ -48,7 +48,7 @@
 
     const {
         data: eco
-    } = await useAsyncData('eco', () => {
+    } = useLazyAsyncData('eco', () => {
         return client.request(readItem('navigation', '12'))
     })
 

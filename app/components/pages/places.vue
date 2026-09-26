@@ -30,7 +30,7 @@ import Places from '~/components/related/facet.vue'
 const model = ref(null)
 const { $directus, $readItems } = useNuxtApp()
 
-const { data: characterPlaces } = await useAsyncData('characterPlaces', async () => {
+const { data: characterPlaces } = useLazyAsyncData('characterPlaces', async () => {
   return await $directus.request(
     $readItems('options', {
       fields: ['*', 'category.categories_id.*'],

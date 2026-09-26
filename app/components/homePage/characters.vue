@@ -92,7 +92,7 @@
 
   const {
     data: popularCharacters
-  } = await useAsyncData('popularCharacters', () => {
+  } = useLazyAsyncData('popularCharacters', () => {
     return $directus.request($readItems('characters', {
       fields: ['*', {
         '*': ['*']
@@ -114,7 +114,7 @@
 
   const {
     data: monstersCharacters
-  } = await useAsyncData('monstersCharacters', () => {
+  } = useLazyAsyncData('monstersCharacters', () => {
     return $directus.request($readItems('characters', {
       fields: ['*', {
         '*': ['*']
@@ -133,7 +133,7 @@
 
   const {
     data: mythologyCharacters
-  } = await useAsyncData('mythologyCharacters', () => {
+  } = useLazyAsyncData('mythologyCharacters', () => {
     return $directus.request($readItems('characters', {
       fields: ['*', {
         '*': ['*']
@@ -152,7 +152,7 @@
 
   const {
     data: aliensCharacters
-  } = await useAsyncData('aliensCharacters', () => {
+  } = useLazyAsyncData('aliensCharacters', () => {
     return $directus.request($readItems('characters', {
       fields: ['*', {
         '*': ['*']
@@ -171,7 +171,7 @@
 
   const {
     data: kidsCharacters
-  } = await useAsyncData('kidsCharacters', () => {
+  } = useLazyAsyncData('kidsCharacters', () => {
     return $directus.request($readItems('characters', {
       fields: ['*', {
         '*': ['*']

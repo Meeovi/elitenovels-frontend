@@ -40,7 +40,7 @@
 
   const {
     data: monsterLevels
-  } = await useAsyncData('monsterLevels', () => {
+  } = useLazyAsyncData('monsterLevels', () => {
     return $directus.request($readItems('options', {
       fields: ['*', {
         '*': ['*']

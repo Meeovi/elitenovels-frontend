@@ -40,13 +40,13 @@ import characters from '~/components/related/character.vue';
 
   const {
     data: page
-  } = await useAsyncData('page', () => {
+  } = useLazyAsyncData('errorPage', () => {
     return $directus.request($readItem('pages', '1'))
   })
 
   const {
     data: charactersData
-  } = await useAsyncData('charactersData', () => {
+  } = useLazyAsyncData('charactersData', () => {
     return $directus.request($readItems('characters'))
   })
 

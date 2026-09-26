@@ -27,7 +27,7 @@
 
     const {
         data: definition
-    } = await useAsyncData('definition', () => {
+    } = useLazyAsyncData('definition', () => {
         return $directus.request($readItems('dictionary'))
     })
 </script>

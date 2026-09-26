@@ -69,31 +69,31 @@
 
     const {
         data: aboutNav
-    } = await useAsyncData('aboutNav', () => {
+    } = useLazyAsyncData('aboutNav', () => {
         return $directus.request($readItem('navigation', '2'))
     })
 
     const {
         data: legalNav
-    } = await useAsyncData('legalNav', () => {
+    } = useLazyAsyncData('legalNav', () => {
         return $directus.request($readItem('navigation', '3'))
     })
 
     const {
         data: personalNav
-    } = await useAsyncData('personalNav', () => {
+    } = useLazyAsyncData('personalNav', () => {
         return $directus.request($readItem('navigation', '4'))
     })
 
     const {
         data: copyrightNav
-    } = await useAsyncData('copyrightNav', () => {
+    } = useLazyAsyncData('copyrightNav', () => {
         return $directus.request($readItem('navigation', '5'))
     })
 
     const {
         data: footerBlock
-    } = await useAsyncData('footerBlock', () => {
+    } = useLazyAsyncData('footerBlock', () => {
         return $directus.request($readItem('blocks', '1', {
             fields: ['*', {
                 '*': ['*']

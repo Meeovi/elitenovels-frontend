@@ -1,5 +1,7 @@
 <template>
   <div>
+    <PageLoader v-if="loading" />
+    <div v-else>
     <!-- CHARACTER HEADER -->
     <section data-bs-version="5.1" class="features7 stepm5 cid-uLEiKNmlwj" id="afeatures7-1r">
       <div class="container-fluid">
@@ -136,9 +138,11 @@
       </v-row>
     </div>
   </div>
+  </div>
 </template>
 
 <script setup>
+  import PageLoader from '~/components/partials/PageLoader.vue'
   import {
     useRoute
   } from 'vue-router'
@@ -175,7 +179,7 @@
 
     // Fetch facet data by slug. Use a reactive key so the request
     // re-runs when `slug` changes (client-side navigation).
-    const { data, pending, error, refresh } = await useAsyncData(() => `facet-${slug.value}`, () => {
+    const { data, status, error } = useLazyAsyncData(() => `facet-${slug.value}`, () => {
       return $directus.request(
         $readItems('options', {
           filter: {
@@ -196,13 +200,9 @@
       )
     })
 
-    // Ensure the page refetches when the route slug changes (client navigation)
-    watch(slug, () => {
-      if (typeof refresh === 'function') refresh()
-    })
-
   // Handle Directus returning an array
   const facet = computed(() => data.value?.[0] || null)
+  const loading = computed(() => status.value === 'pending' && !facet.value)
 
   // Compute normalized tags list (name, slug, id)
   const tagsList = computed(() => {
