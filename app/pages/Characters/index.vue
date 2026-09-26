@@ -66,11 +66,11 @@
             </h3>
 
           </div>
-          <div class="col-12 cards-container">
-            <div class="col-sm-4 col-card item features-image" v-for="char in character" :key="char.id">
+          <v-row class="cards-container">
+            <v-col cols="12" sm="6" md="4" lg="3" v-for="char in character" :key="char.id">
               <characterComponent :character="char" class="characterCard" />
-            </div>
-          </div>
+            </v-col>
+          </v-row>
         </div>
       </div>
     </section>

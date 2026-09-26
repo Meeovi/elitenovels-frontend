@@ -4,11 +4,11 @@
       <v-col cols="12">
         <v-toolbar title="POPULAR CHARACTERS" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
-          <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
+          <v-slide-group v-model="model" class="py-4 px-sm-4" center-active>
             <v-slide-group-item v-for="characters in popularCharacters" :key="characters">
               <template #default="{ toggle, selectedClass }">
                 <charactersCard :character="characters" class="characterCard popCard" @click="toggle"
-                  :class="['ma-4', selectedClass]" />
+                  :class="selectedClass" />
               </template>
             </v-slide-group-item>
           </v-slide-group>
@@ -19,11 +19,11 @@
         <v-col cols="12">
           <v-toolbar title="SPELL CREATURES" density="comfortable" color="transparent"></v-toolbar>
           <v-sheet class="mx-auto">
-            <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
+            <v-slide-group v-model="model" class="py-4 px-sm-4" center-active>
               <v-slide-group-item v-for="monsters in monstersCharacters" :key="monsters">
                 <template #default="{ toggle, selectedClass }">
                   <charactersCard :character="monsters" class="characterCard" @click="toggle"
-                    :class="['ma-4', selectedClass]" />
+                    :class="selectedClass" />
                 </template>
               </v-slide-group-item>
             </v-slide-group>
@@ -34,11 +34,11 @@
       <v-col cols="12">
         <v-toolbar title="CHARACTERS FROM MYTHOLOGY" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
-          <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
+          <v-slide-group v-model="model" class="py-4 px-sm-4" center-active>
             <v-slide-group-item v-for="mythology in mythologyCharacters" :key="mythology">
               <template #default="{ toggle, selectedClass }">
                 <charactersCard :character="mythology" class="characterCard" @click="toggle"
-                  :class="['ma-4', selectedClass]" />
+                  :class="selectedClass" />
               </template>
             </v-slide-group-item>
           </v-slide-group>
@@ -49,11 +49,11 @@
         <v-col cols="12">
           <v-toolbar title="FROM ACROSS THE ELITEVERSE" density="comfortable" color="transparent"></v-toolbar>
           <v-sheet class="mx-auto">
-            <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
+            <v-slide-group v-model="model" class="py-4 px-sm-4" center-active>
               <v-slide-group-item v-for="aliens in aliensCharacters" :key="aliens">
                 <template #default="{ toggle, selectedClass }">
                   <charactersCard :character="aliens" class="characterCard" @click="toggle"
-                    :class="['ma-4', selectedClass]" />
+                    :class="selectedClass" />
                 </template>
               </v-slide-group-item>
             </v-slide-group>
@@ -64,11 +64,11 @@
       <v-col cols="12">
         <v-toolbar title="ELITE KIDS" density="comfortable" color="transparent"></v-toolbar>
         <v-sheet class="mx-auto">
-          <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
+          <v-slide-group v-model="model" class="py-4 px-sm-4" center-active>
             <v-slide-group-item v-for="kids in kidsCharacters" :key="kids">
               <template #default="{ toggle, selectedClass }">
                 <charactersCard :character="kids" class="characterCard" @click="toggle"
-                  :class="['ma-4', selectedClass]" />
+                  :class="selectedClass" />
               </template>
             </v-slide-group-item>
           </v-slide-group>

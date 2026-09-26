@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row>
-      <v-col cols="3" v-for="categories in categories" :key="categories">
+      <v-col cols="12" sm="6" md="4" lg="3" v-for="categories in categories" :key="categories">
         <v-card class="mx-auto" max-width="300">
           <img class="align-end text-white" height="350" :src="`${categories?.image.filename_disk}`" cover />
 

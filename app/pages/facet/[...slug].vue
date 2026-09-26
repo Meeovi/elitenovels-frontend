@@ -91,7 +91,7 @@
         <v-col cols="12" v-if="facet?.stories?.length">
           <h3>Stories</h3>
           <v-row>
-            <v-col cols="4" v-for="(storyItem, i) in facet.stories" :key="i">
+            <v-col cols="12" sm="6" lg="4" v-for="(storyItem, i) in facet.stories" :key="i">
               <story :story="storyItem?.stories_id" />
             </v-col>
           </v-row>
@@ -101,7 +101,7 @@
         <v-col cols="12" v-if="facet?.videos?.length">
           <h3>Videos</h3>
           <v-row>
-            <v-col cols="4" v-for="(video, i) in facet.videos" :key="i">
+            <v-col cols="12" sm="6" lg="4" v-for="(video, i) in facet.videos" :key="i">
               <videoComponent :video="video?.videos_id" />
             </v-col>
           </v-row>

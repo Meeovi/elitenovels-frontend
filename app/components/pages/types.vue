@@ -5,9 +5,9 @@
       <v-col cols="12">
         <h4 style="color: white;">Popular Types</h4>
         <v-sheet class="mx-auto categorySheet">
-          <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
+          <v-slide-group v-model="model" class="py-4 px-sm-4" center-active>
             <v-slide-group-item v-for="types in monsterTypes" :key="types">
-              <template #default="{ toggle }">
+              <template #default="{ toggle, selectedClass }">
                 <types :item="types" />
               </template>
             </v-slide-group-item>
@@ -17,7 +17,7 @@
     </v-row>
 
     <v-row>
-      <v-col cols="3" v-for="types in monsterTypes" :key="types">
+      <v-col cols="12" sm="6" md="4" lg="3" v-for="types in monsterTypes" :key="types">
         <types :item="types" />
       </v-col>
     </v-row>

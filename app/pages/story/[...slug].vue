@@ -31,7 +31,7 @@
         <v-row>
           <v-toolbar title="Characters in this Story" density="comfortable" color="transparent">
           </v-toolbar>
-          <v-col cols="3" v-for="(charItem, idx) in story?.characters" :key="charItem?.characters_id?.id || charItem?.id || idx">
+          <v-col cols="12" sm="6" md="4" lg="3" v-for="(charItem, idx) in story?.characters" :key="charItem?.characters_id?.id || charItem?.id || idx">
             <characters :character="charItem?.characters_id || charItem" />
           </v-col>
         </v-row>

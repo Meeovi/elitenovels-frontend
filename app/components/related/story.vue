@@ -1,7 +1,7 @@
 <template>
     <div>
         <a :href="`/story/${story?.slug}`">
-            <v-card color="white" height="550" width="300">
+            <v-card class="elite-card ma-2 mx-auto" color="white" height="550" width="300" max-width="100%">
                 <div v-if="story?.image?.filename_disk">
                     <img class="align-end text-white" height="400" :alt="story?.name"
                         :src="`${$directus.url}assets/${story?.image?.filename_disk}`" cover />

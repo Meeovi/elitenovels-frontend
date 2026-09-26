@@ -4,10 +4,10 @@
         <v-toolbar title="OTHER ABILITIES" density="comfortable" color="transparent">
         </v-toolbar>
         <v-sheet class="mx-auto">
-          <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
+          <v-slide-group v-model="model" class="py-4 px-sm-4" selected-class="bg-success">
             <v-slide-group-item v-for="facetItem in itemsOnly" :key="facetItem.id || facetItem.name"
               v-slot="{ toggle, selectedClass }">
-              <facetCard :facet="facetItem" :class="['ma-4', selectedClass]" @click="toggle" />
+              <facetCard :facet="facetItem" :class="selectedClass" @click="toggle" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>

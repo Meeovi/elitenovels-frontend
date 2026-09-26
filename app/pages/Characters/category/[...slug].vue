@@ -22,7 +22,7 @@
                     <v-tabs-window-item value="one">
                         <div v-if="category?.characters?.length">
                             <v-row>
-                                <v-col cols="3" v-for="char in category?.characters" :key="char.characters_id.id">
+                                <v-col cols="12" sm="6" md="4" lg="3" v-for="char in category?.characters" :key="char.characters_id.id">
                                     <characters :character="char?.characters_id" />
                                 </v-col>
                             </v-row>
@@ -30,14 +30,14 @@
 
                         <div v-else-if="category?.options?.length">
                             <v-row>
-                                <v-col cols="3" v-for="facet in category?.options" :key="facet.options_id.id">
+                                <v-col cols="12" sm="6" md="4" lg="3" v-for="facet in category?.options" :key="facet.options_id.id">
                                     <facet :facet="facet?.options_id" />
                                 </v-col>
                             </v-row>
                         </div>
 
                         <div v-else-if="category?.stories?.length">
-                            <v-col cols="3" v-for="story in category?.stories" :key="story.stories_id.id">
+                            <v-col cols="12" sm="6" md="4" lg="3" v-for="story in category?.stories" :key="story.stories_id.id">
                                 <storyCard :story="story?.stories_id" />
                             </v-col>
                         </div>

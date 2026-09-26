@@ -7,12 +7,12 @@
     </v-toolbar>
 
     <v-sheet class="mx-auto">
-      <v-slide-group v-model="model" class="pa-4" selected-class="bg-success" show-arrows>
+      <v-slide-group v-model="model" class="py-4 px-sm-4" selected-class="bg-success">
         <v-slide-group-item v-for="(product, index) in result" :key="product.id || index"
           v-slot="{ toggle, selectedClass }">
           <!-- ONE SINGLE ROOT WRAPPER — REQUIRED -->
           <div class="slide-item" @click="toggle">
-            <productCard :product="product" :class="['ma-4', selectedClass]" />
+            <productCard :product="product" :class="selectedClass" />
 
             <v-scale-transition>
               <!-- Example icon overlay if needed

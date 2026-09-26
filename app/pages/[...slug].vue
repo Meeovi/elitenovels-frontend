@@ -94,23 +94,23 @@
             <kidsPage />
         </div>
 
-        <div v-if="page?.name === 'Stories'">
-            <div class="col-md-12 col-lg-4" v-for="stories in stories" :key="stories">
-                <storyComponent :story="stories" />
-            </div>
-        </div>
+        <v-row v-if="page?.name === 'Stories'" class="ma-0">
+            <v-col cols="12" sm="6" lg="4" v-for="story in stories" :key="story.id">
+                <storyComponent :story="story" />
+            </v-col>
+        </v-row>
 
-        <div v-if="page?.name === 'Videos'">
-            <div class="col-md-12 col-lg-4" v-for="videos in videos" :key="videos">
-                <videoComponent :video="videos" />
-            </div>
-        </div>
+        <v-row v-if="page?.name === 'Videos'" class="ma-0">
+            <v-col cols="12" sm="6" lg="4" v-for="video in videos" :key="video.id">
+                <videoComponent :video="video" />
+            </v-col>
+        </v-row>
 
-        <div v-if="page?.name === 'Kids'">
-            <div class="col-md-12 col-lg-4" v-for="kids in kidCharacters" :key="kids">
-                <characterComponent :character="kids" />
-            </div>
-        </div>
+        <v-row v-if="page?.name === 'Kids'" class="ma-0">
+            <v-col cols="12" sm="6" md="4" lg="3" v-for="kid in kidCharacters" :key="kid.id">
+                <characterComponent :character="kid" />
+            </v-col>
+        </v-row>
 
         <div v-else>
             <v-toolbar v-if="page?.description"

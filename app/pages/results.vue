@@ -30,7 +30,7 @@
               <v-tabs-window-item value="one">
                 <div v-if="results.length">
                   <v-row>
-                    <v-col v-for="(result, index) in results" :key="index">
+                    <v-col cols="12" sm="6" md="4" lg="3" v-for="(result, index) in results" :key="index">
                       <productCard :product="result" />
                     </v-col>
                   </v-row>

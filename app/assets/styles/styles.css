@@ -185,3 +185,11 @@ body {
     height: 90vh !important;
     position: relative;
 }
+/******************* Cards *********/
+
+/* Card images have a fixed height; keep them inside the card instead of overflowing at natural width */
+.elite-card img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}

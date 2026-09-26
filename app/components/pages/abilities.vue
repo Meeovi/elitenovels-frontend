@@ -5,10 +5,10 @@
       <v-col cols="12">
         <h4 style="color: white !important;">Popular Abilities</h4>
         <v-sheet class="mx-auto categorySheet">
-          <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
+          <v-slide-group v-model="model" class="py-4 px-sm-4" center-active>
             <v-slide-group-item v-for="abilities in ability" :key="abilities">
-              <template #default="{ toggle }">
-                <Ability :facet="abilities" :class="['ma-4', selectedClass]" @click="toggle" />
+              <template #default="{ toggle, selectedClass }">
+                <Ability :facet="abilities" :class="selectedClass" @click="toggle" />
               </template>
             </v-slide-group-item>
           </v-slide-group>
@@ -17,7 +17,7 @@
     </v-row>
 
     <v-row>
-      <v-col v-for="abilities in characterAbility" :key="abilities">
+      <v-col cols="12" sm="6" md="4" lg="3" v-for="abilities in characterAbility" :key="abilities">
         <Ability :facet="abilities" />
       </v-col>
     </v-row>

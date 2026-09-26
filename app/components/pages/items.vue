@@ -5,10 +5,10 @@
       <v-col cols="12">
         <h4 style="color: black;">Popular Items</h4>
         <v-sheet class="mx-auto categorySheet">
-          <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
+          <v-slide-group v-model="model" class="py-4 px-sm-4" center-active>
             <v-slide-group-item v-for="items in characterItems" :key="items?.id"
               v-slot="{ toggle, selectedClass }">
-              <Items :facet="items" :class="['ma-4', selectedClass]" @click="toggle" />
+              <Items :facet="items" :class="selectedClass" @click="toggle" />
             </v-slide-group-item>
           </v-slide-group>
         </v-sheet>
@@ -16,10 +16,8 @@
     </v-row>
 
     <v-row>
-      <v-col cols="12">
-        <v-col v-for="items in characterItems" :key="items.id">
-          <Items :facet="items" />
-        </v-col>
+      <v-col cols="12" sm="6" md="4" lg="3" v-for="items in characterItems" :key="items.id">
+        <Items :facet="items" />
       </v-col>
     </v-row>
   </div>

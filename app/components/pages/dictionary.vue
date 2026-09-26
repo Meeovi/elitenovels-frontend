@@ -3,7 +3,7 @@
     <v-toolbar title="Dictionary" style="background-color: lightcoral"></v-toolbar>
 
     <v-row style="padding: 10px;">
-      <v-col v-for="definition in dictionaryData" :key="definition.id">
+      <v-col cols="auto" v-for="definition in dictionaryData" :key="definition.id">
         <Dictionary :dictionary="definition" />
       </v-col>
     </v-row>
