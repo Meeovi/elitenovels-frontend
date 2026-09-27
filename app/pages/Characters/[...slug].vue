@@ -194,7 +194,11 @@
             'universe.universe_id.*',
             'stories.stories_id.*',
             'image.*',
-            'affiliates.characters_id.*',
+            // Self-referencing M2M: characters_id is this character (the owner),
+            // related_characters_id is the affiliate.
+            'affiliates.related_characters_id.id',
+            'affiliates.related_characters_id.name',
+            'affiliates.related_characters_id.slug',
             'abilities.abilities_id.*'
           ]
         })
@@ -226,9 +230,11 @@
   const affiliatesList = computed(() => {
     const c = character.value || {}
     if (!Array.isArray(c.affiliates)) return []
+    const seen = new Set([c.id])
     return c.affiliates
-      .map(a => a?.characters_id || a)
-      .filter(a => a?.name)
+      .map(a => a?.related_characters_id)
+      // skip the character itself and any affiliate linked more than once
+      .filter(a => a?.name && !seen.has(a.id) && seen.add(a.id))
       .map(a => ({
         id: a.id,
         name: a.name,
